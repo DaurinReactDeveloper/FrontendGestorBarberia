@@ -30,10 +30,11 @@
 }
 
 .img-input-agregar-barbero-admin::-webkit-file-upload-button {
-  background-color: #3d3d3d;
+  background-color: #263238;
   color: white;
   border: none;
   padding: 1vw 3vw;
+  border-radius: 1vw;
 }
 
 @media (min-width: 1024px) {
@@ -94,9 +95,10 @@
   }
 
   .img-input-agregar-barbero-admin-pc::-webkit-file-upload-button {
-    background-color: #3d3d3d;
+    background-color: #263238;
     color: white;
     border: none;
     padding: 0.2vw 1vw;
+    border-radius: 0.1vw;
   }
 }

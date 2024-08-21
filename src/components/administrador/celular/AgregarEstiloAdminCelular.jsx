@@ -149,8 +149,9 @@ export default function AgregarEstiloAdminCelular() {
               <p className="p-label-celular">Imagen</p>
               <input
                 type="file"
+                accept="image/png, image/jpeg"
                 required
-                className="input-agregar-estilos-admin"
+                className="input-agregar-estilos-admin img-input-agregar-estilos-admin"
                 onChange={extraerImagen}
               />
               {mensajeImagen && <p>{mensajeImagen}</p>}

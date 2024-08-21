@@ -100,7 +100,7 @@ export default function AgregarEstiloAdminPc() {
                 <p className="p-label-estilos-pc">Nombre</p>
                 <input
                   type="text"
-                  accept="image/jpeg"
+                  accept="image/png, image/jpeg"
                   placeholder="Inserte el nombre del corte"
                   required
                   minLength={6}
