@@ -1,0 +1,88 @@
+.p-label-agregar-barbero-admin {
+  margin-bottom: 0vw;
+  padding-bottom: 1vw;
+  text-decoration: underline;
+  text-decoration-color: #3d3d3d;
+}
+
+.input-agregar-barbero-admin {
+  width: 93vw;
+  padding: 1vw;
+  border: none;
+  border: 0.1vw solid #3d3d3d;
+  background-color: #d9d9d9;
+}
+
+.div-boton-submit-agregar-admin {
+  display: flex;
+  justify-content: center;
+}
+
+.boton-submit-agregar-admin {
+  margin-top: 8vw;
+  margin-bottom: 8vw;
+  border: none;
+  width: 60%;
+  border-radius: 5vw;
+  background-color: #3d3d3d;
+  color: white;
+  padding: 1.5vw 0vw;
+}
+
+@media (min-width: 1024px) {
+  .p-label-agregar-barbero-admin-pc,
+  .p-mensaje-agregar-barbero-admin-pc {
+    color: white;
+    margin-bottom: 0vw;
+    text-decoration: underline;
+    text-decoration-color: #d9d9d9;
+  }
+
+  .p-mensaje-agregar-barbero-admin-pc {
+    text-align: center;
+    padding-top: 2vw;
+  }
+
+  .section-agregar-barbero-form-pc {
+    display: flex;
+    justify-content: center;
+  }
+
+  .input-agregar-barbero-admin-pc {
+    width: 25vw;
+    padding: 0.4vw;
+    border: none;
+    border-radius: 0.2vw;
+    background-color: #d9d9d9;
+  }
+
+  .article-div-inputs-agregar-barbero-form-pc {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+  }
+
+  .div-imagen-telefono-contrasena-agregar-barbero-form-pc,
+  .div-nombre-email-agregar-barbero-form-pc {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+
+  .div-button-agregar-barbero-pc {
+    display: flex;
+    justify-content: center;
+    padding-top: 2vw;
+  }
+
+  .button-agregar-barbero-pc {
+    border: none;
+    border-radius: 2vw;
+    padding: 0.4vw 5vw;
+  }
+
+  .button-agregar-barbero-pc:hover {
+    transform: scale(1.1);
+    transition: transform 1s;
+  }
+}

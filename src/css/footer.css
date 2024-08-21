@@ -1,0 +1,150 @@
+@font-face {
+  font-family: "Battle";
+  src: url("/font/BattlesbridgeDemoRegular.ttf");
+}
+
+/* General Styles */
+.section-footer {
+  background-color: #1b1b1b;
+  color: white;
+}
+
+.titulo-footer {
+  font-size: 5vw;
+}
+
+/* Article logo */
+.article-img-footer {
+  width: 100%;
+  text-align: center;
+  padding-top: 6vw;
+  padding-bottom: 6vw;
+}
+
+.img-footer {
+  width: 50%;
+}
+
+.article-img-footer > p {
+  font-family: "Battle";
+  margin-bottom: 0 !important;
+  padding: 0;
+}
+
+/* Article Contacto */
+.article-contacto-footer {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 5vw;
+}
+
+.article-contacto-footer > p {
+  margin-bottom: 0.5vw !important;
+}
+
+/* Article Redes */
+.article-redes-footer {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 3vw;
+}
+
+.article-redes-footer > p {
+  margin-bottom: 0 !important;
+}
+
+.div-article-redes-footer {
+  font-size: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5vw;
+}
+
+.icon-footer {
+  color: #ffffff;
+}
+
+/* Footer Final */
+.footer-final > p {
+  margin-bottom: 0 !important;
+  text-align: center;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+  font-size: 3.8vw;
+}
+
+/* Responsividad para Pantallas Largas */
+@media (min-width: 1024px) {
+  .section-footer {
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-footer {
+    width: 20%;
+  }
+
+  /* Article logo */
+  .article-img-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5vw;
+    width: 15%;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    border-right: 0.1vw solid #ffffff;
+  }
+
+  .article-img-footer > p {
+    font-size: 0.7vw;
+  }
+
+  /* Article Contacto */
+  .article-contacto-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 27%;
+    padding-bottom: 0;
+  }
+
+  .article-contacto-footer > p {
+    margin-bottom: 0.3vw !important;
+  }
+
+  .titulo-footer {
+    font-size: 1.2vw;
+  }
+
+  /* Article Redes */
+  .article-redes-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding-bottom: 0;
+  }
+
+  .div-article-redes-footer {
+    font-size: 2vw;
+    gap: 0.5vw;
+  }
+
+  .icon-footer:hover {
+    transform: scale(1.1);
+  }
+
+  /* Footer Final */
+  .footer-final > p {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    font-size: 1vw;
+  }
+}

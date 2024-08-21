@@ -1,0 +1,34 @@
+/* General styles for section header */
+.sectionNameEstilos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  padding-top: 10vw;
+}
+
+.sectionNameEstilos > svg {
+  font-size: 6vw;
+}
+
+.sectionNameEstilos > h1 {
+  margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+
+    .sectionNameEstilos {
+        gap: 0.5vw;
+        padding: 1vw;
+        padding-top: 3vw;
+      }
+    
+      .sectionNameEstilos > svg {
+        font-size: 2.5vw !important;
+      }
+
+      .h1-pc-white{
+        color: white;
+      }
+}
+

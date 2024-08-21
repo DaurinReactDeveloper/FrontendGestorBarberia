@@ -1,0 +1,40 @@
+.navbar{
+    background-color: #1B1B1B ;
+}
+
+.buttonAdminNavbar{
+    border: none;
+    background-color:#D9D9D9 ;
+    color: #1B1B1B;
+    width: 100%;
+    border-radius: 1vw;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    padding-left: 1.5vw;
+}
+
+.nav-link{
+    color: white;
+}
+
+@media (min-width:1024px) {
+    .buttonAdminNavbar{
+        width: min-content;
+        padding:0.3vw 1.5vw;
+        border-radius: 1vw;
+        gap: 0.5vw;
+    }
+
+    .navbar-brand{
+        border-right: 0.1vw solid #D9D9D9;
+        padding-right: 1vw;
+    }
+
+    .buttonAdminNavbar:hover{
+        transform: scale(1.1);
+        transition: transform 1s;
+    }
+
+}

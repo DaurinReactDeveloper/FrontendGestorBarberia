@@ -1,0 +1,83 @@
+import axios from "axios";
+import { ValidacionesIniciarSesion } from "../util/validaciones/ValidacionesRegistros";
+
+//IniciarSesion
+export async function obtenerUsuario(
+  e,
+  navigate,
+  url,
+  sesionId,
+  tipo,
+  nombre,
+  contrasena,
+  setMensajeNombre,
+  setMensajeContrasena,
+  setError,
+  setLoading,
+  setResultado
+) {
+  e.preventDefault();
+
+  if (
+    !ValidacionesIniciarSesion(
+      nombre,
+      contrasena,
+      setMensajeNombre,
+      setMensajeContrasena
+    )
+  ) {
+    return;
+  }
+
+  if (!url) {
+    setError("URL inválida.");
+    return;
+  }
+
+  setLoading(true);
+  setError("");
+  setResultado("");
+
+  localStorage.removeItem("token");
+  localStorage.removeItem("id");
+  localStorage.removeItem("nombre");
+
+  try {
+    const peticion = await axios.get(url);
+
+    if (peticion.data.data.success) {
+      const tokenData = peticion.data.token;
+      const idData = peticion.data.data.data[sesionId];
+      const nombreData = peticion.data.data.data.nombre;
+
+      localStorage.setItem("id", idData);
+      localStorage.setItem("token", tokenData);
+      localStorage.setItem("nombre", nombreData);
+
+      // Configurar timeout para limpiar el localStorage en 30 minutos
+      setTimeout(() => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("id");
+        localStorage.removeItem("nombre");
+        navigate("/iniciarsesion");
+      }, 30 * 60 * 1000); // 30 minutos en milisegundos
+
+      setResultado("Inicio de sesión exitoso.");
+      navigate(`/${tipo}`);
+    } else {
+      setError("Credenciales incorrectas.");
+    }
+  } catch (error) {
+    setError("Error al iniciar sesión. Intente nuevamente.");
+  } finally {
+    setLoading(false);
+  }
+}
+
+// Cerrar Sesion
+export function CerrarSesion(navigate) {
+  localStorage.removeItem("token");
+  localStorage.removeItem("id");
+  localStorage.removeItem("nombre");
+  navigate("/");
+}

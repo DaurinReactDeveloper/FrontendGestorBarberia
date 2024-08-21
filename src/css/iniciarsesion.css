@@ -1,0 +1,134 @@
+.row-iniciarsesion {
+    padding-bottom: 5vw;
+  }
+
+.columna-secciones {
+  padding-top: 5vw;
+}
+
+.div_img_secciones {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img_secciones {
+    width: 70%;
+  }
+
+.div_button_secciones {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2vw;
+  padding-top: 2vw;
+}
+
+.button_secciones {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  border: none;
+  background-color: #e0e0e0;
+  padding: 1vw 10vw;
+  border-radius: 5vw;
+  box-shadow: 0vw 0.4vw 0.5vw rgba(0, 0, 0, 0.348);
+  text-decoration: none;
+  color: #3f3f3f;
+}
+
+.button_secciones > svg {
+  font-size: 5vw;
+}
+
+.button-cliente-secciones {
+  background-color: #e0e0e0;
+}
+
+.button-barbero-secciones {
+  background-color: #d9d9d9;
+}
+
+.button-admin-secciones {
+  background-color: #3f3f3f;
+  color: white;
+}
+
+@media (min-width: 768px) and (max-width: 820px) {
+  .row-iniciarsesion {
+    padding-bottom: 5vw;
+  }
+
+  .div_button_secciones {
+    padding-bottom: 1vw;
+    padding-top: 1vw;
+  }
+  .img_secciones {
+    width: 60%;
+  }
+
+  .button_secciones {
+    padding: 1vw 5vw;
+    box-shadow: 0vw 0.4vw 0.5vw rgba(0, 0, 0, 0.348);
+    font-size: 3vw;
+  }
+
+  .button_secciones > svg {
+    font-size: 4vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .row-iniciarsesion {
+    justify-content: center;
+    gap: 2vw;
+    padding-bottom: 2vw;
+    padding-top: 2vw;
+  }
+
+  .columna-secciones {
+    padding-top: 0vw;
+  }
+
+  .button_secciones {
+    gap: 1vw;
+    padding: 0.4vw 2vw;
+    box-shadow: 0vw 0.1vw 0.3vw rgba(0, 0, 0, 0.348);
+  }
+
+  .img_secciones {
+    width: auto;
+    height: 22vw;
+  }
+
+  .button_secciones > svg {
+    font-size: 1.5vw;
+  }
+  .div_button_secciones {
+    padding-bottom: 1vw;
+    padding-top: 1vw;
+  }
+
+  .button-cliente-secciones,
+  .button-barbero-secciones,
+  .button-admin-secciones {
+    transition: background-color 1s;
+  }
+
+  .button-cliente-secciones:hover {
+    background-color: #455a64;
+    color: #e0e0e0;
+  }
+
+  .button-barbero-secciones:hover {
+    background-color: #455a64;
+    color: #e0e0e0;
+  }
+
+  .button-admin-secciones:hover {
+    background-color: #455a64;
+    color: #e0e0e0;
+  }
+}

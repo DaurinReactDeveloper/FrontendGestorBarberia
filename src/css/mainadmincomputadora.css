@@ -1,0 +1,11 @@
+@media (min-width:1024px) {
+    .boton-informacion-admin-pc{
+        padding-bottom: 24vw;
+    }
+}
+
+@media (min-width:1420px) {
+    .boton-informacion-admin-pc{
+        padding-bottom: 27vw;
+    }
+}

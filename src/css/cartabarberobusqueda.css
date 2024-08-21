@@ -1,0 +1,126 @@
+/* Estilos generales para la sección de tarjetas */
+.section-carta-barbero {
+  padding: 3vw;
+  padding-top: 2vw;
+  justify-content: center;
+}
+
+/* Estilos para las tarjetas */
+.card-estilo-barbero {
+  width: 100%;
+  background-color: #d9d9d9;
+  padding: 0;
+  margin-bottom: 5vw;
+  min-height: 70vw;
+  border-radius: 1vw;
+  box-shadow: 0vw 1vw 2vw rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  border: none;
+  border-radius: 0vw;
+}
+
+/* Estilos para la imagen */
+.img-card-barbero {
+  height: 75vw;
+  padding: 2vw;
+}
+
+/* Estilos para el cuerpo de la tarjeta */
+.card-body-barbero > p {
+  margin-bottom: 0;
+  line-height: 8vw;
+  text-align: justify;
+}
+
+.card-body-barbero {
+  padding-top: 0vw;
+}
+
+@media (min-width: 768px) and (max-width: 912px) {
+  .section-carta-barbero {
+    padding: 0;
+    gap: 2vw;
+  }
+
+  /* Estilos para las tarjetas en pantallas grandes */
+  .card-estilo-barbero {
+    width: 38%;
+    padding: 0vw;
+    margin-bottom: 2vw;
+    min-height: 15vw;
+    box-shadow: 0 0.2vw 0.2vw rgba(0, 0, 0, 0.2); /* Sombra de la tarjeta actualizada */
+  }
+
+  /* Estilos para la imagen en pantallas grandes */
+  .img-card-barbero {
+    height: 36vw;
+    padding: 1vw;
+  }
+
+  /* Estilos para el cuerpo de la tarjeta en pantallas grandes */
+  .card-body-barbero > p {
+    margin-bottom: 0;
+    line-height: 3.5vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Estilos generales para la sección de tarjetas en pantallas grandes */
+  .section-carta-barbero {
+    padding: 0vw;
+    gap: 1vw;
+  }
+
+  /* Estilos para las tarjetas en pantallas grandes */
+  .card-estilo-barbero {
+    width: 30%;
+    margin-bottom: 1.5vw;
+    min-height: 20vw;
+    box-shadow: 0 0.2vw 0.2vw rgba(0, 0, 0, 0.2); /* Sombra de la tarjeta actualizada */
+    border-radius: 0.1vw;
+  }
+
+  .card-estilo-barbero:hover {
+    background-color: #212529;
+    color: white;
+  }
+
+  /* Estilos para la imagen en pantallas grandes */
+  .img-card-barbero {
+    height: 26vw;
+    padding: 0.5vw;
+  }
+
+  /* Estilos para el cuerpo de la tarjeta en pantallas grandes */
+  .card-body-barbero > p {
+    margin-bottom: 0;
+    line-height: 3vw;
+  }
+}
+
+@media (min-width: 1420px) {
+  /* Estilos generales para la sección de tarjetas en pantallas grandes */
+  .section-carta-barbero {
+    gap: 0.8vw;
+  }
+
+  /* Estilos para las tarjetas en pantallas grandes */
+  .card-estilo-barbero {
+    width: 20%;
+  }
+
+  /* Estilos para la imagen en pantallas grandes */
+  .img-card-barbero {
+    height: 18vw;
+    border-radius: 0.6vw;
+  }
+
+  /* Estilos para las tarjetas en pantallas muy grandes */
+  .card-estilo-barbero {
+    box-shadow: 0vw 0.2vw 0.2vw rgba(0, 0, 0, 0.3); /* Sombra de la tarjeta actualizada */
+  }
+
+  /* Estilos para el cuerpo de la tarjeta en pantallas muy grandes */
+  .card-body-barbero > p {
+    line-height: 1.6vw;
+  }
+}

@@ -1,0 +1,69 @@
+/* Estilos generales para la sección de tarjetas */
+.section-carta {
+  padding: 10vw;
+  padding-top: 2vw;
+  justify-content: center;
+}
+
+/* Estilos para las tarjetas */
+.card-estilo {
+  width: 80%;
+  background-color: #d9d9d9;
+  padding: 0;
+  margin-bottom: 5vw;
+  min-height: 70vw;
+  border-radius: 1vw;
+  box-shadow: 0 1vw 0.8vw rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  border: none;
+}
+
+/* Estilos para la imagen */
+.img-card {
+  height: 60vw;
+  padding: 2vw;
+  border-radius: 3vw;
+}
+
+/* Estilos para el texto de la tarjeta */
+.cardtitule,
+.card-precio-estilo {
+  font-weight: bold; /* Texto en negrita */
+}
+
+.cardtext {
+  text-align: justify; /* Alineación del texto justificada */
+}
+
+/* Ajustes responsivos para pantallas más grandes */
+@media (min-width: 1024px) {
+  /* Estilos para la sección de tarjetas en pantallas grandes */
+  .section-carta {
+    padding: 1vw;
+    padding-top: 2vw;
+    gap: 1vw;
+    justify-content: center;
+  }
+
+  /* Estilos para las tarjetas en pantallas grandes */
+  .card-estilo {
+    width: 20%;
+    padding: 0;
+    margin-bottom: 1vw;
+    min-height: 10vw;
+    border-radius: 0.5vw;
+    box-shadow: 0 0.2vw 0.2vw rgba(0, 0, 0, 0.215); /* Sombra de la tarjeta ajustada */
+  }
+
+  /* Estilos para la imagen en pantallas grandes */
+  .img-card {
+    height: 20vw;
+    padding: 0.4vw;
+    border-radius: 0.8vw;
+  }
+
+  /* Estilos al pasar el cursor sobre la tarjeta */
+  .card-estilo:hover {
+    background-color: #212529;
+    color: white;
+  }
+}

@@ -1,0 +1,253 @@
+/* Fuente Poppins */
+@font-face {
+  font-family: "Poppins";
+  src: url("/font/PoppinsRegular.ttf");
+}
+
+/* Fuente Battles */
+@font-face {
+  font-family: "Battles";
+  src: url("/font/BattlesbridgeDemoRegular.ttf");
+}
+
+/* Estilo general del cuerpo */
+body {
+  font-family: "Poppins";
+  background-color: #ffffff;
+}
+
+/* FRAME 1 */
+
+/* Estilo principal del marco */
+.mainFramePrincipal {
+  background-color: #e7e7e7;
+}
+
+/* Ocultar artículo para PC */
+.articlePc {
+  display: none;
+}
+
+/* Estilo de filas y artículos para celulares */
+.rowFrame1Celulares,
+.articleCelulares {
+  padding: 0;
+}
+
+/* Margen para filas */
+.row {
+  margin: 0;
+}
+
+/* Ancho de imagen en el marco 2 */
+.img-imagenframe2 {
+  width: 100%;
+}
+
+/* FRAME 2 */
+
+/* Estilo de artículo para celulares en el marco 2 */
+.articleFrame2Celulares {
+  background-image: url("/imagenFrame2.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  padding: 8vw;
+}
+
+/* Estilo de título y frase para iniciar sesión */
+.titulo-inicia-sesión,
+.frase-inicia-sesión {
+  color: #e7e7e7;
+  text-align: center;
+}
+
+/* Estilo específico del título para iniciar sesión */
+.titulo-inicia-sesión {
+  font-family: "Battles";
+  font-size: 4vw;
+}
+
+/* Estilo específico de la frase para iniciar sesión */
+.frase-inicia-sesión {
+  font-size: 3vw;
+}
+
+/* Estilo de contenedor de botones en el marco 2 para celulares */
+.div-botones-frame2-celulares {
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+}
+
+/* Estilo de botones de iniciar y registrarse en el marco 2 para celulares */
+.button-iniciar-frame2-Celulares,
+.button-registrarse-frame2-Celulares {
+  all: unset;
+  padding: 1vw 3vw;
+  border-radius: 5vw;
+  display: flex;
+  gap: 1vw;
+  align-items: center;
+}
+
+/* Estilo específico del botón de iniciar sesión en el marco 2 para celulares */
+.button-iniciar-frame2-Celulares {
+  background-color: #3d3d3d;
+  color: #e7e7e7;
+  text-decoration-line: none;
+}
+
+/* Estilo específico del botón de registrarse en el marco 2 para celulares */
+.button-registrarse-frame2-Celulares {
+  background-color: #ffffff;
+  color: #3d3d3d;
+}
+
+/* FRAME 3 */
+
+/* Padding para el artículo en el marco 3 para PC */
+.articleFrame3PC {
+  padding: 0;
+}
+
+/* Responsividad para Pantallas Largas */
+@media (min-width: 1024px) {
+  
+  /* Ocultar artículo para celulares */
+  .articleCelulares {
+    display: none;
+  }
+
+  /* Mostrar artículo para PC */
+  .articlePc {
+    display: block;
+    padding: 0;
+  }
+
+  /* Alinear elementos en la fila principal del marco 1 */
+  .rowFrame1Principal {
+    align-items: center;
+  }
+
+  /* Estilo de texto en el marco 1 */
+  .DaurinFrame1,
+  .BarbershopFrame1 {
+    font-family: "Battles";
+    font-size: 3vw;
+  }
+
+  /* Tamaño de fuente específico para el texto en el marco 1 */
+  .DaurinFrame1 {
+    font-size: 1vw;
+  }
+
+  /* Alineación del texto en el artículo de datos y botones */
+  .article-datos-botones {
+    text-align: justify;
+  }
+
+  /* Estilo de contenedor de botones en el marco 1 */
+  .div-botones-frame1 {
+    display: flex;
+    gap: 1vw;
+  }
+
+  /* Estilo de botones de registrarse e iniciar sesión */
+  .button-registrarse,
+  .button-iniciarsesion {
+    border: none;
+    border-radius: 1.5vw;
+    padding: 0.3vw 1vw;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    transition: transform 0.3s;
+    text-decoration-line: none;
+  }
+
+  /* Estilo específico del botón de iniciar sesión */
+  .button-iniciarsesion {
+    background-color: #3d3d3d;
+  }
+
+  /* Estilo específico del botón de registrarse */
+  .button-registrarse {
+    background-color: #1b1b1b;
+  }
+
+  /* Efecto hover para el botón de registrarse */
+  .button-registrarse:hover {
+    background-color: #3d3d3d;
+    transform: scale(1.1);
+  }
+
+  /* Efecto hover para el botón de iniciar sesión */
+  .button-iniciarsesion:hover {
+    background-color: #1b1b1b;
+    transform: scale(1.1);
+  }
+
+  /* Estilo de la línea horizontal en el marco 1 */
+  .hr-datos-frame1 {
+    width: 75%;
+    border: 0.1vw solid #1b1b1b;
+    opacity: 1;
+  }
+
+  /* FRAME 2 */
+  
+  /* Estilo de artículo para PC en el marco 2 */
+  .articleFrame2PC {
+    background-image: url("/imagenFrame2.png");
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-size: cover;
+    padding: 12vw;
+  }
+
+  /* Estilo del título de reserva */
+  .titulo-reserva {
+    font-family: "Battles";
+    color: #ffffff;
+    text-align: center;
+    font-size: 2vw;
+  }
+
+  /* Estilo de la frase de reserva */
+  .frase-reserva {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1vw;
+    padding-top: 0.7vw;
+    padding-left: 16vw;
+    padding-right: 16vw;
+  }
+
+  /* Estilo de contenedor de botones en el marco 2 */
+  .div-botones-frame2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Estilo del botón de reservar en el marco 2 */
+  .button-reservar-frame2 {
+    all: unset;
+    padding: 0.4vw 2vw;
+    background-color: #d9d9d9;
+    border-radius: 2vw;
+    box-shadow: 0 0.1vw 0.2vw #3d3d3d;
+    display: flex;
+    align-items: center;
+    gap: 0.2vw;
+    transition: transform 0.3s;
+  }
+
+  /* Efecto hover para el botón de reservar */
+  .button-reservar-frame2:hover {
+    background-color: #ffffff;
+    transform: scale(1.1);
+  }
+}

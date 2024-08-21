@@ -1,0 +1,106 @@
+/* Padding para la imagen de iniciar sesión */
+.img-iniciar-sesion-general {
+  padding-top: 5vw;
+}
+
+/* Margen para los campos de entrada de iniciar sesión */
+.p-inputs-iniciarsesiongeneral {
+  margin-bottom: 0vw;
+  text-decoration: underline;
+}
+
+/* Estilo para las columnas de entradas en sesiones */
+.col-inputs-sesiones {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Ancho del formulario para sesiones */
+.form-sesiones {
+  width: 100%;
+}
+
+/* Estilo para los campos de entrada de iniciar sesión */
+.inputs-iniciarsesiongeneral {
+  width: 100%;
+  border: none;
+  border-radius: 0.6vw;
+  background-color: #d9d9d9;
+  padding: 2vw;
+}
+
+/* Padding para los contenedores de entrada en iniciar sesión */
+.div_inputs-iniciarsesiongeneral {
+  padding-bottom: 3vw;
+}
+
+/* Padding y alineación para el boton de sesiones */
+.div-button-sesiones {
+  text-align: center;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+}
+
+/* Estilo para el boton de sesiones */
+.button-sesiones {
+  all: unset;
+  background-color: #3F3F3F;
+  color: white;
+  padding: 1.5vw 8vw;
+  border-radius: 5vw;
+  transition: background-color 1s;
+}
+
+@media (min-width: 1024px) {
+  .row-sesiones {
+    justify-content: center;
+    align-items: center;
+    gap: 0vw;
+    padding-bottom: 3vw;
+  }
+
+  .img-iniciar-sesion-general {
+    padding-top: 0vw;
+    width: fit-content;
+  }
+
+  .col-inputs-sesiones {
+    width: 45%;
+  }
+
+.col-imagen-sesiones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    padding: 0vw;
+}
+
+  .form-sesiones {
+    width: 89%;
+  }
+
+  .inputs-iniciarsesiongeneral {
+    padding: 0.6vw;
+    border-radius: 0.2vw;
+  }
+
+.div-inputs-iniciarsesiongeneral{
+    margin-bottom: 1.5vw;
+}
+
+  .div-button-sesiones {
+    padding-top: 0vw;
+    padding-bottom: 1vw;
+  }
+
+  .button-sesiones {
+    padding: 0.7vw 6svw;
+  }
+
+  .button-sesiones:hover {
+    background-color: #263238;
+  }
+
+}

@@ -1,0 +1,61 @@
+.div-contenedor-cita-aceptada-barbero {
+  overflow: auto;
+}
+
+.button-finalizar-aceptada {
+  border: none;
+  border-radius: 2vw;
+  padding: 0.4vw 5vw;
+  background-color: #c44949;
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .section-contenedor-table-barbero {
+    padding: 1vw;
+    background-color: white;
+    border-radius: 1vw;
+    margin-top: 3%;
+  }
+
+  .div-contenedor-cita-aceptada-barbero {
+    overflow-y: auto;
+    overflow-wrap: initial;
+    border-radius: 1vw;
+    
+  }
+
+  .div-contenedor-cita-aceptada-barbero {
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+  }
+
+  .div-contenedor-cita-aceptada-barbero.scrollable {
+    max-height: 30vw;
+    overflow-y: auto;
+  }
+
+  .button-finalizar-aceptada {
+    border: none;
+    border-radius: 2vw;
+    padding: 0.4vw 0vw;
+    width: 100%;
+  }
+
+  .button-finalizar-aceptada:hover {
+    background-color: #263238;
+    transition: background-color 1s;
+  }
+
+  .table-barbero-pc {
+    width: 100%;
+    height: min-content;
+  }
+
+  .p-mensaje-table-barbero-pc {
+    color: white;
+    text-align: center;
+    padding-top: 1vw;
+  }
+}

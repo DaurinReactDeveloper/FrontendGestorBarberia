@@ -1,0 +1,101 @@
+.p-label-celular {
+  margin: 0vw;
+  padding: 2vw 0vw;
+  text-decoration: underline;
+  text-decoration-color: #3d3d3d;
+}
+
+.p-label-celular {
+  margin: 0vw;
+  padding: 2vw 0vw;
+  text-decoration: underline;
+  text-decoration-color: #3d3d3d;
+}
+
+.input-agregar-estilos-admin {
+  width: 93vw;
+  background-color: #d9d9d9;
+  border: none;
+  border: 0.1vw solid #3d3d3d;
+  padding: 1.3vw;
+}
+
+.div-boton-submit-estilos-admin {
+  display: flex;
+  justify-content: center;
+}
+
+.boton-submit-estilos-admin {
+  border: none;
+  width: 60%;
+  background-color: #3d3d3d;
+  color: white;
+  border-radius: 5vw;
+  padding: 1.3vw 0vw;
+  margin-top: 8vw;
+  margin-bottom: 8vw;
+}
+
+.label-descripcion-celular > textarea {
+  width: 93vw;
+  height: 50vw;
+  resize: none;
+  padding: 2vw;
+  background-color: #d9d9d9;
+  border: none;
+  border: 0.1vw solid #3d3d3d;
+}
+
+@media (min-width: 1024px) {
+  .article-inputs-estilos-pc {
+    display: flex;
+    justify-content: center;
+    color: white;
+    gap: 1.5vw;
+  }
+
+  .input-agregar-estilos-admin-pc {
+    width: 26vw;
+    padding: 0.5vw;
+    background-color: #d9d9d9;
+    border: none;
+    border: 0.1vw solid #3d3d3d;
+    border-radius: 0.2vw;
+    color: #3d3d3d;
+  }
+
+  .p-label-estilos-pc {
+    margin-bottom: 0vw;
+    padding-top: 0.6vw;
+  }
+
+  .div-labels-nombre-descripcion-pc,
+  .div-labels-precio-imagen-pc {
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text-area-agregar-estilos-pc {
+    resize: none;
+    height: 17vw;
+  }
+
+  .div-boton-submit-estilos-admin-pc {
+    display: flex;
+    justify-content: center;
+    padding-top: 2vw;
+  }
+
+  .boton-submit-estilos-admin-pc {
+    border: none;
+    background-color: #FAFAFA;
+    padding: 0.3vw 4vw;
+    border-radius: 5vw;
+  }
+
+  .boton-submit-estilos-admin-pc:hover{
+   transform: scale(1.1);
+   transition: transform 1s ;
+  }
+}

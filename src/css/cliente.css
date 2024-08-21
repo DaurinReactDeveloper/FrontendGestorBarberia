@@ -1,0 +1,71 @@
+/* Cliente Pc */
+.section-main-cliente-pc {
+  display: none;
+}
+
+.opciones-cliente {
+  background-color: #1b1b1b;
+  padding: 0vw;
+}
+
+.accordion-button {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.accordion-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 1vw;
+}
+
+.button-accordion-body {
+  border: none;
+  background-color: white;
+  text-align: justify;
+  display: flex;
+  gap: 1vw;
+  align-items: center;
+}
+
+.div-button-cerrar-sesion {
+  display: flex;
+  justify-content: right;
+}
+
+.accordion {
+  padding: 0vw;
+}
+
+.icon-cerrar-sesion {
+  font-size: 7vw;
+  color: #1b1b1b;
+}
+
+/* FRAME BIENVENIDO */
+.div-cliente-bienvenido {
+  padding: 10vw;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  background-color: #1b1b1b;
+  color: white;
+  margin-bottom: 3vw;
+  text-align: center;
+}
+
+.h1-cliente-bienvenido {
+  margin: 0vw;
+}
+
+@media (min-width: 1024px) {
+  .section-main-cliente-celular {
+    display: none;
+  }
+
+  .section-main-cliente-pc {
+    display: contents;
+  }
+}

@@ -1,0 +1,29 @@
+@media (min-width:1024px) {
+    .div-cliente-bienvenido-pc{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        font-size: 6vw;
+        text-align: center;
+        width: 100%;
+        margin-top: 8.7vw;
+    }
+    
+    .p-cliente-bienvenido-pc{
+        text-transform: uppercase;
+        margin: 0vw;
+    }
+    
+    .h1-cliente-bienvenido-pc{
+        margin: 0vw;
+    }
+
+
+}
+
+@media (min-width:1420px) {
+    .div-cliente-bienvenido-pc{
+        margin-top:10vw;
+    }
+}
