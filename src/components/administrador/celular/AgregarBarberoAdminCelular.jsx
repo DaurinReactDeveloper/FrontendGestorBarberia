@@ -110,7 +110,7 @@ export default function AgregarBarberoAdminCelular() {
                 type="file"
                 accept="image/png, image/jpeg"
                 required
-                className="input-agregar-barbero-admin"
+                className="input-agregar-barbero-admin img-input-agregar-barbero-admin"
                 onChange={extraerImagen}
               />
               {mensajeImagen && <p>{mensajeImagen}</p>}

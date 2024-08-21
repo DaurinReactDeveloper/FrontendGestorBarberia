@@ -29,6 +29,13 @@
   padding: 1.5vw 0vw;
 }
 
+.img-input-agregar-barbero-admin::-webkit-file-upload-button {
+  background-color: #3d3d3d;
+  color: white;
+  border: none;
+  padding: 1vw 3vw;
+}
+
 @media (min-width: 1024px) {
   .p-label-agregar-barbero-admin-pc,
   .p-mensaje-agregar-barbero-admin-pc {
@@ -84,5 +91,12 @@
   .button-agregar-barbero-pc:hover {
     transform: scale(1.1);
     transition: transform 1s;
+  }
+
+  .img-input-agregar-barbero-admin-pc::-webkit-file-upload-button {
+    background-color: #3d3d3d;
+    color: white;
+    border: none;
+    padding: 0.2vw 1vw;
   }
 }

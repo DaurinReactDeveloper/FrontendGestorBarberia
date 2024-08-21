@@ -98,4 +98,13 @@
    transform: scale(1.1);
    transition: transform 1s ;
   }
+
+  .img-input-agregar-estilos-admin-pc::-webkit-file-upload-button {
+    border: none;
+    padding: 0.2vw 1vw; 
+    background-color: #263238;
+    color: white;
+    border-radius: 0.1vw; 
+  }
+
 }

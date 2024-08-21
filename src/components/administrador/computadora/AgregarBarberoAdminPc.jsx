@@ -118,13 +118,15 @@ export default function AgregarBarberoAdminPc() {
                   <p className="p-label-agregar-barbero-admin-pc">
                     Imagen Barbero
                   </p>
+                  
                   <input
                     type="file"
                     accept="image/png, image/jpeg"
                     onChange={extraerImagen}
-                    className="input-agregar-barbero-admin-pc"
+                    className="input-agregar-barbero-admin-pc img-input-agregar-barbero-admin-pc"
                     required
                   />
+                  
                   {mensajeImagen && (
                     <p className="p-label-agregar-barbero-admin-pc">
                       {mensajeImagen}
