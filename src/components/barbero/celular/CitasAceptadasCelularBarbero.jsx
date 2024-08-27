@@ -8,7 +8,7 @@ import "./../../../css/citasaceptadascelularbarbero.css";
 export default function CitasAceptadasCelularBarbero() {
   const [citas, setCitas] = useState([]);
   const [mensaje, setMensaje] = useState("");
-
+  
   useEffect(() => {
     obtenerCitasBarbero(setCitas, setMensaje);
   }, [citas]);
@@ -18,8 +18,9 @@ export default function CitasAceptadasCelularBarbero() {
       <section>
         <TituloGenericos titulo={"CITAS ACEPTADAS"} icono={FiScissors} />
       </section>
-      <br />
 
+      <br />
+    
       <section>
         <CitaTablaBarbero
           citas={citas}
@@ -32,16 +33,19 @@ export default function CitasAceptadasCelularBarbero() {
   );
 }
 
-export function CitaTablaBarbero({ citas, estado, botonFinalizar = false,botonEliminar=false }) {
+export function CitaTablaBarbero({ citas, estado, botonFinalizar = false, botonEliminar = false }) {
   const citasAceptadas = citas.filter((cita) => cita.estado === estado);
   const [mensaje, setMensaje] = useState("");
+  const [cargandoCitaId, setCargandoCitaId] = useState(null); // Estado para manejar carga por cita
 
   if (citasAceptadas.length === 0) {
     return <p className="p-mensaje-table-barbero-pc">No hay citas aceptadas</p>;
   }
 
-  function actualizarCita(citaId) {
-    return actualizarCitaBarbero(setMensaje, citaId, "Realizada");
+  async function actualizarCita(citaId) {
+    setCargandoCitaId(citaId); // Iniciar carga para esta cita
+    await actualizarCitaBarbero(setMensaje, citaId, "Realizada");
+    setCargandoCitaId(null); // Finalizar carga
   }
 
   // Determine if the table should be scrollable
@@ -55,7 +59,7 @@ export function CitaTablaBarbero({ citas, estado, botonFinalizar = false,botonEl
             isScrollable ? "scrollable" : ""
           }`}
         >
-          <table className=" table table-barbero-pc">
+          <table className="table table-barbero-pc">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -69,43 +73,41 @@ export function CitaTablaBarbero({ citas, estado, botonFinalizar = false,botonEl
               </tr>
             </thead>
             <tbody className="table-group-divider">
-              {citasAceptadas &&
-                citasAceptadas.map((citaBarbero, index) => (
-                  <tr key={citaBarbero.citaId}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{citaBarbero.cliente.nombre}</td>
-                    <td>{citaBarbero.estilo.nombre}</td>
-                    <td>{citaBarbero.estilo.precio}</td>
-                    <td>{formatDate(citaBarbero.fecha)}</td>
-                    <td>{citaBarbero.hora}</td>
-                    <td>
-                      {botonFinalizar && (
-                        <button
-                          type="button"
-                          className="button-finalizar-aceptada"
-                          onClick={() => actualizarCita(citaBarbero.citaId)}
-                        >
-                          Finalizar
-                        </button>
-                      )}
-
-                      {botonEliminar && (
-                        <button
-                          type="button"
-                          className="button-finalizar-aceptada"
-                          onClick={() => EliminarCita(setMensaje,citaBarbero.citaId,citaBarbero.estado)}
-                        >
-                          Eliminar
-                        </button>
-                      )}
-                    </td>
-                  </tr>
-                ))}
+              {citasAceptadas.map((citaBarbero, index) => (
+                <tr key={citaBarbero.citaId}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{citaBarbero.cliente.nombre}</td>
+                  <td>{citaBarbero.estilo.nombre}</td>
+                  <td>{citaBarbero.estilo.precio}</td>
+                  <td>{formatDate(citaBarbero.fecha)}</td>
+                  <td>{citaBarbero.hora}</td>
+                  <td>
+                    {botonFinalizar && (
+                      <button
+                        type="button"
+                        className="button-finalizar-aceptada"
+                        onClick={() => actualizarCita(citaBarbero.citaId)}
+                        disabled={cargandoCitaId === citaBarbero.citaId} // Deshabilitar si está cargando
+                      >
+                        {cargandoCitaId === citaBarbero.citaId ? "Cargando..." : "Finalizar"}
+                      </button>
+                    )}
+                    {botonEliminar && (
+                      <button
+                        type="button"
+                        className="button-finalizar-aceptada"
+                        onClick={() => EliminarCita(setMensaje, citaBarbero.citaId, citaBarbero.estado)}
+                      >
+                        Eliminar
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </section>
-
       {mensaje && <p className="p-mensaje-table-barbero-pc">{mensaje}</p>}
     </>
   );

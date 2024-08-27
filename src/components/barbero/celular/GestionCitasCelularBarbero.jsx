@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { FaImagePortrait } from "react-icons/fa6";
-import { CartasCitasCelularBarbero } from '../../../util/cartas/CartasCitasCelular';
-import { obtenerCitasBarbero } from '../../../peticiones/CitasPeticiones';
-import { TituloGenericos } from '../../../util/titulos/TituloGenericos';
+import { CartasCitasCelularBarbero } from "../../../util/cartas/CartasCitasCelular";
+import { obtenerCitasBarbero } from "../../../peticiones/CitasPeticiones";
+import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 
 export default function GestionCitasCelularBarbero() {
   const [citas, setCitas] = useState([]);
@@ -14,7 +14,10 @@ export default function GestionCitasCelularBarbero() {
 
   return (
     <>
-      <TituloGenericos titulo={"GESTION DE CITAS"} icono={FaImagePortrait } />
+      <TituloGenericos titulo={"GESTION DE CITAS"} icono={FaImagePortrait} />
+
+      <br />
+      <br />
 
       <div>
         {citas.length > 0 ? (
@@ -34,7 +37,7 @@ export default function GestionCitasCelularBarbero() {
             />
           ))
         ) : (
-          <p className='p-mensaje-table-barbero-pc'>{mensaje}</p>
+          <p className="p-mensaje-table-barbero-pc">{mensaje}</p>
         )}
       </div>
     </>

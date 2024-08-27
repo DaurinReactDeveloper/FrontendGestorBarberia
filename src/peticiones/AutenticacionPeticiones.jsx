@@ -6,7 +6,7 @@ export async function obtenerUsuario(
   e,
   navigate,
   url,
-  sesionId,
+  sessionId,
   tipo,
   nombre,
   contrasena,
@@ -47,32 +47,33 @@ export async function obtenerUsuario(
 
     if (peticion.data.data.success) {
       const tokenData = peticion.data.token;
-      const idData = peticion.data.data.data[sesionId];
+      const idData = peticion.data.data.data[sessionId];
       const nombreData = peticion.data.data.data.nombre;
 
       localStorage.setItem("id", idData);
       localStorage.setItem("token", tokenData);
       localStorage.setItem("nombre", nombreData);
 
-      // Configurar timeout para limpiar el localStorage en 30 minutos
+      // Set timeout to clear the session after 30 minutes
       setTimeout(() => {
         localStorage.removeItem("token");
         localStorage.removeItem("id");
         localStorage.removeItem("nombre");
         navigate("/iniciarsesion");
-      }, 30 * 60 * 1000); // 30 minutos en milisegundos
+      }, 30 * 60 * 1000); // 30 minutes in milliseconds
 
       setResultado("Inicio de sesión exitoso.");
       navigate(`/${tipo}`);
     } else {
-      setError("Credenciales incorrectas.");
+      setError(peticion.data.data.message);
     }
   } catch (error) {
-    setError("Error al iniciar sesión. Intente nuevamente.");
+    setError(error.response?.data?.message || "Error en la solicitud.");
   } finally {
     setLoading(false);
   }
 }
+
 
 // Cerrar Sesion
 export function CerrarSesion(navigate) {

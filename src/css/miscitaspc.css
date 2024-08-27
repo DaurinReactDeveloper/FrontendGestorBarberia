@@ -128,13 +128,13 @@
 @media (min-width:1024px) {
 /* Carta Barbero PC - Gestionar */
 .card-cita-barbero-pc{
-    width: 29%;
-    height:34vw;
+    width: 27%;
+    height:31vw;
 }
 
 .card-img-cita-barbero-pc{
     width: 100%;
-    height: 18vw;
+    height: 14vw;
 }
 
 .card-body-citas-barbero-pc{
@@ -200,10 +200,9 @@ font-size: 1.1vw;
 }
 
 @media (min-width:1420px) {
-   
     .card-cita-barbero-pc{
         width: 29%;
-        height:34.5vw;
+        height:32vw;
     }
 
     .card-body-citas-barbero-pc{

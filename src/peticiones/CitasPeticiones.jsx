@@ -1,5 +1,6 @@
 import axios from "axios";
 import { urlCita } from "../endpoints/Endpoints";
+import { ValidacionesAgregarCitas } from "../util/validaciones/ValidacionesRegistros";
 
 // Función para obtener el token y el id del localStorage
 export function obtenerCredenciales() {
@@ -48,30 +49,29 @@ export async function anadirCita(
 
   const citaDto = {
     citaId: 0,
-    fecha,
-    hora: {
-      ticks: hora.getTime() * 10000,
-    },
+    fecha: fecha,
+    hora: `${hora}:00`, // Asegúrate de que 'hora' tenga el formato correcto
     barberoId: barbero,
     clienteId: id,
     estiloId: estilo,
-    estado: "En Proceso",
-  };
+    estado: "En Proceso"
+};
 
   try {
-    const { data } = await axios.post(`${urlCita}/save`, citaDto, {
+    const peticion = await axios.post(`${urlCita}/save`, citaDto, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (data.success) {
-      setMensaje("Cita Agregada Correctamente");
+    if (peticion.data.success) {
+      setMensaje(peticion.data.message);
     } else {
-      setMensaje(data.message);
+      setMensaje("Error: " + peticion.data.message); 
     }
   } catch (error) {
-    manejarError(error, setMensaje);
-  }
+    const mensajeError = error.response?.data.message || "Ocurrió un error al agregar la cita.";
+    setMensaje(mensajeError);  }
 }
+
 
 // Obtener citas por cliente
 export async function obtenerCitas(setCitas, setMensaje) {

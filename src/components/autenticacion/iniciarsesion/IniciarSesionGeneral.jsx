@@ -128,6 +128,10 @@ export default function IniciarSesionGeneral() {
               </div>
 
               <div className="div-button-sesiones">
+             
+              {error && <p className="error-message">{error}</p>}
+              {resultado && <p className="success-message">{resultado}</p>}
+             
                 <button
                   type="submit"
                   disabled={loading}
@@ -136,8 +140,7 @@ export default function IniciarSesionGeneral() {
                   {loading ? "Cargando..." : "INICIAR SESIÓN"}
                 </button>
 
-                {error && <p className="error-message">{error}</p>}
-                {resultado && <p className="success-message">{resultado}</p>}
+
               </div>
             </form>
           </article>

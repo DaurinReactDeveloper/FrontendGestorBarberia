@@ -93,9 +93,9 @@ export function ValidacionesIniciarSesion(
 
 export function ValidacionesAgregarCitas(
   fecha,
+  hora,
   barbero,
   estilo,
-  hora,
   setMensajeFecha,
   setMensajeHora,
   setMensajeBarbero,

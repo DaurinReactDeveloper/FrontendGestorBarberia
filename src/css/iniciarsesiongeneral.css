@@ -52,6 +52,14 @@
   transition: background-color 1s;
 }
 
+.error-message{
+  padding-top: 4vw;
+}
+
+.success-message{
+  padding-top: 4vw;
+}
+
 @media (min-width: 1024px) {
   .row-sesiones {
     justify-content: center;
@@ -103,4 +111,11 @@
     background-color: #263238;
   }
 
+  .error-message{
+    padding-top: 1vw;
+  }
+
+  .success-message{
+    padding-top: 1vw;
+  }
 }

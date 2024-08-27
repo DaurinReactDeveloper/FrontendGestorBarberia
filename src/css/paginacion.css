@@ -26,6 +26,11 @@
   cursor: default;
 }
 
+.p-mensaje-carga-paginacion{
+  color: white;
+  text-align: center;
+}
+
 @media (min-width: 1024px) {
   /* Paginacion Card - Barberos */
   .section-principal-paginacion-barbero{

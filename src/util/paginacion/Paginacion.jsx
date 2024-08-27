@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "../../css/paginacion.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import "../../css/paginacion.css";
 
 export function Paginacion({
   obtenerDatos,
@@ -12,9 +12,15 @@ export function Paginacion({
   const [items, setItems] = useState([]);
   const [mensaje, setMensaje] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
+  const [cargando, setCargando] = useState(false); // Estado de carga
 
   useEffect(() => {
-    obtenerDatos(setItems, setMensaje);
+    const cargarDatos = async () => {
+      setCargando(true); // Iniciar carga
+      await obtenerDatos(setItems, setMensaje);
+      setCargando(false); // Finalizar carga
+    };
+    cargarDatos();
   }, []);
 
   // Filtrar las citas según el estado, o mostrar todas si estado está vacío
@@ -36,8 +42,10 @@ export function Paginacion({
 
   return (
     <>
-      {itemsFiltrados.length === 0 ? (
-        <p>No hay citas en proceso</p>
+      {cargando ? (
+        <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
+      ) : itemsFiltrados.length === 0 ? (
+        <p className="p-mensaje-carga-paginacion">No hay citas en proceso</p> // Mensaje si no hay citas
       ) : (
         <div>
           <div className="row row-mis-citas-pc">
@@ -103,9 +111,15 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
   const [barberos, setBarberos] = useState([]);
   const [respuesta, setRespuesta] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
+  const [cargando, setCargando] = useState(false); // Estado de carga
 
   useEffect(() => {
-    obtenerDatos(setBarberos, setRespuesta);
+    const cargarDatos = async () => {
+      setCargando(true); // Iniciar carga
+      await obtenerDatos(setBarberos, setRespuesta);
+      setCargando(false); // Finalizar carga
+    };
+    cargarDatos();
     Aos.init();
   }, []);
 
@@ -124,8 +138,10 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
 
   return (
     <>
-      {barberos.length === 0 ? (
-        <p>{respuesta || "No hay barberos disponibles"}</p>
+      {cargando ? (
+       <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
+      ) : barberos.length === 0 ? (
+        <p className="p-mensaje-carga-paginacion">{respuesta || "No hay barberos disponibles"}</p> // Mensaje si no hay barberos
       ) : (
         <div>
           <section className="section-principal-paginacion-barbero">
@@ -151,7 +167,6 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
               </div>
             ))}
           </section>
-
           {totalPaginas > 1 && (
             <ul className="pagination-pc justify-content-center">
               <li
@@ -211,9 +226,15 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
   const [clientes, setCliente] = useState([]);
   const [respuesta, setRespuesta] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
+  const [cargando, setCargando] = useState(false); // Estado de carga
 
   useEffect(() => {
-    obtenerDatos(setCliente, setRespuesta);
+    const cargarDatos = async () => {
+      setCargando(true); // Iniciar carga
+      await obtenerDatos(setCliente, setRespuesta);
+      setCargando(false); // Finalizar carga
+    };
+    cargarDatos();
     Aos.init();
   }, []);
 
@@ -232,8 +253,10 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
 
   return (
     <>
-      {clientes.length === 0 ? (
-        <p>{respuesta || "No hay Clientes disponibles"}</p>
+      {cargando ? (
+        <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
+      ) : clientes.length === 0 ? (
+        <p className="p-mensaje-carga-paginacion">{respuesta || "No hay Clientes disponibles"}</p> // Mensaje si no hay clientes
       ) : (
         <div>
           <section className="section-principal-paginacion-barbero">
@@ -246,7 +269,7 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
                 <img
                   src={item.imgcliente}
                   className="card-img-top img-paginacion-barbero"
-                  alt="barbero"
+                  alt="cliente"
                 />
                 <div className="card-body card-body-paginacion-barbero">
                   <p className="card-text card-text-datos-personales-paginacion-barbero">
@@ -259,7 +282,6 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
               </div>
             ))}
           </section>
-
           {totalPaginas > 1 && (
             <ul className="pagination-pc justify-content-center">
               <li
@@ -319,9 +341,15 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
   const [cortes, setCortes] = useState([]);
   const [respuesta, setRespuesta] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
+  const [cargando, setCargando] = useState(false); // Estado de carga
 
   useEffect(() => {
-    obtenerDatos(setCortes, setRespuesta);
+    const cargarDatos = async () => {
+      setCargando(true); // Iniciar carga
+      await obtenerDatos(setCortes, setRespuesta);
+      setCargando(false); // Finalizar carga
+    };
+    cargarDatos();
     Aos.init();
   }, []);
 
@@ -336,8 +364,10 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
 
   return (
     <>
-      {cortes.length === 0 ? (
-        <p>{respuesta || "No hay Cortes disponibles"}</p>
+      {cargando ? (
+        <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
+      ) : cortes.length === 0 ? (
+        <p className="p-mensaje-carga-paginacion">{respuesta || "No hay Cortes disponibles"}</p> // Mensaje si no hay cortes
       ) : (
         <div>
           <section className="section-principal-paginacion-barbero">
@@ -350,11 +380,10 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
                 <img
                   src={item.imgestilo}
                   className="card-img-top img-paginacion-barbero"
-                  alt="barbero"
+                  alt="corte"
                 />
                 <div className="card-body card-body-paginacion-barbero">
                   <p className="card-text">
-                    {" "}
                     <strong>{item.nombre}</strong>
                   </p>
                   <p className="card-text">{item.descripcion}</p>
@@ -365,7 +394,6 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
               </div>
             ))}
           </section>
-
           {totalPaginas > 1 && (
             <ul className="pagination-pc justify-content-center">
               <li
