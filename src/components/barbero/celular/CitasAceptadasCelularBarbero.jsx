@@ -8,25 +8,30 @@ import "./../../../css/citasaceptadascelularbarbero.css";
 export default function CitasAceptadasCelularBarbero() {
   const [citas, setCitas] = useState([]);
   const [mensaje, setMensaje] = useState("");
-  
+  const [cargando, setCargando] = useState(true); // Estado para controlar la carga
+
   useEffect(() => {
-    obtenerCitasBarbero(setCitas, setMensaje);
-  }, [citas]);
+    obtenerCitasBarbero(setCitas, setMensaje).finally(() => {
+      setCargando(false); // Cambiar a false cuando se complete la carga
+    });
+  }, []);
 
   return (
     <>
       <section>
         <TituloGenericos titulo={"CITAS ACEPTADAS"} icono={FiScissors} />
       </section>
-
       <br />
-    
       <section>
-        <CitaTablaBarbero
-          citas={citas}
-          estado={"Aceptada"}
-          botonFinalizar={true}
-        />
+        {cargando ? ( // Mostrar cargador si está cargando
+          <p>Cargando...</p>
+        ) : (
+          <CitaTablaBarbero
+            citas={citas}
+            estado={"Aceptada"}
+            botonFinalizar={true}
+          />
+        )}
       </section>
       {mensaje && <p className="p-mensaje-table-barbero-pc">{mensaje}</p>}
     </>

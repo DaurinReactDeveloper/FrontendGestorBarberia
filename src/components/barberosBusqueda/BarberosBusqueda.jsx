@@ -11,7 +11,7 @@ export default function BarberoBusqueda() {
       <main>
         <TituloGenericos titulo={"BARBEROS"} icono={RiScissors2Fill} />
 
-<br />
+        <br />
 
         <CartasBarbero />
       </main>

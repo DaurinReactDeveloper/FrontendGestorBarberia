@@ -35,6 +35,12 @@
   padding-top: 0vw;
 }
 
+.p-mensaje-carga-cartas{
+  text-align: center;
+  padding-top: 1vw;
+  padding-bottom: 2vw;
+}
+
 @media (min-width: 768px) and (max-width: 912px) {
   .section-carta-barbero {
     padding: 0;
