@@ -140,7 +140,6 @@ export default function IniciarSesionGeneral() {
                   {loading ? "Cargando..." : "INICIAR SESIÓN"}
                 </button>
 
-
               </div>
             </form>
           </article>

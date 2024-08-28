@@ -65,7 +65,7 @@ export async function obtenerUsuario(
       setResultado("Inicio de sesión exitoso.");
       navigate(`/${tipo}`);
     } else {
-      setError(peticion.data.data.message);
+      setError(peticion.data.message);
     }
   } catch (error) {
     setError(error.response?.data?.message || "Error en la solicitud.");
@@ -73,7 +73,6 @@ export async function obtenerUsuario(
     setLoading(false);
   }
 }
-
 
 // Cerrar Sesion
 export function CerrarSesion(navigate) {
