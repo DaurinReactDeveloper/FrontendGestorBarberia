@@ -12,7 +12,7 @@ export default function Footer() {
       <footer>
         <section className="row section-footer">
           <article className="article-img-footer">
-            <img src="/logo.png" alt="logo" className="img-fluid img-footer" />
+            <img src="/logo.webp" alt="logo" className="img-fluid img-footer" />
             <p>DAURIN</p>
             <p>BARBERSHOP</p>
           </article>

@@ -19,7 +19,7 @@ export default function Navbar() {
       >
         <div className="container-fluid">
           <Link className="navbar-brand" to={"/"}>
-            <img src="\logo.png" alt="iconBarber" width="27" height="26" />
+            <img src="\logo.webp" alt="iconBarber" width="27" height="26" />
           </Link>
 
           <button

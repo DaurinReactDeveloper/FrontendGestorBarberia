@@ -49,7 +49,7 @@ function FramePrincipal1() {
       {/* Arcicle de la imagen*/}
       <article className="col-lg-5 col-md-12 articlePc">
         <img
-          src="/imagenFrame1.png"
+          src="/imagenFrame1.webp"
           alt="imagenFrame"
           className="img-fluid img-imagenframe1"
         />
@@ -84,7 +84,7 @@ function FramePrincipal1() {
       {/* Celulares */}
       <article className="articleCelulares">
         <img
-          src="/frame1celulares.png"
+          src="/frame1celulares.webp"
           alt="FrameCelulares"
           className="img-fluid img-frame1celulares"
         />
@@ -184,7 +184,7 @@ function FramePrincipal3() {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src="/imagenFrame3.jpg"
+                src="/imagenFrame3.webp"
                 className="d-block w-100"
                 alt="..."
               />
@@ -203,7 +203,7 @@ function FramePrincipal3() {
 
             <div className="carousel-item">
               <img
-                src="/imagenFrame3-1.jpg"
+                src="/imagenFrame3-1.webp"
                 className="d-block w-100"
                 alt="..."
               />
@@ -221,7 +221,7 @@ function FramePrincipal3() {
 
             <div className="carousel-item">
               <img
-                src="/imagenFrame3-2.jpg"
+                src="/imagenFrame3-2.webp"
                 className="d-block w-100"
                 alt="..."
               />

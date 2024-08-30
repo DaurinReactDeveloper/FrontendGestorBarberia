@@ -48,7 +48,7 @@ body {
 
 /* Estilo de artículo para celulares en el marco 2 */
 .articleFrame2Celulares {
-  background-image: url("/imagenFrame2.png");
+  background-image: url("/imagenFrame2.webp");
   background-size: auto;
   background-repeat: no-repeat;
   background-position: 100%;
@@ -200,7 +200,7 @@ body {
   
   /* Estilo de artículo para PC en el marco 2 */
   .articleFrame2PC {
-    background-image: url("/imagenFrame2.png");
+    background-image: url("/imagenFrame2.webp");
     background-repeat: no-repeat;
     background-position: 100%;
     background-size: cover;
