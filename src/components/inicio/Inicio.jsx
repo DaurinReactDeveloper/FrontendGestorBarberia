@@ -11,10 +11,6 @@ import "aos/dist/aos.css";
 import "./../../css/inicio.css";
 
 export default function Inicio() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
     <>
       <Navbar />
@@ -22,8 +18,6 @@ export default function Inicio() {
       <main className="mainFramePrincipal">
         <section
           className="row rowFrame1Principal"
-          data-aos="fade-up"
-          data-aos-duration="3000"
         >
           <FramePrincipal1 />
         </section>
@@ -43,11 +37,17 @@ export default function Inicio() {
 }
 
 function FramePrincipal1() {
+  
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       {/* PC */}
       {/* Arcicle de la imagen*/}
-      <article className="col-lg-5 col-md-12 articlePc">
+      <article className="col-lg-5 col-md-12 articlePc"           data-aos="fade-up"
+          data-aos-duration="3000">
         <img
           src="/imagenFrame1.webp"
           alt="imagenFrame"
@@ -56,7 +56,8 @@ function FramePrincipal1() {
       </article>
 
       {/* Article del Texto*/}
-      <article className="col-lg-7 col-md-12 articlePc article-datos-botones">
+      <article className="col-lg-7 col-md-12 articlePc article-datos-botones"           data-aos="fade-up"
+          data-aos-duration="3000">
         <div>
           <p className="DaurinFrame1">DAURIN</p>
           <p className="BarbershopFrame1">BARBERSHOP</p>
