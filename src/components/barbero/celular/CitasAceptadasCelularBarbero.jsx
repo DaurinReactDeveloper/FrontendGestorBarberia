@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { actualizarCitaBarbero, EliminarCita, obtenerCitasBarbero } from "../../../peticiones/CitasPeticiones";
-import { formatDate } from "../../../util/cartas/CartasCitasCelular";
+import { formatDate } from "../../../util/cartas/CartasCitas";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import { FiScissors } from "react-icons/fi";
 import "./../../../css/citasaceptadascelularbarbero.css";

@@ -50,3 +50,23 @@ export function CartasEstilo() {
     );
   }
   
+export function CartasEstiloCitas({ imagen, nombre, precio }) {
+
+    useEffect(() => {
+      AOS.init();
+    }, []);
+  
+    return (
+      <div className="col-auto card card-estilo card-estilo-citas" data-aos="fade-up-right">
+        <img
+          src={imagen}
+          className="card-img-top img-card"
+          alt={nombre}
+        />
+        <div className="card-body">
+          <h5 className="card-title cardtitule">{nombre}</h5>
+          <p className="card-text card-precio-estilo">${precio}</p>
+        </div>
+      </div>
+    );
+}

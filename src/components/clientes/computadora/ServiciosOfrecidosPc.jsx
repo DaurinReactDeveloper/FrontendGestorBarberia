@@ -2,21 +2,23 @@ import React from "react";
 import { Paginacion } from "../../../util/paginacion/Paginacion";
 import { obtenerCitas } from "../../../peticiones/CitasPeticiones";
 import { LuScissorsSquareDashedBottom } from "react-icons/lu";
-import { CartasCitasPc } from "../../../util/cartas/CartasCitasPc";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
+import { CartasCitas } from "../../../util/cartas/CartasCitas";
 
 export default function ServiciosOfrecidosPc() {
   const renderCita = (citasCliente) => (
-    <CartasCitasPc
+    <CartasCitas
       key={citasCliente.citaId}
       estado={citasCliente.estado}
       img={citasCliente.estilo.imgestilo}
       alt="Citas"
       fecha={citasCliente.fecha}
+      hora={citasCliente.hora}
       nombre={citasCliente.estilo.nombre}
       descripcion={citasCliente.estilo.descripcion}
       precio={citasCliente.estilo.precio}
       mostrarSoloRealizadas={true}
+      idCita={citasCliente.citaId}
     />
   );
 

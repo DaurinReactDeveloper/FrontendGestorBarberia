@@ -1,19 +1,20 @@
 import React from "react";
 import { Paginacion } from "../../../util/paginacion/Paginacion";
 import { LuScissorsSquareDashedBottom } from "react-icons/lu";
-import { CartasCitasPc } from "../../../util/cartas/CartasCitasPc";
+import { CartasCitas } from "../../../util/cartas/CartasCitas";
 import { obtenerCitasBarbero } from "../../../peticiones/CitasPeticiones";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 
 export default function CitasRealizadasBarberoPc() {
 
   const renderCita = (citasCliente) =>(
-    <CartasCitasPc
+    <CartasCitas
     key={citasCliente.citaId}
     estado={citasCliente.estado}
     img={citasCliente.estilo.imgestilo}
     alt="Citas"
     fecha={citasCliente.fecha}
+    hora={citasCliente.hora}
     nombre={citasCliente.estilo.nombre}
     descripcion={citasCliente.estilo.descripcion}
     precio={citasCliente.estilo.precio}

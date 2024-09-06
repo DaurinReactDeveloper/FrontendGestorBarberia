@@ -112,19 +112,42 @@ export function ValidacionesAgregarCitas(
       setMensajeFecha("");
     }, 1000);
   } else {
-    setMensajeFecha("");
-  }
+    const fechaSeleccionada = new Date(fecha);
+    const fechaActual = new Date();
 
+    // Ajustar las horas a 00:00 para comparar solo la fecha
+    fechaActual.setHours(0, 0, 0, 0);
+    fechaSeleccionada.setHours(0, 0, 0, 0);
+
+    if (fechaSeleccionada < fechaActual) {
+      setMensajeFecha("Debe seleccionar una fecha posterior");
+      esValido = false;
+
+      setTimeout(() => {
+        setMensajeFecha("");
+      }, 1000);
+    } else {
+      setMensajeFecha("");
+    }
+  }
+  
   // Validación de la hora
   if (hora === "") {
     setMensajeHora("Debe seleccionar la Hora");
     esValido = false;
-
-    setTimeout(() => {
-      setMensajeHora("");
-    }, 1000);
+    setTimeout(() => setMensajeHora(""), 1000);
   } else {
-    setMensajeHora("");
+    const [horaSeleccionada, minutoSeleccionado] = hora.split(":").map(Number);
+    const horaMinima = 9;
+    const horaMaxima = 18;
+
+    if (horaSeleccionada < horaMinima || horaSeleccionada >= horaMaxima) {
+      setMensajeHora("Debe seleccionar una hora entre 09:00 y 18:00");
+      esValido = false;
+      setTimeout(() => setMensajeHora(""), 1000);
+    } else {
+      setMensajeHora("");
+    }
   }
 
   // Validación del barbero

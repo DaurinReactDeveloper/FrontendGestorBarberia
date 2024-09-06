@@ -46,6 +46,7 @@ export async function obtenerUsuario(
     const peticion = await axios.get(url);
 
     if (peticion.data.data.success) {
+      
       const tokenData = peticion.data.token;
       const idData = peticion.data.data.data[sessionId];
       const nombreData = peticion.data.data.data.nombre;
@@ -53,14 +54,6 @@ export async function obtenerUsuario(
       localStorage.setItem("id", idData);
       localStorage.setItem("token", tokenData);
       localStorage.setItem("nombre", nombreData);
-
-      // Set timeout to clear the session after 30 minutes
-      setTimeout(() => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("id");
-        localStorage.removeItem("nombre");
-        navigate("/iniciarsesion");
-      }, 30 * 60 * 1000); // 30 minutes in milliseconds
 
       setResultado("Inicio de sesión exitoso.");
       navigate(`/${tipo}`);

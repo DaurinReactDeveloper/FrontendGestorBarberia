@@ -1,19 +1,19 @@
 import React from "react";
 import { PiAddressBook } from "react-icons/pi";
 import { Paginacion } from "../../../util/paginacion/Paginacion";
-import { CartasCitasPc } from "../../../util/cartas/CartasCitasPc";
 import { obtenerCitas } from "../../../peticiones/CitasPeticiones";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
-import "../../../css/miscitaspc.css";
+import { CartasCitas } from "../../../util/cartas/CartasCitas";
 
 export default function MisCitasPc() {
   const renderCita = (citasCliente) => (
-    <CartasCitasPc
+    <CartasCitas
       key={citasCliente.citaId}
       estado={citasCliente.estado}
       img={citasCliente.estilo.imgestilo}
       alt="Citas"
       fecha={citasCliente.fecha}
+      hora={citasCliente.hora}
       nombre={citasCliente.estilo.nombre}
       descripcion={citasCliente.estilo.descripcion}
       precio={citasCliente.estilo.precio}
@@ -38,3 +38,4 @@ export default function MisCitasPc() {
     </>
   );
 }
+

@@ -50,12 +50,12 @@ export async function anadirCita(
   const citaDto = {
     citaId: 0,
     fecha: fecha,
-    hora: `${hora}:00`, // Asegúrate de que 'hora' tenga el formato correcto
+    hora: `${hora}:00`,
     barberoId: barbero,
     clienteId: id,
     estiloId: estilo,
-    estado: "En Proceso"
-};
+    estado: "En Proceso",
+  };
 
   try {
     const peticion = await axios.post(`${urlCita}/save`, citaDto, {
@@ -64,14 +64,19 @@ export async function anadirCita(
 
     if (peticion.data.success) {
       setMensaje(peticion.data.message);
+
+      setTimeout(() => {
+        setMensaje("");
+      }, 1000);
     } else {
-      setMensaje("Error: " + peticion.data.message); 
+      setMensaje("Error: " + peticion.data.message);
     }
   } catch (error) {
-    const mensajeError = error.response?.data.message || "Ocurrió un error al agregar la cita.";
-    setMensaje(mensajeError);  }
+    const mensajeError =
+      error.response?.data.message || "Ocurrió un error al agregar la cita.";
+    setMensaje(mensajeError);
+  }
 }
-
 
 // Obtener citas por cliente
 export async function obtenerCitas(setCitas, setMensaje) {
@@ -94,7 +99,9 @@ export async function obtenerCitas(setCitas, setMensaje) {
       setMensaje("No se pudieron obtener las citas");
     }
   } catch (error) {
-    manejarError(error, setMensaje);
+    const mensajeError =
+      error.response?.data.message || "Ocurrió un error obteniendo las citas";
+    setMensaje(mensajeError);    
   }
 }
 
@@ -123,7 +130,9 @@ export async function obtenerCitasBarbero(setCitas, setMensaje) {
       setMensaje("No se pudieron obtener las citas");
     }
   } catch (error) {
-    manejarError(error, setMensaje);
+    const mensajeError =
+      error.response?.data.message || "Ocurrió un error obteniendo la citas del barbero";
+    setMensaje(mensajeError);  
   }
 }
 
@@ -138,23 +147,27 @@ export async function actualizarCitaBarbero(setMensaje, id, estado) {
 
   const updateData = {
     citaId: id,
-    estado,
+    estado: estado,
   };
 
   try {
-    const { data } = await axios.put(`${urlCita}/UpdateEstado`, updateData, {
+    const peticion = await axios.put(`${urlCita}/UpdateEstado`, updateData, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (data.success) {
-      setMensaje("Cita Actualizada Correctamente");
+    if (peticion.data.success) {
+      setMensaje(peticion.data.message);
       window.location.reload();
     } else {
-      setMensaje("No se pudo actualizar la cita");
+      setMensaje(peticion.data.message);
+      setTimeout(() => {
+        setMensaje("");
+      }, 1000);
     }
   } catch (error) {
-    manejarError(error, setMensaje);
-  }
+    const mensajeError = error.response?.data.message || "Ocurrió un error actualizando la cita del barbero";
+    setMensaje(mensajeError);   
+   }
 }
 
 // Eliminar cita
@@ -187,12 +200,26 @@ export async function EliminarCita(setMensaje, id, estado = "") {
     console.log(peticion.data.message);
 
     if (peticion.data.success) {
-      setMensaje("Cita Eliminada Correctamente");
+      setMensaje(peticion.data.message);
       window.location.reload();
     } else {
-      setMensaje("No se pudo eliminar la cita");
+      setMensaje(peticion.data.message);
+      setTimeout(() => {
+        setMensaje("");
+      }, 1000);
     }
   } catch (error) {
-    manejarError(error, setMensaje);
+    const mensajeError =
+      error.response?.data.message || "Ocurrió un error eliminando la citas del barbero";
+    setMensaje(mensajeError);    
   }
+}
+
+//Fecha Actual
+export function obtenerFechaActual() {
+  const fechaActual = new Date();
+  const anio = fechaActual.getFullYear();
+  const mes = String(fechaActual.getMonth() + 1).padStart(2, "0"); // Los meses son 0-indexados
+  const dia = String(fechaActual.getDate()).padStart(2, "0");
+  return `${anio}-${mes}-${dia}`;
 }

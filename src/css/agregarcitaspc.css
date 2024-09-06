@@ -1,0 +1,107 @@
+.col-cartas-estilo {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.div-inputs-cita p {
+  margin-bottom: 0vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+}
+
+.div-inputs-cita input {
+  border: none;
+  border: 0.1vw solid rgba(0, 0, 0, 0.288);
+  padding: 1vw;
+  width: 100%;
+  background-color: #d9d9d9;
+  padding-left: 1vw;
+}
+
+.select-estilos,
+.select-barberos {
+  border: none;
+  border: 0.1vw solid rgba(0, 0, 0, 0.288);
+  padding: 1vw;
+  width: 100%;
+  background-color: #d9d9d9;
+  padding-left: 1vw;
+}
+
+.div-agregar-cita {
+  padding-top: 5vw;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5vw;
+}
+
+.btn-agregar-cita {
+  border: none;
+  background-color: #1b1b1b;
+  color: white;
+  border-radius: 5vw;
+  padding: 1.5vw 20vw;
+}
+
+@media (min-width: 1024px) {
+  .section-citas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vw;
+  }
+
+  .col-cartas-estilo {
+    width: 40%;
+  }
+
+  .form-citas {
+    width: 40%;
+  }
+
+  .div-inputs-cita input {
+    padding: 0.5vw;
+    width: 100%;
+  }
+
+  .div-inputs-cita p {
+    color: white;
+    padding-bottom: 0.2vw;
+    padding-top: 0.4vw;
+  }
+
+  .select-estilos,
+  .select-barberos {
+    padding: 0.5vw;
+    width: 100%;
+  }
+
+  .div-agregar-cita {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+  }
+
+  .btn-agregar-cita {
+    background-color: #d9d9d9;
+    color: #1b1b1b;
+    padding: 0.3vw 4vw;
+  }
+
+  .btn-agregar-cita:hover {
+    background-color: #045525;
+    color: white;
+    transition: background-color 1s;
+  }
+
+  .card-estilo-citas {
+    width: 70%;
+  }
+
+  .mensaje-resultado-cita {
+    color: white;
+    text-align: justify;
+    padding-top: 1vw;
+  }
+}

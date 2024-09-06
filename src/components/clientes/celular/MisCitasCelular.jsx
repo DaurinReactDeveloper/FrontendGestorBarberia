@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { obtenerCitas } from "../../../peticiones/CitasPeticiones";
 import { PiAddressBook } from "react-icons/pi";
-import { CartasCitasCelular } from "../../../util/cartas/CartasCitasCelular";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
+import { CartasCitas } from "../../../util/cartas/CartasCitas";
 
 //MisCitasCelular
 export function MisCitasCelular() {
@@ -21,12 +21,13 @@ export function MisCitasCelular() {
       <div>
         {citas.length > 0 ? (
           citas.map((citasCliente) => (
-            <CartasCitasCelular
+            <CartasCitas
               key={citasCliente.citaId}
               estado={citasCliente.estado}
               img={citasCliente.estilo.imgestilo}
               alt="Citas"
               fecha={citasCliente.fecha}
+              hora={citasCliente.hora}
               nombre={citasCliente.estilo.nombre}
               descripcion={citasCliente.estilo.descripcion}
               precio={citasCliente.estilo.precio}

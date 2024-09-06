@@ -1,14 +1,14 @@
 import React from 'react'
 import { obtenerCitasBarbero } from '../../../peticiones/CitasPeticiones';
-import { CartasCitasBarberoPc } from '../../../util/cartas/CartasCitasPc';
 import { PiAddressBook } from 'react-icons/pi';
 import { Paginacion } from '../../../util/paginacion/Paginacion';
 import { TituloGenericos } from '../../../util/titulos/TituloGenericos';
+import { CartasCitas } from '../../../util/cartas/CartasCitas';
 
 export default function GestionCitasBarberoPc() {
 
 const renderCita = (citasCliente) =>(
-  <CartasCitasBarberoPc
+  <CartasCitas
   key={citasCliente.citaId}
   estado={citasCliente.estado}
   img={citasCliente.estilo.imgestilo}
@@ -18,9 +18,9 @@ const renderCita = (citasCliente) =>(
   nombre={citasCliente.estilo.nombre}
   descripcion={citasCliente.estilo.descripcion}
   precio={citasCliente.estilo.precio}
-  mostrarSoloEnProceso={true}
   citaId={citasCliente.citaId}
-/>
+  mostrarSoloEnProceso={true}
+  esBarbero={true}/>
 );
 
   return (

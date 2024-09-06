@@ -1,3 +1,10 @@
+.row-mis-citas-pc{
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+}
+
+
 .pagination-pc {
   list-style: none;
   display: flex;
@@ -5,6 +12,8 @@
   align-items: center;
   gap: 0.1vw;
   color: white;
+  padding-bottom: 0vw;
+  padding-top: 2vw;
 }
 
 .page-link-paginacion-pc {

@@ -6,7 +6,7 @@ export async function obtenerClientes(setCliente, setMensaje) {
   const { token } = obtenerCredenciales();
 
   if (!token) {
-    setMensaje("Token no disponible");
+    setMensaje("Debes estar registrado para poder ver los clientes");
     return;
   }
 

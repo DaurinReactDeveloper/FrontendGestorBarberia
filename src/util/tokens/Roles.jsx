@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 // Función para obtener el rol del usuario desde el token
 const getRoleFromToken = () => {
   const token = localStorage.getItem("token");
+  
   if (token) {
     try {
       const decodedToken = jwtDecode(token);
@@ -15,6 +16,7 @@ const getRoleFromToken = () => {
       return null;
     }
   }
+  
   return null;
 };
 

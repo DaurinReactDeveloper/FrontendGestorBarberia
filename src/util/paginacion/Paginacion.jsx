@@ -12,18 +12,17 @@ export function Paginacion({
   const [items, setItems] = useState([]);
   const [mensaje, setMensaje] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
-  const [cargando, setCargando] = useState(false); // Estado de carga
+  const [cargando, setCargando] = useState(false);
 
   useEffect(() => {
     const cargarDatos = async () => {
-      setCargando(true); // Iniciar carga
+      setCargando(true);
       await obtenerDatos(setItems, setMensaje);
-      setCargando(false); // Finalizar carga
+      setCargando(false);
     };
     cargarDatos();
   }, []);
 
-  // Filtrar las citas según el estado, o mostrar todas si estado está vacío
   const itemsFiltrados = estado
     ? items.filter((item) => item.estado === estado)
     : items;
@@ -43,9 +42,9 @@ export function Paginacion({
   return (
     <>
       {cargando ? (
-        <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
+        <p className="p-mensaje-carga-paginacion">Cargando...</p>
       ) : itemsFiltrados.length === 0 ? (
-        <p className="p-mensaje-carga-paginacion">No hay citas en proceso</p> // Mensaje si no hay citas
+        <p className="p-mensaje-carga-paginacion">No hay citas en proceso</p>
       ) : (
         <div>
           <div className="row row-mis-citas-pc">
@@ -66,8 +65,9 @@ export function Paginacion({
                   Anterior
                 </button>
               </li>
-              {Array.from({ length: totalPaginas }, (_, i) => i + 1).map(
-                (numero) => (
+              {Array.from({ length: totalPaginas }, (_, i) => i + 1)
+                .slice(0, 8)
+                .map((numero) => (
                   <li
                     key={numero}
                     className={`page-item ${
@@ -83,7 +83,11 @@ export function Paginacion({
                       {numero}
                     </button>
                   </li>
-                )
+                ))}
+              {totalPaginas > 8 && (
+                <li className="page-item disabled">
+                  <span className="page-link">...</span>
+                </li>
               )}
               <li
                 className={`page-item-pagination-pc ${
