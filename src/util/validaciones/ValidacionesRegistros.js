@@ -14,7 +14,7 @@ export function ValidacionesRegistro(
 
   // Validar imagen
   if (!img) {
-    setImgMensaje("Debe completar este campo");
+    setImgMensaje("Debe completar este campo.");
     esValido = false;
   } else {
     setImgMensaje(null);
@@ -22,7 +22,7 @@ export function ValidacionesRegistro(
 
   // Validar nombre
   if (nombre.trim() === "") {
-    setNombreMensaje("Debe completar este campo");
+    setNombreMensaje("Debe completar este campo.");
     esValido = false;
   } else {
     setNombreMensaje(null);
@@ -31,7 +31,7 @@ export function ValidacionesRegistro(
   // Validar teléfono
   const regexTelefono = /^\d+$/; // Asumiendo un formato de teléfono de 10 dígitos -
   if (!regexTelefono.test(telefono)) {
-    setTelefonoMensaje("Debe ingresar un número de teléfono válido");
+    setTelefonoMensaje("Debe ingresar un número de teléfono válido.");
     esValido = false;
   } else {
     setTelefonoMensaje(null);
@@ -40,7 +40,7 @@ export function ValidacionesRegistro(
   // Validar email
   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular simple para validar emails
   if (!regexEmail.test(email)) {
-    setEmailMensaje("Debe ingresar un email válido");
+    setEmailMensaje("Debe ingresar un email válido.");
     esValido = false;
   } else {
     setEmailMensaje(null);
@@ -49,7 +49,7 @@ export function ValidacionesRegistro(
   // Validar contraseña
   if (contrasena.length < 6) {
     // Ejemplo: contraseña debe tener al menos 6 caracteres
-    setContrasenaMensaje("La contraseña debe tener al menos 6 caracteres");
+    setContrasenaMensaje("La contraseña debe tener al menos 6 caracteres.");
     esValido = false;
   } else {
     setContrasenaMensaje(null);
@@ -68,10 +68,10 @@ export function ValidacionesIniciarSesion(
 
   // Validaciones del Nombre
   if (nombre.length < 6) {
-    setMensajeNombre("El Nombre debe tener más de 5 caracteres");
+    setMensajeNombre("El Nombre debe tener más de 5 caracteres.");
     esValido = false;
   } else if (nombre.length > 29) {
-    setMensajeNombre("El Nombre debe tener menos de 30 caracteres");
+    setMensajeNombre("El Nombre debe tener menos de 30 caracteres.");
     esValido = false;
   } else {
     setMensajeNombre("");
@@ -79,10 +79,10 @@ export function ValidacionesIniciarSesion(
 
   // Validaciones de la contraseña
   if (contrasena.length < 6) {
-    setMensajeContrasena("La Contraseña debe tener más de 5 caracteres");
+    setMensajeContrasena("La Contraseña debe tener más de 5 caracteres.");
     esValido = false;
   } else if (contrasena.length > 29) {
-    setMensajeContrasena("La Contraseña debe tener menos de 30 caracteres");
+    setMensajeContrasena("La Contraseña debe tener menos de 30 caracteres.");
     esValido = false;
   } else {
     setMensajeContrasena("");
@@ -105,7 +105,7 @@ export function ValidacionesAgregarCitas(
 
   // Validación de la fecha
   if (fecha === "") {
-    setMensajeFecha("Debe seleccionar la Fecha");
+    setMensajeFecha("Debe seleccionar la Fecha.");
     esValido = false;
 
     setTimeout(() => {
@@ -120,7 +120,7 @@ export function ValidacionesAgregarCitas(
     fechaSeleccionada.setHours(0, 0, 0, 0);
 
     if (fechaSeleccionada < fechaActual) {
-      setMensajeFecha("Debe seleccionar una fecha posterior");
+      setMensajeFecha("Debe seleccionar una fecha posterior.");
       esValido = false;
 
       setTimeout(() => {
@@ -130,7 +130,7 @@ export function ValidacionesAgregarCitas(
       setMensajeFecha("");
     }
   }
-  
+
   // Validación de la hora
   if (hora === "") {
     setMensajeHora("Debe seleccionar la Hora");
@@ -189,7 +189,7 @@ export function ValidacionesRegistroEstilos(
 
   // Validación de la nombre
   if (nombre === "") {
-    setMensajeNombre("Debe completar este campo");
+    setMensajeNombre("Debe completar este campo.");
     esValido = false;
 
     setTimeout(() => {
@@ -201,7 +201,7 @@ export function ValidacionesRegistroEstilos(
 
   // Validación de la Descripcion
   if (descripcion === "") {
-    setMensajeDescripcion("Debe completar este campo");
+    setMensajeDescripcion("Debe completar este campo.");
     esValido = false;
 
     setTimeout(() => {
@@ -213,7 +213,7 @@ export function ValidacionesRegistroEstilos(
 
   // Validación del barbero
   if (precio === "") {
-    setMensajePrecio("Debe completar este campo");
+    setMensajePrecio("Debe completar este campo.");
     esValido = false;
     setTimeout(() => {
       setMensajePrecio("");
@@ -224,7 +224,7 @@ export function ValidacionesRegistroEstilos(
 
   //Validación del estilo
   if (imagen === "") {
-    setMensajeImagen("Debe completar este campo");
+    setMensajeImagen("Debe completar este campo.");
     esValido = false;
     setTimeout(() => {
       setMensajeImagen("");
@@ -252,7 +252,7 @@ export function ValidacionesRegistroBarbero(
 
   // Validación de la nombre
   if (nombre === "") {
-    setMensajeNombre("Debe completar este campo");
+    setMensajeNombre("Debe completar este campo.");
     esValido = false;
 
     setTimeout(() => {
@@ -264,7 +264,7 @@ export function ValidacionesRegistroBarbero(
 
   // Validación del telefono
   if (telefono === "") {
-    setMensajeTelefono("Debe completar este campo");
+    setMensajeTelefono("Debe completar este campo.");
     esValido = false;
 
     setTimeout(() => {
@@ -276,7 +276,7 @@ export function ValidacionesRegistroBarbero(
 
   // Validación del email
   if (email === "") {
-    setMensajeEmail("Debe completar este campo");
+    setMensajeEmail("Debe completar este campo.");
     esValido = false;
     setTimeout(() => {
       setMensajeEmail("");
@@ -287,7 +287,7 @@ export function ValidacionesRegistroBarbero(
 
   //Validación de la imagen
   if (imgbarbero === "") {
-    setMensajeImagen("Debe completar este campo");
+    setMensajeImagen("Debe completar este campo.");
     esValido = false;
     setTimeout(() => {
       setMensajeImagen("");
@@ -298,13 +298,144 @@ export function ValidacionesRegistroBarbero(
 
   //Validación del Password
   if (password === "") {
-    setMensajePassword("Debe completar este campo");
+    setMensajePassword("Debe completar este campo.");
     esValido = false;
     setTimeout(() => {
       setMensajePassword("");
     }, 1000);
   } else {
     setMensajePassword("");
+  }
+
+  return esValido;
+}
+
+//Comentario Validaciones
+export function ValidacionesAddComentario(
+  id,
+  idCita,
+  idCliente,
+  calificacion,
+  comentario,
+  setMensajeCalificacion,
+  setMensajeComentario,
+  setMensajeId,
+  setMensajeCitaId
+) {
+  let esValido = true;
+
+
+//Validación del id
+if (idCliente != id) {
+  setMensajeId("El servicio que intenta comentar no corresponde a su historial.");
+  esValido = false;
+
+  setTimeout(() => {
+    setMensajeId("");
+  }, 1000);
+} else {
+  setMensajeId("");
+}
+
+  // Validación de la Calificación (debe estar entre 1 y 5)
+  if (calificacion < 1 || calificacion > 5) {
+    setMensajeCalificacion("Solo se permite un número del 1 al 5.");
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeCalificacion("");
+    }, 1000);
+  } else {
+    setMensajeCalificacion("");
+  }
+
+    // Validación idCita
+    if (idCita <= 0) {
+      setMensajeCitaId("No se pudo obtener el id de la cita.");
+      esValido = false;
+  
+      setTimeout(() => {
+        setMensajeCitaId("");
+      }, 1000);
+    } else {
+      setMensajeCitaId("");
+    }
+  
+
+  // Validación del Comentario
+  if (!comentario || comentario.trim().length === 0) {
+    setMensajeComentario("El comentario es obligatorio");
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeComentario("");
+    }, 1000);
+  } else if (comentario.length >= 44) {
+    setMensajeComentario("El comentario debe ser más corto.");
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeComentario("");
+    }, 1000);
+  } else if (comentario.length <= 10) {
+    setMensajeComentario("El comentario debe tener al menos 15 caracteres.");
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeComentario("");
+    }, 1000);
+  } else {
+    setMensajeComentario("");
+  }
+
+  return esValido;
+}
+
+export function ValidacionesUpdateComentario(
+  calificacion,
+  comentario,
+  setMensajeCalificacion,
+  setMensajeComentario,
+) {
+
+  let esValido = true;
+
+  // Validación de la Calificación (debe estar entre 1 y 5)
+  if (calificacion < 1 || calificacion > 5) {
+    setMensajeCalificacion("Solo se permite un número del 1 al 5.");
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeCalificacion("");
+    }, 1000);
+  } else {
+    setMensajeCalificacion("");
+  }
+
+  // Validación del Comentario
+  if (!comentario || comentario.trim().length === 0) {
+    setMensajeComentario("El comentario es obligatorio");
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeComentario("");
+    }, 1000);
+  } else if (comentario.length >= 44) {
+    setMensajeComentario("El comentario debe ser más corto.");
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeComentario("");
+    }, 1000);
+  } else if (comentario.length <= 10) {
+    setMensajeComentario("El comentario debe tener al menos 15 caracteres.");
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeComentario("");
+    }, 1000);
+  } else {
+    setMensajeComentario("");
   }
 
   return esValido;

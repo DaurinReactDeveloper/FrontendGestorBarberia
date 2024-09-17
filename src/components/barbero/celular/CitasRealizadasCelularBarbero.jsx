@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CitaTablaBarbero } from './CitasAceptadasCelularBarbero'
 import { PiAddressBook } from 'react-icons/pi';
-import { obtenerCitasBarbero } from '../../../peticiones/CitasPeticiones';
+import { obtenerCitasBarberoById } from '../../../peticiones/CitasPeticiones';
 import { TituloGenericos } from '../../../util/titulos/TituloGenericos';
 
 export default function CitasRealizadasCelularBarbero() {
@@ -10,7 +10,7 @@ export default function CitasRealizadasCelularBarbero() {
   const [mensaje, setMensaje] = useState("");
 
   useEffect(() => {
-    obtenerCitasBarbero(setCitas, setMensaje);
+    obtenerCitasBarberoById(setCitas, setMensaje);
   }, [citas]);
 
   return (

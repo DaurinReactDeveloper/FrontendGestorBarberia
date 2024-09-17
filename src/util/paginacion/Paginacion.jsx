@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 import "../../css/paginacion.css";
 
 export function Paginacion({
@@ -143,9 +144,11 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
   return (
     <>
       {cargando ? (
-       <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
+        <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
       ) : barberos.length === 0 ? (
-        <p className="p-mensaje-carga-paginacion">{respuesta || "No hay barberos disponibles"}</p> // Mensaje si no hay barberos
+        <p className="p-mensaje-carga-paginacion">
+          {respuesta || "No hay barberos disponibles"}
+        </p> // Mensaje si no hay barberos
       ) : (
         <div>
           <section className="section-principal-paginacion-barbero">
@@ -167,6 +170,17 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
                   <p className="card-text">Nombre: {item.nombre}</p>
                   <p className="card-text">Email: {truncarEmail(item.email)}</p>
                   <p className="card-text">Teléfono: {item.telefono}</p>
+                </div>
+
+                {/* Boton ver detalles - Barbero */}
+                <div className="div-detalles-paginacion">
+                  <Link
+                    type="button"
+                    className="button-detalles-paginacion"
+                    to={`/DetallesBarbero/${item.barberoId}`}
+                  >
+                    VER DETALLES
+                  </Link>
                 </div>
               </div>
             ))}
@@ -260,7 +274,9 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
       {cargando ? (
         <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
       ) : clientes.length === 0 ? (
-        <p className="p-mensaje-carga-paginacion">{respuesta || "No hay Clientes disponibles"}</p> // Mensaje si no hay clientes
+        <p className="p-mensaje-carga-paginacion">
+          {respuesta || "No hay Clientes disponibles"}
+        </p> // Mensaje si no hay clientes
       ) : (
         <div>
           <section className="section-principal-paginacion-barbero">
@@ -282,6 +298,17 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
                   <p className="card-text">Nombre: {item.nombre}</p>
                   <p className="card-text">Email: {truncarEmail(item.email)}</p>
                   <p className="card-text">Teléfono: {item.telefono}</p>
+                </div>
+
+                {/* Boton ver detalles - Barbero */}
+                <div className="div-detalles-paginacion">
+                  <Link
+                    type="button"
+                    className="button-detalles-paginacion"
+                    to={`/DetallesCliente/${item.clienteId}`}
+                  >
+                    VER DETALLES
+                  </Link>
                 </div>
               </div>
             ))}
@@ -371,14 +398,16 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
       {cargando ? (
         <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
       ) : cortes.length === 0 ? (
-        <p className="p-mensaje-carga-paginacion">{respuesta || "No hay Cortes disponibles"}</p> // Mensaje si no hay cortes
+        <p className="p-mensaje-carga-paginacion">
+          {respuesta || "No hay Cortes disponibles"}
+        </p> // Mensaje si no hay cortes
       ) : (
         <div>
           <section className="section-principal-paginacion-barbero">
             {corteActual.map((item) => (
               <div
                 key={item.estiloId}
-                className="col-paginacion-barbero"
+                className="col-paginacion-barbero col-paginacion-cortes"
                 data-aos="zoom-in-down"
               >
                 <img

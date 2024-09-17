@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ValidacionesIniciarSesion } from "../util/validaciones/ValidacionesRegistros";
+import { jwtDecode } from "jwt-decode";
 
 //IniciarSesion
 export async function obtenerUsuario(
@@ -55,6 +56,11 @@ export async function obtenerUsuario(
       localStorage.setItem("token", tokenData);
       localStorage.setItem("nombre", nombreData);
 
+      const decodedToken = jwtDecode(tokenData);
+      const now = Date.now();
+      const expiryDate = now + 30 * 60 * 1000; 
+      localStorage.setItem("token_expiry", expiryDate.toString());
+
       setResultado("Inicio de sesión exitoso.");
       navigate(`/${tipo}`);
     } else {
@@ -72,5 +78,6 @@ export function CerrarSesion(navigate) {
   localStorage.removeItem("token");
   localStorage.removeItem("id");
   localStorage.removeItem("nombre");
+  localStorage.removeItem("token_expiry");
   navigate("/");
 }

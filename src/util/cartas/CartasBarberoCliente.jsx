@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { obtenerBarberosData } from "../../peticiones/BarberosPeticiones";
 import { obtenerClientes } from "../../peticiones/ClientePeticiones";
+import { Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "./../../css/cartabarberobusqueda.css";
@@ -18,7 +19,7 @@ export function CartasBarbero() {
   }, []);
 
   const truncarEmail = (email) => {
-    return email.length >= 24 ? email.slice(0, 10) + "***" : email;
+    return email.length >= 21 ? email.slice(0, 10) + "***" : email;
   };
 
   return (
@@ -30,6 +31,7 @@ export function CartasBarbero() {
           <>
             {respuesta && <p>{respuesta}</p>}
             {barberos.length === 0 && <p>No hay barberos disponibles.</p>}
+
             {barberos.map((item) => (
               <div
                 key={item.barberoId}
@@ -42,8 +44,8 @@ export function CartasBarbero() {
                   alt="barbero"
                 />
                 <div className="card-body card-body-barbero">
-                  <p className="card-text card-datos-barbero">
-                    <strong>DATOS PERSONALES</strong>
+                  <p className="card-text card-datos-barbero datos-personales-card">
+                    DATOS PERSONALES
                   </p>
                   <p className="card-text card-nombre-barbero">
                     Nombre: {item.nombre}
@@ -54,6 +56,17 @@ export function CartasBarbero() {
                   <p className="card-text card-telefono-barbero">
                     Teléfono: {item.telefono}
                   </p>
+                </div>
+
+                {/* Boton ver detalles */}
+                <div className="div-button-cartas-busqueda-barbero">
+                  <Link
+                    type="button"
+                    className="button-cartas-busqueda-barbero"
+                    to={`/DetallesBarbero/${item.barberoId}`}
+                  >
+                    VER DETALLES
+                  </Link>
                 </div>
               </div>
             ))}
@@ -110,6 +123,18 @@ export function CartasCliente() {
                     Teléfono: {item.telefono}
                   </p>
                 </div>
+
+                {/* Boton ver detalles */}
+                <div className="div-button-cartas-busqueda-barbero">
+                  <Link
+                    type="button"
+                    className="button-cartas-busqueda-barbero"
+                    to={`/DetallesCliente/${item.clienteId}`}
+                  >
+                    VER DETALLES
+                  </Link>
+                </div>
+
               </div>
             ))}
           </>

@@ -1,5 +1,5 @@
 .col-opciones-cliente-pc {
-  background-color: #1B1B1B;
+  background-color: #1b1b1b;
   color: white;
   border-radius: 1vw;
   height: 32vw;
@@ -18,7 +18,7 @@
 .boton-opciones-cliente-pc {
   border: none;
   color: white;
-  background-color: #1B1B1B;
+  background-color: #1b1b1b;
   display: flex;
   align-items: center;
   gap: 0.3vw;
@@ -72,8 +72,8 @@
 
 /* Columna 2 */
 .col-informacion-cliente-pc {
-  width:77%; 
-  background-color: #1B1B1B;
+  width: 77%;
+  background-color: #1b1b1b;
   margin: 3vw;
   margin-left: 1.5vw;
   margin-right: 0vw;
@@ -82,7 +82,7 @@
 
 @media (min-width: 1024px) {
   .boton-informacion-cliente-pc {
-    padding-bottom:29vw;
+    padding-bottom: 28vw;
   }
 
   .boton-opciones-cliente-pc {
@@ -93,24 +93,32 @@
     height: 48vw;
     width: 19%;
   }
+
+  .link-Detalles-Cliente-Pc {
+    text-decoration: none;
+    padding-left: 0.5vw;
+  }
 }
 
 @media (min-width: 1420px) {
   .col-opciones-cliente-pc {
     height: 46vw;
-
   }
   .boton-opciones-cliente-pc {
     font-size: 1vw;
   }
   .boton-informacion-cliente-pc {
-    padding-bottom: 30vw;
+    padding-bottom: 29vw;
   }
   .div-nombre-opciones-cliente-pc {
     gap: 0.3vw;
   }
-  
-.boton-cerrar-sesion-opciones-cliente-pc {
-  font-size: 1.5vw;
-}
+
+  .boton-cerrar-sesion-opciones-cliente-pc {
+    font-size: 1.5vw;
+  }
+
+  .link-Detalles-Cliente-Pc {
+    padding-left: 0.4vw;
+  }
 }

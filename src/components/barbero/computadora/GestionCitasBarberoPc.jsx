@@ -1,5 +1,5 @@
 import React from 'react'
-import { obtenerCitasBarbero } from '../../../peticiones/CitasPeticiones';
+import { obtenerCitasBarberoById } from '../../../peticiones/CitasPeticiones';
 import { PiAddressBook } from 'react-icons/pi';
 import { Paginacion } from '../../../util/paginacion/Paginacion';
 import { TituloGenericos } from '../../../util/titulos/TituloGenericos';
@@ -20,7 +20,9 @@ const renderCita = (citasCliente) =>(
   precio={citasCliente.estilo.precio}
   citaId={citasCliente.citaId}
   mostrarSoloEnProceso={true}
-  esBarbero={true}/>
+  esBarbero={true}
+  clienteId={citasCliente.clienteId}
+  />
 );
 
   return (
@@ -33,7 +35,7 @@ const renderCita = (citasCliente) =>(
       />
 
       <Paginacion
-        obtenerDatos={obtenerCitasBarbero}
+        obtenerDatos={obtenerCitasBarberoById}
         renderItem={renderCita}
         elementosPorPagina={3}
         estado={"En Proceso"}

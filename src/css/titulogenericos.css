@@ -8,11 +8,15 @@
 }
 
 .sectionNameEstilos > svg {
-  font-size: 6vw;
+  font-size: 8vw;
 }
 
 .sectionNameEstilos > h1 {
   margin-bottom: 0;
+}
+
+.titulo-sectionNameEstilos{
+  font-size: 7vw;
 }
 
 @media (min-width: 1024px) {
@@ -30,5 +34,10 @@
       .h1-pc-white{
         color: white;
       }
+
+      .titulo-sectionNameEstilos{
+        font-size: 3vw;
+      }
+
 }
 

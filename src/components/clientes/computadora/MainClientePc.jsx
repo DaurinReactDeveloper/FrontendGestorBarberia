@@ -4,7 +4,7 @@ import { LuScissorsSquareDashedBottom } from "react-icons/lu";
 import { PiAddressBook } from "react-icons/pi";
 import { CgAddR } from "react-icons/cg";
 import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GiExitDoor } from "react-icons/gi";
 import { AnadirCitasPc } from "./AnadirCitasPc";
@@ -15,12 +15,16 @@ import InformacionPc from "../../../util/informacion/InformacionPc";
 import { ContentSwitcher } from "../../../util/mainreutilizable/MainReutilizable";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { RiUserSettingsFill } from "react-icons/ri";
+import { obtenerCredenciales } from "../../../peticiones/CitasPeticiones";
 import "../../../css/mainclientepc.css";
 
 //Este componente debo ponerlo generalizado para poder usarlo como básico para el barbero y y admin
 export function MainClientePc({ nombre }) {
   const [opcionSeleccionada, setOpcionSeleccionada] = useState(null);
   const navigate = useNavigate();
+  
+  const { id } = obtenerCredenciales();
 
   const manejarClickBoton = (opcion) => {
     setOpcionSeleccionada(opcion);
@@ -73,6 +77,15 @@ export function MainClientePc({ nombre }) {
           <hr className="hr-nombre-opciones-cliente-pc" />
 
           <div className="div-opciones-cliente-pc">
+            <Link
+              type="button"
+              className="boton-opciones-cliente-pc link-Detalles-Cliente-Pc"
+              to={`/DetallesCliente/${id}`}
+            >
+              <RiUserSettingsFill />
+              Mi Perfil
+            </Link>
+
             <button
               className="boton-opciones-cliente-pc"
               onClick={() => manejarClickBoton("agregarCita")}

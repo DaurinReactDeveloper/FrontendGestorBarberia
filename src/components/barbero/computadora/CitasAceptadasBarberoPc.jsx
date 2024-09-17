@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CitaTablaBarbero } from "../celular/CitasAceptadasCelularBarbero";
-import { obtenerCitasBarbero } from "../../../peticiones/CitasPeticiones";
+import { obtenerCitasBarberoById } from "../../../peticiones/CitasPeticiones";
 import { FiScissors } from "react-icons/fi";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import "./../../../css/citasaceptadasbarberopc.css";
@@ -11,7 +11,7 @@ export default function CitasAceptadasBarberoPc() {
   const [cargando, setCargando] = useState(true); // Estado para controlar la carga
 
   useEffect(() => {
-    obtenerCitasBarbero(setCitas, setMensaje).finally(() => {
+    obtenerCitasBarberoById(setCitas, setMensaje).finally(() => {
       setCargando(false); // Cambiar a false cuando se complete la carga
     });
   }, []);

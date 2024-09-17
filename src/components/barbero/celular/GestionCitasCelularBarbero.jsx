@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaImagePortrait } from "react-icons/fa6";
-import { obtenerCitasBarbero } from "../../../peticiones/CitasPeticiones";
+import { obtenerCitasBarberoById } from "../../../peticiones/CitasPeticiones";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import { CartasCitas } from "../../../util/cartas/CartasCitas";
 
@@ -9,7 +9,7 @@ export default function GestionCitasCelularBarbero() {
   const [mensaje, setMensaje] = useState("");
 
   useEffect(() => {
-    obtenerCitasBarbero(setCitas, setMensaje);
+    obtenerCitasBarberoById(setCitas, setMensaje);
   }, []);
 
   return (
@@ -35,6 +35,8 @@ export default function GestionCitasCelularBarbero() {
               citaId={citasCliente.citaId}
               mostrarSoloEnProceso={true}
               esBarbero={true}
+              esCliente={false}
+              clienteId={citasCliente.clienteId}
             />
           ))
         ) : (

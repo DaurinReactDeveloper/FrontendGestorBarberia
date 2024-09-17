@@ -60,6 +60,19 @@
   margin: 0vw;
 }
 
+.link-Detalles-Cliente-Celular{
+  text-decoration: none;
+  color: #1b1b1b;
+  padding-left: 2vw;
+}
+
+@media (min-width:768px) {
+  
+  .link-Detalles-Cliente-Celular{
+    padding-left: 1vw;
+  }
+}
+
 @media (min-width: 1024px) {
   .section-main-cliente-celular {
     display: none;
@@ -68,4 +81,6 @@
   .section-main-cliente-pc {
     display: contents;
   }
+
+
 }

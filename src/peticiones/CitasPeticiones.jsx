@@ -88,15 +88,14 @@ export async function obtenerCitas(setCitas, setMensaje) {
   }
 
   try {
-    const { data } = await axios.get(`${urlCita}/GetCitasByCliente/${id}`, {
+    const peticion = await axios.get(`${urlCita}/GetCitasByCliente/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (data.success) {
-      setCitas(data.data);
+    if (peticion.data.success) {
+      setCitas(peticion.data.data);
     } else {
-      setCitas([]);
-      setMensaje("No se pudieron obtener las citas");
+      setMensaje(peticion.data.message);
     }
   } catch (error) {
     const mensajeError =
@@ -105,8 +104,60 @@ export async function obtenerCitas(setCitas, setMensaje) {
   }
 }
 
-// Obtener citas por barbero
-export async function obtenerCitasBarbero(setCitas, setMensaje) {
+//Obtener Cita por el Id
+export async function obtenerCitaById(citaId,setCitas, setMensajeCitas) {
+  const {token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensajeCitas("Debe Registrarse");
+    return;
+  }
+
+  try {
+    const peticion = await axios.get(`${urlCita}/GetCitasById/${citaId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (peticion.data.success) {
+      setCitas(peticion.data.data);
+    } else {
+      setMensajeCitas(peticion.data.message);
+    }
+  } catch (error) {
+    const mensajeError =
+      error.response?.data.message || "Ocurrió un error obteniendo la cita";
+      setMensajeCitas(mensajeError);    
+  }
+}
+
+//ObtenerCitasClientesById - Detalles
+export async function obtenerCitasById(id,setCita, setMensajeCita) {
+  const {token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensajeCita("Debe Registrarse.");
+    return;
+  }
+
+  try {
+    const peticion = await axios.get(`${urlCita}/GetCitasByCliente/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (peticion.data.success) {
+      setCita(peticion.data.data);
+    } else {
+      setMensajeCita(peticion.data.message);
+    }
+  } catch (error) {
+    const mensajeError =
+      error.response?.data.message || "Ocurrió un error obteniendo las citas";
+      setMensajeCita(mensajeError);    
+  }
+}
+
+// Obtener citas por obtenerCitasBarberoById
+export async function obtenerCitasBarberoById(setCitas, setMensaje) {
   const { id, token } = obtenerCredenciales();
 
   if (!token || !id) {
@@ -141,7 +192,7 @@ export async function actualizarCitaBarbero(setMensaje, id, estado) {
   const { token } = obtenerCredenciales();
 
   if (!token) {
-    setMensaje("Token no disponible");
+    setMensaje("Debe Registrarse");
     return;
   }
 
@@ -175,7 +226,7 @@ export async function EliminarCita(setMensaje, id, estado = "") {
   const { token } = obtenerCredenciales();
 
   if (!token) {
-    setMensaje("Token no disponible");
+    setMensaje("Debe Registrarse");
     return;
   }
 
@@ -189,15 +240,11 @@ export async function EliminarCita(setMensaje, id, estado = "") {
     estado: estado,
   };
 
-  console.log(estado);
-
   try {
     const peticion = await axios.delete(`${urlCita}/Delete`, {
       headers: { Authorization: `Bearer ${token}` },
       data: DeleteData,
     });
-
-    console.log(peticion.data.message);
 
     if (peticion.data.success) {
       setMensaje(peticion.data.message);

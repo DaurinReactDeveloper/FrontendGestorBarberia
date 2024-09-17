@@ -1,0 +1,136 @@
+/* Fuente Poppins */
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
+.section-tabla-barbero {
+  overflow: scroll;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-bottom: 6vw;
+}
+
+.tr-tabla-barbero td {
+  text-align: center;
+}
+
+.table > :not(caption) > * > * {
+  background-color: unset;
+}
+
+.tabla-barbero thead {
+  padding: 1vw 3vw;
+}
+
+.tabla-barbero th {
+  padding: 1vw 3vw;
+}
+
+.tabla-barbero td {
+  padding: 1vw 3vw;
+  border: 0.1vw solid #1b1b1b;
+}
+
+.body-tabla-barbero {
+  background-color: #d9d9d9;
+  border: 0.1vw solid #1b1b1b;
+}
+
+.thead-tabla-barbero {
+  background-color: #1b1b1b;
+  border-radius: 5vw;
+}
+
+.thead-tabla-barbero th {
+  color: #d9d9d9;
+  text-align: center;
+  border: 0.1vw solid #1b1b1b;
+}
+
+.mensaje-tabla-barbero {
+  text-align: center;
+  padding-bottom: 5vw;
+}
+
+.botonAbrirModal-Barbero {
+  border: none;
+  background-color: #263238;
+  color: white;
+  border-radius: 5vw;
+  padding: 1.5vw 5vw;
+}
+
+.botonEliminarComment-Barbero{
+  background-color: #C44949;
+}
+
+.p-mensaje-eliminar-comentario-barberos{
+  font-family: "PoppinsBold";
+  text-align: center;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+}
+
+@media (min-width: 1024px) {
+  .tabla-barbero {
+    width: 97%;
+  }
+
+  .tabla-barbero {
+    overflow: hidden;
+    border-radius: 0.3vw;
+  }
+
+  .section-tabla-barbero {
+    overflow: unset;
+    padding-right: 0vw;
+    padding-bottom: 3vw;
+  }
+
+  .thead-tabla-barbero th {
+    font-weight: 100;
+  }
+
+  .mensaje-tabla-barbero {
+    padding-bottom: 3vw;
+    padding-top: 3vw;
+  }
+
+  .botonAbrirModal-Barbero {
+    border-radius: 5vw;
+    padding: 0.3vw 1.5vw;
+  }
+
+  .botonAbrirModal-Barbero:hover {
+    background-color: #1b1b1b;
+    transition: background-color 1s;
+    box-shadow: 0vw 0vw 0.3vw #263238;
+  }
+
+  .botonEliminarComment-Barbero:hover{
+    background-color: #263238;
+    transition: background-color 1s;
+  }
+
+  .p-mensaje-eliminar-comentario-barberos{
+    padding-top: 0vw;
+    padding-bottom: 1vw;
+  }
+}
+
+@media (min-width: 1420px) {
+  .tabla-barbero {
+    border-radius: 0.2vw;
+  }
+
+  .botonAbrirModal-Barbero {
+    border-radius: 5vw;
+    padding: 0.3vw 1.5vw;
+  }
+
+  .p-mensaje-eliminar-comentario-barberos{
+    padding-top: 0vw;
+    padding-bottom: 2vw;
+  }
+}

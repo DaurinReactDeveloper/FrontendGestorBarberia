@@ -9,6 +9,8 @@ import Cliente from "../components/clientes/Cliente.jsx";
 import ProtectedRoute from "../util/tokens/Roles.jsx";
 import Barbero from "../components/barbero/Barbero.jsx";
 import Admin from "../components/administrador/Admin.jsx";
+import {DetallesBarbero,DetallesCliente} from "../components/detalles/DetallesBarberoCliente.jsx";
+import Comentario from "../components/comentario/Comentario.jsx";
 
 export const routes = createBrowserRouter([
   {
@@ -42,6 +44,23 @@ export const routes = createBrowserRouter([
     errorElement: <h1>Ha Ocurrido un Error</h1>,
   },
   {
+    path: "/DetallesBarbero/:id",
+    element: <DetallesBarbero/> ,
+    errorElement: <h1>Ha Ocurrido un Error</h1>,
+  },
+  {
+    path: "/DetallesCliente/:id",
+    element: (
+      <ProtectedRoute
+        element={<DetallesCliente />}
+        requiredRole="cliente"
+        requiredRole2="barbero"
+        requiredRole3="admin"
+        elementDefault={"/iniciarsesiongeneral/cliente"}
+      />),
+    errorElement: <h1>Ha Ocurrido un Error</h1>,
+  },
+  {
     path: "/cliente",
     element: (
       <ProtectedRoute
@@ -70,6 +89,17 @@ export const routes = createBrowserRouter([
         element={<Admin />}
         requiredRole="admin"
         elementDefault={"/iniciarsesiongeneral/administrador"}
+      />
+    ),
+    errorElement: <h1>Ha Ocurrido un Error</h1>,
+  },
+  {
+    path: "/comentario/:citaId",
+    element: (
+      <ProtectedRoute
+        element={<Comentario />}
+        requiredRole="cliente"
+        elementDefault={"/iniciarsesiongeneral/cliente"}
       />
     ),
     errorElement: <h1>Ha Ocurrido un Error</h1>,

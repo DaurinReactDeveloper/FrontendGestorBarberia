@@ -2,7 +2,7 @@ import React from "react";
 import { Paginacion } from "../../../util/paginacion/Paginacion";
 import { LuScissorsSquareDashedBottom } from "react-icons/lu";
 import { CartasCitas } from "../../../util/cartas/CartasCitas";
-import { obtenerCitasBarbero } from "../../../peticiones/CitasPeticiones";
+import { obtenerCitasBarberoById } from "../../../peticiones/CitasPeticiones";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 
 export default function CitasRealizadasBarberoPc() {
@@ -20,6 +20,7 @@ export default function CitasRealizadasBarberoPc() {
     precio={citasCliente.estilo.precio}
     idCita={citasCliente.citaId}
     mostrarSoloRealizadas={true}
+    esCliente={false}
   />
   );
   
@@ -33,7 +34,7 @@ export default function CitasRealizadasBarberoPc() {
       />
 
       <Paginacion
-        obtenerDatos={obtenerCitasBarbero}
+        obtenerDatos={obtenerCitasBarberoById}
         renderItem={renderCita}
         elementosPorPagina={3}
         estado={"Realizada"}

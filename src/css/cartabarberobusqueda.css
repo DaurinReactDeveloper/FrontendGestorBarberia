@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
 /* Estilos generales para la sección de tarjetas */
 .section-carta-barbero {
   padding: 3vw;
@@ -7,21 +12,25 @@
 
 /* Estilos para las tarjetas */
 .card-estilo-barbero {
-  width: 100%;
-  background-color: #d9d9d9;
+  width: 85%;
+  background-color: #D9D9D9;
   padding: 0;
   margin-bottom: 5vw;
   min-height: 70vw;
-  border-radius: 1vw;
-  box-shadow: 0vw 1vw 2vw rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
-  border: none;
-  border-radius: 0vw;
+  border-radius: 2vw;
+  box-shadow: 0vw 0.3vw 0.5vw rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  border: 0.1vw solid #d9d9d9;
+}
+
+.datos-personales-card{
+font-family: "PoppinsBold";
 }
 
 /* Estilos para la imagen */
 .img-card-barbero {
   height: 75vw;
-  padding: 2vw;
+  padding: 3vw;
+  border-radius: 3vw;
 }
 
 /* Estilos para el cuerpo de la tarjeta */
@@ -41,6 +50,20 @@
   padding-bottom: 2vw;
 }
 
+.div-button-cartas-busqueda-barbero{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5vw;
+}
+
+.button-cartas-busqueda-barbero{
+  all: unset;
+  background-color: #263238;
+  padding:  1vw 7vw;
+  color: white;
+  border-radius: 5vw;
+}
+
 @media (min-width: 768px) and (max-width: 912px) {
   .section-carta-barbero {
     padding: 0;
@@ -54,12 +77,14 @@
     margin-bottom: 2vw;
     min-height: 15vw;
     box-shadow: 0 0.2vw 0.2vw rgba(0, 0, 0, 0.2); /* Sombra de la tarjeta actualizada */
+    border-radius: 1vw;
   }
 
   /* Estilos para la imagen en pantallas grandes */
   .img-card-barbero {
     height: 36vw;
     padding: 1vw;
+    border-radius: 2vw;
   }
 
   /* Estilos para el cuerpo de la tarjeta en pantallas grandes */
@@ -67,6 +92,11 @@
     margin-bottom: 0;
     line-height: 3.5vw;
   }
+
+  .div-button-cartas-busqueda-barbero{
+    padding-bottom: 2vw;
+  }
+
 }
 
 @media (min-width: 1024px) {
@@ -82,18 +112,16 @@
     margin-bottom: 1.5vw;
     min-height: 20vw;
     box-shadow: 0 0.2vw 0.2vw rgba(0, 0, 0, 0.2); /* Sombra de la tarjeta actualizada */
-    border-radius: 0.1vw;
-  }
-
-  .card-estilo-barbero:hover {
-    background-color: #212529;
-    color: white;
+    border-radius:0.5vw;
+    border: 0.1vw solid rgba(0, 0, 0, 0.016);
   }
 
   /* Estilos para la imagen en pantallas grandes */
   .img-card-barbero {
     height: 26vw;
-    padding: 0.5vw;
+    padding: 1vw;
+    border-radius:0vw;
+    border-radius: 1vw;
   }
 
   /* Estilos para el cuerpo de la tarjeta en pantallas grandes */
@@ -101,6 +129,31 @@
     margin-bottom: 0;
     line-height: 3vw;
   }
+
+  .div-button-cartas-busqueda-barbero{
+    padding-bottom: 1vw;
+    padding-top: 0vw;
+  }
+
+.button-cartas-busqueda-barbero{
+  padding: 0.3vw 2vw;
+  border-radius: 2vw;
+}
+
+.button-cartas-busqueda-barbero:hover{
+  background-color: #1B1B1B;
+  transition: background-color 1s;
+  box-shadow: 0vw 0.1vw 0.2vw rgba(0, 0, 0, 0.558);
+}
+}
+
+@media (min-width: 1280px) {
+    /* Estilos para el cuerpo de la tarjeta en pantallas grandes */
+  .card-body-barbero > p {
+    line-height:2.5vw;
+    font-size: 1.3vw;
+  }
+
 }
 
 @media (min-width: 1420px) {
@@ -112,12 +165,15 @@
   /* Estilos para las tarjetas en pantallas grandes */
   .card-estilo-barbero {
     width: 20%;
+    padding: 0vw;
+    border-radius: 0.1vw;
   }
 
   /* Estilos para la imagen en pantallas grandes */
   .img-card-barbero {
     height: 18vw;
-    border-radius: 0.6vw;
+    border-radius: 0.5vw;
+    padding: 0.5vw;
   }
 
   /* Estilos para las tarjetas en pantallas muy grandes */
@@ -127,6 +183,7 @@
 
   /* Estilos para el cuerpo de la tarjeta en pantallas muy grandes */
   .card-body-barbero > p {
-    line-height: 1.6vw;
+    line-height: 1.7vw;
+    font-size: 1vw;
   }
 }

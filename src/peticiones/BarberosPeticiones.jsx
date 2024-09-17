@@ -31,6 +31,22 @@ export async function obtenerBarberosData(setBarberos, setRespuesta) {
   }
 }
 
+//Obtener Barbero por su Id
+export async function obtenerBarberoId(setBarberos, setRespuesta, id) {
+  try {
+
+    const peticion = await axios.get(`${urlBarbero}/BarberoById/${id}`);
+
+    if (peticion.data.success) {
+      setBarberos(peticion.data.data);
+    } else {
+      setRespuesta("No hay Barberos");
+    }
+  } catch (error) {
+    console.error("Ha ocurrido un error: " + error);
+  }
+}
+
 //Agregar Barbero
 export async function anadirBarbero(
   nombre,

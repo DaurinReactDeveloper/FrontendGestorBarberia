@@ -42,6 +42,10 @@
 .div-estado-cita {
   padding-left: 3vw;
   padding-top: 3vw;
+  padding-right: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .estado-proceso-cita {
@@ -75,6 +79,7 @@
   display: flex;
   justify-content: center;
   padding-bottom: 7vw;
+  
 }
 
 .boton-eliminar-cita {
@@ -148,6 +153,12 @@
   color: white;
 }
 
+  /* Boton Comentar */
+  .icon-comentar-citas-realizadas{
+    color:#045525;
+    font-size: 10vw;
+  }
+
 @media (min-width: 1024px) {
   .card-cita {
     width: 30%;
@@ -183,6 +194,10 @@
   .div-estado-cita {
     padding-left: 0vw;
     padding-top: 0.5vw;
+    padding-right: 0vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .card-body-citas {
@@ -198,6 +213,7 @@
   .div-boton-eliminar {
     padding-bottom: 0vw;
     padding-bottom: 1vw;
+    justify-content: space-around;
   }
 
   .boton-eliminar-cita {
@@ -260,4 +276,16 @@
     padding-bottom: 0vw;
     margin-bottom: 0vw;
   }
+
+  /* Boton Comentar */
+.icon-comentar-citas-realizadas{
+  color:#1b1b1b;
+  font-size: 2.6vw;
+}
+
+.icon-comentar-citas-realizadas:hover{
+color: #045525;
+transition: color 1s;
+}
+
 }

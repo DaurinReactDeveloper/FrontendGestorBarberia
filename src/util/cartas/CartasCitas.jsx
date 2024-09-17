@@ -3,6 +3,9 @@ import {
   actualizarCitaBarbero,
   EliminarCita,
 } from "../../peticiones/CitasPeticiones";
+import { LiaCommentMedicalSolid } from "react-icons/lia";
+import { Link } from "react-router-dom";
+import { IoPersonCircle } from "react-icons/io5";
 import "./../../css/citascartas.css";
 
 export const formatDate = (dateString) => {
@@ -26,12 +29,14 @@ export function CartasCitas({
   mostrarSoloRealizadas = false,
   mostrarSoloEnProceso = false,
   esBarbero = false,
+  esCliente = true,
   citaId,
+  clienteId,
 }) {
   const [valor, setValor] = useState("Rechazada");
   const [mensaje, setMensaje] = useState("");
   const [mensajeBarbero, setMensajeBarbero] = useState("");
-  const [cargando, setCargando] = useState(false);  // Estado de carga
+  const [cargando, setCargando] = useState(false); // Estado de carga
   const [cargandoBarbero, setCargandoBarbero] = useState(false); // Estado de carga para el barbero
 
   if (mostrarSoloRealizadas && estado !== "Realizada") return null;
@@ -76,7 +81,7 @@ export function CartasCitas({
     ? "card-body-citas-Barbero"
     : "card-body-citas";
 
-  const handleActualizarCita = async () => {
+  const manejarActualizarCita = async () => {
     setCargando(true);
     try {
       await actualizarCitaBarbero(setMensaje, idCita, "Cancelada");
@@ -85,7 +90,7 @@ export function CartasCitas({
     }
   };
 
-  const handleEliminarCita = async () => {
+  const manejarEliminarCita = async () => {
     setCargando(true);
     try {
       await EliminarCita(setMensaje, idCita, estado);
@@ -94,7 +99,7 @@ export function CartasCitas({
     }
   };
 
-  const handleActualizarCitaBarbero = async () => {
+  const manejarActualizarCitaBarbero = async () => {
     setCargandoBarbero(true);
     try {
       await actualizarCitaBarbero(setMensajeBarbero, citaId, valor);
@@ -107,6 +112,16 @@ export function CartasCitas({
     <div className="card card-cita">
       <div className="div-estado-cita">
         <p className={clase}>{estado}</p>
+        {estado === "Realizada" && esCliente && (
+          <Link to={`/comentario/${idCita}`} title="Comentar">
+            <LiaCommentMedicalSolid className="icon-comentar-citas-realizadas" />
+          </Link>
+        )}
+        {estado === "En Proceso" && esBarbero && (
+          <Link to={`/DetallesCliente/${clienteId}`} title="Ver Cliente">
+            <IoPersonCircle className="icon-comentar-citas-realizadas" />
+          </Link>
+        )}
       </div>
       <img src={img} className="card-img-top card-img-cita" alt={alt} />
 
@@ -116,11 +131,9 @@ export function CartasCitas({
           <p className="card-text card-fecha-cita">{formattedFecha}</p>
           <p className="card-text card-fecha-cita">{hora}</p>
         </div>
-        
         {!esBarbero && (
           <p className="card-text card-descripcion-cita">{descripcion}</p>
         )}
-
         <p className="card-text card-precio-cita">${precio}</p>
         {mensaje && <p className="p-mensaje-barbero-cita">{mensaje}</p>}
       </div>
@@ -131,8 +144,8 @@ export function CartasCitas({
             <button
               type="button"
               className={`boton-eliminar-cita ${claseBoton}`}
-              onClick={handleActualizarCita}
-              disabled={cargando}  // Deshabilita el botón mientras carga
+              onClick={manejarActualizarCita}
+              disabled={cargando} // Deshabilita el botón mientras carga
             >
               {cargando ? "Cargando..." : nombreBoton}
             </button>
@@ -142,7 +155,7 @@ export function CartasCitas({
               className={`boton-eliminar-cita ${claseBoton}`}
               disabled={deshabilitar || cargando}
               aria-disabled={deshabilitar || cargando}
-              onClick={handleEliminarCita}
+              onClick={manejarEliminarCita}
             >
               {cargando ? "Cargando..." : nombreBoton}
             </button>
@@ -173,8 +186,8 @@ export function CartasCitas({
             <button
               type="button"
               className="boton-aceptar-cita-barbero"
-              onClick={handleActualizarCitaBarbero}
-              disabled={cargandoBarbero}  // Deshabilita el botón mientras carga
+              onClick={manejarActualizarCitaBarbero}
+              disabled={cargandoBarbero} // Deshabilita el botón mientras carga
             >
               {cargandoBarbero ? "Cargando..." : "ENVIAR"}
             </button>
