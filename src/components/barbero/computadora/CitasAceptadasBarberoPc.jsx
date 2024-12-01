@@ -9,16 +9,19 @@ export default function CitasAceptadasBarberoPc() {
   const [citas, setCitas] = useState([]);
   const [mensaje, setMensaje] = useState("");
   const [cargando, setCargando] = useState(true); // Estado para controlar la carga
+  const [mostrarMensaje, setMostrarMensaje] = useState(false); // Estado para mostrar mensaje
 
   useEffect(() => {
     obtenerCitasBarberoById(setCitas, setMensaje).finally(() => {
-      setCargando(false); // Cambiar a false cuando se complete la carga
+      setCargando(false); 
+      setMostrarMensaje(citas.length > 0);
     });
   }, []);
 
   return (
     <>
       <section>
+        <br />
         <TituloGenericos
           titulo={"CITAS ACEPTADAS"}
           icono={FiScissors}
@@ -26,7 +29,6 @@ export default function CitasAceptadasBarberoPc() {
           clase2="h1-pc-white"
         />
       </section>
-      <br />
       <section className="section-cita-barberos-tabla-pc">
         {cargando ? ( // Mostrar cargador si está cargando
           <p className="p-mensaje-carga-paginacion">Cargando...</p>
@@ -38,7 +40,7 @@ export default function CitasAceptadasBarberoPc() {
           />
         )}
       </section>
-      {mensaje && <p className="p-mensaje-table-barbero-pc">{mensaje}</p>}
+      {mostrarMensaje && mensaje && <p className="p-mensaje-table-barbero-pc">{mensaje}</p>}
     </>
   );
 }

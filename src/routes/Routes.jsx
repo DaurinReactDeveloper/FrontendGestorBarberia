@@ -9,44 +9,61 @@ import Cliente from "../components/clientes/Cliente.jsx";
 import ProtectedRoute from "../util/tokens/Roles.jsx";
 import Barbero from "../components/barbero/Barbero.jsx";
 import Admin from "../components/administrador/Admin.jsx";
-import {DetallesBarbero,DetallesCliente} from "../components/detalles/DetallesBarberoCliente.jsx";
+import DetallesBarbero from "../components/detalles/DetallesBarbero.jsx";
 import Comentario from "../components/comentario/Comentario.jsx";
+import Required from "../components/Messages/Required.jsx";
+import NotFound from "../components/Messages/NotFound.jsx";
+import AdminDaurin from "../components/adminDaurin/AdminDaurin.jsx";
+import DetallesCliente from "../components/detalles/DetallesCliente.jsx";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Inicio />,
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
   },
   {
     path: "/estilos",
-    element: <Estilos />,
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    element: (
+      <ProtectedRoute
+        element={<Estilos />}
+        requiredRole="cliente"
+        requiredRole2="barbero"
+        elementDefault={"/required"}
+      />
+    ),
+    errorElement: <NotFound/>,
   },
   {
     path: "/barberos",
-    element: <BarberoBusqueda />,
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    element: (
+      <ProtectedRoute
+        element={<BarberoBusqueda />}
+        requiredRole="cliente"
+        elementDefault={"/required"}
+      />
+    ),
+    errorElement: <NotFound/>,
   },
   {
     path: "/registro",
     element: <Registro />,
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
   },
   {
     path: "/iniciarsesion",
     element: <IniciarSesion />,
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
   },
   {
     path: "/iniciarsesiongeneral/:tipo",
     element: <IniciarSesionGeneral />,
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
   },
   {
     path: "/DetallesBarbero/:id",
     element: <DetallesBarbero/> ,
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
   },
   {
     path: "/DetallesCliente/:id",
@@ -54,12 +71,12 @@ export const routes = createBrowserRouter([
       <ProtectedRoute
         element={<DetallesCliente />}
         requiredRole="cliente"
-        requiredRole2="barbero"
+        requiredRole2="adminDaurin"
         requiredRole3="admin"
         elementDefault={"/iniciarsesiongeneral/cliente"}
       />),
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
-  },
+      errorElement: <NotFound/>,
+    },
   {
     path: "/cliente",
     element: (
@@ -69,7 +86,7 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/cliente"}
       />
     ),
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
   },
   {
     path: "/barbero",
@@ -80,7 +97,7 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/barbero"}
       />
     ),
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
   },
   {
     path: "/administrador",
@@ -91,7 +108,18 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/administrador"}
       />
     ),
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
+  },
+  {
+    path: "/Daurin",
+    element: (
+      <ProtectedRoute
+        element={<AdminDaurin />}
+        requiredRole="adminDaurin"
+        elementDefault={"/iniciarsesiongeneral/Daurin"}
+      />
+    ),
+    errorElement: <NotFound/>,
   },
   {
     path: "/comentario/:citaId",
@@ -102,6 +130,12 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/cliente"}
       />
     ),
-    errorElement: <h1>Ha Ocurrido un Error</h1>,
+    errorElement: <NotFound/>,
   },
+  // RUTAS ATERNOS PARA ERRORES
+  {
+    path: "/required",
+    element:<Required rol={"un Cliente"}/>,
+    errorElement: <NotFound/>,
+  }
 ]);

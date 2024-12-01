@@ -4,8 +4,8 @@ import {
   anadirCita,
   obtenerFechaActual,
 } from "../../../peticiones/CitasPeticiones";
-import { obtenerBarberos } from "../../../peticiones/BarberosPeticiones";
-import { obtenerEstilos } from "../../../peticiones/EstilosPeticiones";
+import { obtenerBarberosByBarberiaIdCliente } from "../../../peticiones/BarberosPeticiones";
+import { obtenerEstilosAddCita } from "../../../peticiones/EstilosPeticiones";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import { CartasEstiloCitas } from "../../../util/cartas/CartasEstilo";
 import "../../../css/agregarcitaspc.css";
@@ -37,8 +37,8 @@ export function AnadirCitaCelular() {
   const [precioEstilo, setPrecioEstilo] = useState("");
 
   useEffect(() => {
-    obtenerEstilos(setEstilos);
-    obtenerBarberos(setBarberos);
+    obtenerEstilosAddCita(setEstilos);
+    obtenerBarberosByBarberiaIdCliente(setBarberos);
   }, []);
 
   const manejarCambioFecha = (e) => {
@@ -55,13 +55,11 @@ export function AnadirCitaCelular() {
     );
     setEstilo(e.target.value);
 
-    // Actualiza los detalles según el estilo seleccionado
     if (estiloSeleccionado) {
       setImagen(estiloSeleccionado.imgestilo || "./agregarcita.webp");
       setNombreEstilo(estiloSeleccionado.nombre || "");
       setPrecioEstilo(estiloSeleccionado.precio || "");
     } else {
-      // Valores por defecto si no se selecciona un estilo
       setImagen("./agregarcita.webp");
       setNombreEstilo("");
       setPrecioEstilo("");
@@ -72,11 +70,10 @@ export function AnadirCitaCelular() {
     setBarbero(e.target.value);
   };
 
-  // Función para manejar el envío del formulario
-  async function manejarSubmit(e) {
-    e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-    setCargando(true); // Iniciar carga
-    await anadirCita(
+  function manejarSubmit(e) {
+    e.preventDefault();
+    setCargando(true);
+    anadirCita(
       e,
       fecha,
       hora,
@@ -88,7 +85,12 @@ export function AnadirCitaCelular() {
       setMensajeEstilo,
       setMensaje
     );
-    setCargando(false); // Finalizar carga
+    setCargando(false);
+    setImagen("./agregarcita.webp");
+    setFecha("");
+    setHora("");
+    setBarbero("");
+    setEstilo("");
   }
 
   return (
@@ -99,7 +101,6 @@ export function AnadirCitaCelular() {
       <br />
 
       <section className="section-citas">
-       
         <div className="col-cartas-estilo col-cartas-estilo">
           <CartasEstiloCitas
             imagen={imagen}
@@ -166,7 +167,7 @@ export function AnadirCitaCelular() {
             </select>
             {mensajeBarbero && <p>{mensajeBarbero}</p>}
           </div>
-          {mensaje && <p>{mensaje}</p>}
+          {mensaje && <p className="mensaje-agregar-cita">{mensaje}</p>}
           <div className="div-agregar-cita">
             <button
               type="submit"
@@ -177,7 +178,6 @@ export function AnadirCitaCelular() {
             </button>
           </div>
         </form>
-        
       </section>
     </div>
   );

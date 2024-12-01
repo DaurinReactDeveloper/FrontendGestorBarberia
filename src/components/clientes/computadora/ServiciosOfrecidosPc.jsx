@@ -24,6 +24,7 @@ export default function ServiciosOfrecidosPc() {
 
   return (
     <>
+    <br />
       <TituloGenericos
         titulo={"SERVICIOS OFRECIDOS"}
         icono={LuScissorsSquareDashedBottom}

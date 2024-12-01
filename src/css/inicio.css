@@ -111,6 +111,16 @@ body {
   padding: 0;
 }
 
+
+@media (min-width:320px) {
+  .button-iniciar-frame2-Celulares,
+  .button-registrarse-frame2-Celulares {
+    padding: 1vw 2vw;
+    gap: 1vw;
+  }
+}
+
+
 /* Responsividad para Pantallas Largas */
 @media (min-width: 1024px) {
   

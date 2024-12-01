@@ -12,11 +12,11 @@
 
 /* Estilos para las tarjetas */
 .card-estilo-barbero {
-  width: 85%;
+  width: 95%;
   background-color: #D9D9D9;
   padding: 0;
   margin-bottom: 5vw;
-  min-height: 70vw;
+  min-height: 90vw;
   border-radius: 2vw;
   box-shadow: 0vw 0.3vw 0.5vw rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
   border: 0.1vw solid #d9d9d9;
@@ -28,10 +28,16 @@ font-family: "PoppinsBold";
 
 /* Estilos para la imagen */
 .img-card-barbero {
-  height: 75vw;
+  height: 95vw;
   padding: 3vw;
+  padding-top:0vw;
   border-radius: 3vw;
 }
+
+.img-card-estilo{
+  padding: 3vw;
+}
+
 
 /* Estilos para el cuerpo de la tarjeta */
 .card-body-barbero > p {
@@ -63,6 +69,54 @@ font-family: "PoppinsBold";
   color: white;
   border-radius: 5vw;
 }
+
+.p-mensaje-baberos{
+  text-align: center;
+}
+
+.div-button-eliminar-corte-telefono{
+  padding-top: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton-eliminar-corte{
+  border: none;
+  padding: 0.5vw 6vw;
+  border-radius: 5vw;
+  background-color: #C44949;
+  color: white;
+}
+
+/* cliente */
+.div-delete-cliente,.div-delete-barbero{
+  display: flex;
+  justify-content: right;
+  padding-right: 2.5vw;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+
+}
+
+.button-delete-cliente,.button-delete-barbero{
+  border: none;
+  background-color: unset;
+}
+
+.icon-delete-cliente,.icon-delete-barbero{
+  color: #C44949;
+  font-size: 7vw;
+}
+
+.carta-mensaje{
+  text-align: center;
+}
+
+.imagenBarberoBusqueda{
+  padding-top: 3vw;
+}
+
 
 @media (min-width: 768px) and (max-width: 912px) {
   .section-carta-barbero {
@@ -97,7 +151,19 @@ font-family: "PoppinsBold";
     padding-bottom: 2vw;
   }
 
+  .icon-delete-cliente,.icon-delete-barbero{
+    font-size: 4vw;
+  }
+
+  .div-delete-cliente,.div-delete-barbero{
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+  
+  }
+  
+
 }
+
 
 @media (min-width: 1024px) {
   /* Estilos generales para la sección de tarjetas en pantallas grandes */
@@ -145,6 +211,8 @@ font-family: "PoppinsBold";
   transition: background-color 1s;
   box-shadow: 0vw 0.1vw 0.2vw rgba(0, 0, 0, 0.558);
 }
+
+
 }
 
 @media (min-width: 1280px) {
@@ -153,6 +221,30 @@ font-family: "PoppinsBold";
     line-height:2.5vw;
     font-size: 1.3vw;
   }
+
+  .icon-delete-cliente,.icon-delete-barbero{
+    font-size: 1.5vw;
+  }
+
+ .div-delete-cliente,.div-delete-barbero{
+  padding-right: 1vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw; 
+
+}
+
+.icon-delete-cliente:hover,.icon-delete-barbero:hover{
+  color: #1B1B1B;
+  transition: color 1s;
+}
+
+.div-delete-cliente,.div-delete-barbero{
+padding-right: 1vw;
+padding-top: 0.5vw;
+padding-bottom: 0.5vw; 
+
+}
+
 
 }
 
@@ -186,4 +278,13 @@ font-family: "PoppinsBold";
     line-height: 1.7vw;
     font-size: 1vw;
   }
+
+ .div-delete-cliente,.div-delete-barbero{
+  padding-right: 0.2vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0vw; 
+}
+
+
+
 }

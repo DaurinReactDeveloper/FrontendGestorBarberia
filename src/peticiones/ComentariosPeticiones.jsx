@@ -12,9 +12,19 @@ export async function obtenerComentariosBarbero(
   setMensaje,
   id
 ) {
+  const { token } = obtenerCredenciales();
+
+  if (!token || !id) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
   try {
     const peticion = await axios.get(
-      `${urlComentarios}/GetComentariosBarbero/${id}`
+      `${urlComentarios}/GetComentariosBarbero/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
     );
 
     if (peticion.data.success) {
@@ -23,9 +33,8 @@ export async function obtenerComentariosBarbero(
       setMensaje(peticion.data.message);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error obteniendo las citas.";
-    setMensaje(mensajeError);
+    setMensaje("Ocurrió un error obteniendo los comentarios." + error);
+    setTimeout(() => setMensaje(""), 2000);
   }
 }
 
@@ -35,20 +44,30 @@ export async function obtenerComentariosClientes(
   setMensaje,
   id
 ) {
+  const { token } = obtenerCredenciales();
+
+  if (!token || !id) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
   try {
     const peticion = await axios.get(
-      `${urlComentarios}/GetComentariosCliente/${id}`
+      `${urlComentarios}/GetComentariosCliente/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
     );
 
     if (peticion.data.success) {
       setComentarios(peticion.data.data);
     } else {
       setMensaje(peticion.data.message);
+      setTimeout(() => setMensaje(""), 1000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error obteniendo las citas.";
-    setMensaje(mensajeError);
+    setMensaje("Ocurrió un error obteniendo los comentarios." + error);
+    setTimeout(() => setMensaje(""), 2000);
   }
 }
 
@@ -86,9 +105,11 @@ export async function anadirComentario(
   const { token } = obtenerCredenciales();
 
   if (!token || !id) {
-    setMensaje("Debe estar Registrado.");
+    setMensaje("Debe Registrarse.");
     return;
   }
+
+  const idUser = localStorage.getItem("id");
 
   const comentarioDto = {
     idComentarios: 0,
@@ -98,6 +119,8 @@ export async function anadirComentario(
     idBarbero: idBarbero,
     calificacion: calificacion,
     comentario: comentario,
+    changeDate: new Date(),
+    changeUser: idUser,
   };
 
   try {
@@ -108,24 +131,16 @@ export async function anadirComentario(
     if (peticion.data.success) {
       setMensaje(peticion.data.message);
 
-
       setTimeout(() => {
         setMensaje("");
       }, 2000);
     } else {
-      setMensaje("Error: " + peticion.data.message);
-      setTimeout(() => {
-        setMensaje("");
-      }, 2000);
+      setMensaje(peticion.data.message);
+      setTimeout(() => setMensaje(""), 2000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error al agregar la cita.";
-    setMensaje(mensajeError);
-
-    setTimeout(() => {
-      setMensaje("");
-    }, 2000);
+    setMensaje("Ocurrió un error agregando un comentario." + error);
+    setTimeout(() => setMensaje(""), 2000);
   }
 }
 
@@ -152,9 +167,11 @@ export async function actualizarComentario(
   const { token } = obtenerCredenciales();
 
   if (!token || !id) {
-    setMensaje("Debe estar Registrado.");
+    setMensaje("Debe Registrarse.");
     return;
   }
+  
+  const idUser = localStorage.getItem("id");
 
   const comentarioDto = {
     idComentarios: id,
@@ -164,6 +181,8 @@ export async function actualizarComentario(
     idBarbero: 0,
     calificacion: calificacion,
     comentario: comentario,
+    changeDate: new Date(),
+    changeUser: idUser,
   };
 
   try {
@@ -184,19 +203,12 @@ export async function actualizarComentario(
 
       window.location.reload();
     } else {
-      setMensaje("Error: " + peticion.data.message);
-      setTimeout(() => {
-        setMensaje("");
-      }, 2000);
+      setMensaje(peticion.data.message);
+      setTimeout(() => setMensaje(""), 2000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error al agregar la cita.";
-    setMensaje(mensajeError);
-
-    setTimeout(() => {
-      setMensaje("");
-    }, 2000);
+    setMensaje("Ocurrió un error actualizando el comentario." + error);
+    setTimeout(() => setMensaje(""), 2000);
   }
 }
 
@@ -205,9 +217,11 @@ export async function EliminarComentario(ClienteId, id, idCita, setMensaje) {
   const { token } = obtenerCredenciales();
 
   if (!token) {
-    setMensaje("Debe Registrarse");
+    setMensaje("Debe Registrarse.");
     return;
   }
+
+  const idUser = localStorage.getItem("id");
 
   const DeleteComentario = {
     idComentarios: id,
@@ -217,10 +231,12 @@ export async function EliminarComentario(ClienteId, id, idCita, setMensaje) {
     idBarbero: 0,
     calificacion: 0,
     comentario: "",
+    changeDate: new Date(),
+    changeUser: idUser,
   };
 
   try {
-    const peticion = await axios.delete(`${urlComentarios}/Remove`, {
+    const peticion = await axios.delete(`${urlComentarios}/Delete`, {
       headers: { Authorization: `Bearer ${token}` },
       data: DeleteComentario,
     });
@@ -230,15 +246,10 @@ export async function EliminarComentario(ClienteId, id, idCita, setMensaje) {
       window.location.reload();
     } else {
       setMensaje(peticion.data.message);
-      setTimeout(() => {
-        setMensaje("");
-      }, 2000);
+      setTimeout(() => setMensaje(""), 2000);
     }
   } catch (error) {
-    console.log(error);
-    const mensajeError =
-      error.response?.data.message ||
-      "Ocurrió un error eliminando la citas del barbero";
-    setMensaje(mensajeError);
+    setMensaje("Ocurrió un error eliminando el comentario" + error);
+    setTimeout(() => setMensaje(""), 2000);
   }
 }

@@ -3,10 +3,24 @@ import { urlBarbero } from "../endpoints/Endpoints";
 import { ValidacionesRegistroBarbero } from "../util/validaciones/ValidacionesRegistros";
 import { obtenerCredenciales } from "./CitasPeticiones";
 
-// Obtener lista de barberos
-export async function obtenerBarberos(setBarberos) {
+// Obtener lista de barberos - Apartado de busquedad y para agregar citas.
+export async function obtenerBarberosByBarberiaIdCliente(setBarberos) {
+  const { token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  const id = localStorage.getItem("barberiaId");
+
   try {
-    const peticion = await axios.get(`${urlBarbero}/GetBarberos`);
+    const peticion = await axios.get(
+      `${urlBarbero}/BarberosByBarberiaId/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
 
     if (peticion.data.success) {
       setBarberos(peticion.data.data);
@@ -16,15 +30,30 @@ export async function obtenerBarberos(setBarberos) {
   }
 }
 
-// Obtener barberos con respuesta
-export async function obtenerBarberosData(setBarberos, setRespuesta) {
+//Obtener Barberos de su Barberia - Admin
+export async function obtenerBarberosByBarberiaId(setBarberos, setRespuesta) {
+  const { token } = obtenerCredenciales();
+
+  const id = localStorage.getItem("barberiaId");
+
+  if (!token) {
+    setMensaje("Debe estar Registrado.");
+    return;
+  }
+
   try {
-    const peticion = await axios.get(`${urlBarbero}/GetBarberos`);
+    const peticion = await axios.get(
+      `${urlBarbero}/BarberosByBarberiaId/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
 
     if (peticion.data.success) {
       setBarberos(peticion.data.data);
     } else {
-      setRespuesta("No hay Barberos");
+      setRespuesta(peticion.data.message);
+      setTimeout(() => setRespuesta(""), 1000);
     }
   } catch (error) {
     console.error("Ha ocurrido un error: " + error);
@@ -33,14 +62,51 @@ export async function obtenerBarberosData(setBarberos, setRespuesta) {
 
 //Obtener Barbero por su Id
 export async function obtenerBarberoId(setBarberos, setRespuesta, id) {
-  try {
+  const { token } = obtenerCredenciales();
 
-    const peticion = await axios.get(`${urlBarbero}/BarberoById/${id}`);
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  try {
+    const peticion = await axios.get(`${urlBarbero}/BarberoById/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     if (peticion.data.success) {
       setBarberos(peticion.data.data);
     } else {
-      setRespuesta("No hay Barberos");
+      setRespuesta(peticion.data.message);
+    }
+  } catch (error) {
+    console.error("Ha ocurrido un error: " + error);
+  }
+}
+
+//Obtener Barbero por el Admin Id
+export async function obtenerBarberosByAdminId(setBarberos, setRespuesta) {
+  const { token } = obtenerCredenciales();
+
+  const id = localStorage.getItem("id");
+
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  try {
+    const peticion = await axios.get(
+      `${urlBarbero}/BarberosByBarberiaId/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    if (peticion.data.success) {
+      setBarberos(peticion.data.data);
+    } else {
+      setRespuesta(peticion.data.message);
     }
   } catch (error) {
     console.error("Ha ocurrido un error: " + error);
@@ -83,30 +149,80 @@ export async function anadirBarbero(
   const { id, token } = obtenerCredenciales();
 
   if (!token || !id) {
-    setMensaje("Token o ID no disponible");
+    setMensaje("Debe Registrarse.");
     return;
   }
 
   const barberoDto = {
     barberoId: 0,
+    barberiaId: id,
     nombre: nombre,
     telefono: telefono,
     email: email,
     password: password,
     imgbarbero: imgbarbero,
+    changeDate: new Date(),
+    changeUser: id,
   };
 
   try {
-    const { data } = await axios.post(`${urlBarbero}/save`, barberoDto, {
+    const peticion = await axios.post(`${urlBarbero}/save`, barberoDto, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (data.success) {
+    if (peticion.data.success) {
       setMensaje("Barbero Agregado Correctamente");
+      setTimeout(() => {
+        setMensaje("");
+        window.location.reload();
+      }, 1500);
     } else {
-      setMensaje(data.message);
+      setMensaje(peticion.data.message);
+      setTimeout(() => setMensaje(""), 1000);
     }
   } catch (error) {
     console.log("Ha ocurrido un error" + error);
   }
 }
+
+//Eliminar un Barbero
+export async function eliminarBarbero(idBarbero, setMensajeBarbero) {
+  const { id, token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensajeBarbero("Debe Registrarse");
+    return;
+  }
+
+  const DeleteBarberoDto = {
+    barberoId: idBarbero,
+    barberiaId: 0,
+    creationDate: "",
+    creationUser: id
+  };
+
+  try {
+    const peticion = await axios.delete(
+      `${urlBarbero}/DeleteByAdmin/${idBarbero}/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        data: DeleteBarberoDto,
+      }
+    );
+
+    if (peticion.data.success) {
+      setMensajeBarbero(peticion.data.message);
+      setTimeout(() => {
+        setMensajeBarbero("");
+        window.location.reload();
+      }, 1000);
+    } else {
+      setMensajeBarbero(peticion.data.message);
+      setTimeout(() => setMensajeBarbero(""), 1000);
+    }
+  } catch (error) {
+    setMensajeBarbero("Ocurrió un error eliminando la citas del barbero" + error);
+  }
+}
+
+//DEBO CREAR EL METODO DE ACTUALIZAR BARBERO

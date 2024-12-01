@@ -217,8 +217,8 @@ export default function AgregarBarberoAdminPc() {
             </div>
 
             <div className="div-button-agregar-barbero-pc">
-              <button type="submit" className="button-agregar-barbero-pc">
-                {cargando ? "Cargando..." : "Agregar Barbero"}
+              <button type="submit" className="button-agregar-barbero-pc" disabled={cargando}>
+                {cargando ? "Agregando..." : "Agregar Barbero"}
               </button>
             </div>
           </form>

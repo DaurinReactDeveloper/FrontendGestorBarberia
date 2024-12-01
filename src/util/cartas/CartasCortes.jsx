@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { obtenerEstilosBusqueda } from "../../peticiones/EstilosPeticiones";
+import {
+  EliminarEstiloByBarberiaId,
+  obtenerEstilosByAdminId,
+} from "../../peticiones/EstilosPeticiones";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 export function CartasCortes() {
   const [estilosCortes, setEstilosCortes] = useState([]);
   const [mensaje, setMensaje] = useState(null);
+  const [mensajeCortes, setMensajeCortes] = useState(null);
+  const [cargando, setCargando] = useState(false);
+
 
   useEffect(() => {
-    obtenerEstilosBusqueda(setEstilosCortes, setMensaje);
+    obtenerEstilosByAdminId(setEstilosCortes, setMensaje);
     Aos.init();
   }, []);
+
+  function PeticionEliminarCorte(idEstilo) {
+    setCargando(false);
+    EliminarEstiloByBarberiaId(idEstilo, setMensajeCortes);
+    setCargando(true);
+  }
 
   return (
     <>
@@ -24,7 +36,7 @@ export function CartasCortes() {
           >
             <img
               src={item.imgestilo}
-              className="card-img-top img-card-barbero"
+              className="card-img-top img-card-barbero img-card-estilo"
               alt="barbero"
             />
             <div className="card-body card-body-barbero">
@@ -37,6 +49,18 @@ export function CartasCortes() {
               <p className="card-text card-telefono-barbero">
                 Precio:<strong> ${item.precio} </strong>
               </p>
+
+              {mensajeCortes && <p className="carta-mensaje">{mensajeCortes}</p>}
+              
+              <div className="div-button-eliminar-corte-telefono">
+                <button
+                  type="button"
+                  className="boton-eliminar-corte"
+                  onClick={() => PeticionEliminarCorte(item.estiloId)}
+                >
+                {cargando ? "Cargando..." : "Eliminar Estilo"}
+                </button>
+              </div>
             </div>
           </div>
         ))}

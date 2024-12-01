@@ -18,9 +18,11 @@ export async function agregarEstilos(
   const { id, token } = obtenerCredenciales();
 
   if (!token || !id) {
-    setMensaje("Token o ID no disponible");
+    setMensaje("Debe Registrarse.");
     return;
   }
+
+    const idbarberia = localStorage.getItem("id"); 
 
   //Validaciones
   if (
@@ -38,12 +40,17 @@ export async function agregarEstilos(
     return;
   }
 
+  const idUser = localStorage.getItem("id");
+
   const EstiloDto = {
     estiloId: 0,
+    barberiaId: idbarberia,
     nombre: nombre,
     descripcion: descripcion,
     precio: precio,
     imgestilo: imagen,
+    changeDate: new Date(),
+    changeUser: idUser,
   };
 
   try {
@@ -53,37 +60,142 @@ export async function agregarEstilos(
 
     if (peticion.data.success) {
       setMensaje("Estilo Agregado Correctamente");
+      setTimeout(() => {
+        setMensaje("");
+        window.location.reload();
+      }, 1500);
     } else {
-      setMensaje("No se pudo agregar el estilo");
+      setMensaje(peticion.data.message);
+      setTimeout(() => setMensaje(""), 1000);
     }
   } catch (error) {
-    console.log("Ha ocurrido un error: " + error);
+    setMensaje("Ha ocurrido un error agregando el estilo: " + error);
+    setTimeout(() => setMensaje(""), 1000);
   }
 }
 
-// Obtener estilos - Busqueda
-export async function obtenerEstilosBusqueda(setData, setRespuesta) {
+// Obtener estilos - Admin
+export async function obtenerEstilosByAdminId(setData, setRespuesta) {
+  const { token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  const id = localStorage.getItem("id");
+
   try {
-    const peticion = await axios.get(`${urlEstilos}/GetEstilos`);
+    const peticion = await axios.get(`${urlEstilos}/EstilosByBarberiaId/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     if (peticion.data.success) {
       setData(peticion.data.data);
     } else {
-      setRespuesta("No hay Estilos");
+      setRespuesta(peticion.data.message);
+      setTimeout(() => setRespuesta(""), 1000);
     }
   } catch (error) {
-    console.log("Ha ocurrido un error: " + error);
+    setRespuesta("Ha ocurrido un error obteniendo el estilo de corte: " + error);
+    setTimeout(() => setRespuesta(""), 1000);
+  }
+}
+
+// Obtener estilos - Busqueda NAVBAR
+export async function obtenerEstilosByBarberiaId(setData, setRespuesta) {
+  const { token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  const id = localStorage.getItem("barberiaId");
+
+  try {
+    const peticion = await axios.get(`${urlEstilos}/EstilosByBarberiaId/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (peticion.data.success) {
+      setData(peticion.data.data);
+    } else {
+      setRespuesta(peticion.data.message);
+      setTimeout(() => setRespuesta(""), 1000);
+    }
+  } catch (error) {
+    setRespuesta("Ha ocurrido un error obteniendo el estilo: " + error);
+    setTimeout(() => setRespuesta(""), 1000);
   }
 }
 
 // Obtener estilos para cliente
-export async function obtenerEstilos(setEstilos) {
+export async function obtenerEstilosAddCita(setEstilos) {
+  const { token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  const id = localStorage.getItem("barberiaId");
+
   try {
-    const peticion = await axios.get(`${urlEstilos}/GetEstilos`);
+   
+    const peticion = await axios.get(`${urlEstilos}/EstilosByBarberiaId/${id}`,{ 
+      headers: {Authorization: `Bearer ${token}`}
+    });
+
     if (peticion.data.success) {
       setEstilos(peticion.data.data);
     }
+    else{
+      setEstilos(peticion.data.message);
+      setTimeout(() => setEstilos(""), 1000);
+    }
   } catch (error) {
-    console.error("Error al obtener los estilos:", error);
+    setEstilos("Ha ocurrido un error obteniendo los estilos:", error);
+    setTimeout(() => setEstilos(""), 1000);
   }
 }
+
+//Eliminar Estilo Admin
+export async function EliminarEstiloByBarberiaId(idEstilo,setMensajeCortes) {
+  const { id, token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  const DeleteEstilosDto = {
+    estiloId: idEstilo,
+    barberiaId: 0,
+    changeDate: new Date(),
+    changeUser: id,
+  };
+
+  try {
+    const peticion = await axios.delete(`${urlEstilos}/DeleteByAdmin/${idEstilo}/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      data: DeleteEstilosDto,
+    });
+
+    if (peticion.data.success) {
+      setMensajeCortes(peticion.data.message);
+      setTimeout(() => {
+        setMensajeCortes("");
+        window.location.reload();
+      }, 1000);
+    } else {
+      setMensajeCortes(peticion.data.message);
+      setTimeout(() => setMensajeCortes(""), 1000);
+    }
+  } catch (error) {
+      setMensajeCortes("Ocurrió un error eliminando el estilo.");   
+      setTimeout(() => setMensajeCortes(""), 1000); 
+  }
+}
+
+//Debo crear el metodo para actualizar un estilo

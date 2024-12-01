@@ -1,10 +1,11 @@
 import React from 'react'
 import { TituloGenericos } from '../../../util/titulos/TituloGenericos'
 import { PiAddressBookBold } from 'react-icons/pi'
-import { obtenerClientes } from '../../../peticiones/ClientePeticiones'
+import { obtenerClientesByAdminId } from '../../../peticiones/ClientePeticiones'
 import { PaginacionClientes } from '../../../util/paginacion/Paginacion'
 
 export default function ListaClienteAdminPc() {
+
   return (
     <>
     <TituloGenericos
@@ -17,7 +18,7 @@ export default function ListaClienteAdminPc() {
     <br />
 
     <PaginacionClientes
-      obtenerDatos={obtenerClientes} 
+      obtenerDatos={obtenerClientesByAdminId} 
       elementosPorPagina={3}
     />
   </>

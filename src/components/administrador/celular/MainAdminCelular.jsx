@@ -16,8 +16,10 @@ import { RiScissors2Fill } from "react-icons/ri";
 import { PiAddressBookBold } from "react-icons/pi";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { GiExitDoor } from "react-icons/gi";
+import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
 import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
 import { BienvenidoCelular } from "../../../util/bienvenido/BienvenidoCelular";
+import ReporteIngresosCelular from "./ReporteIngresosCelular";
 
 export default function MainAdminCelular({ nombre }) {
   const [opcionSeleccionada, setOpcionSeleccionada] = useState(null);
@@ -34,6 +36,7 @@ export default function MainAdminCelular({ nombre }) {
     { key: "ListaBarberos", content: <ListaBarberosAdminCelular /> },
     { key: "ListaCliente", content: <ListaClienteAdminCelular /> },
     { key: "ListaEstilo", content: <ListaCortesAdminCelular /> },
+    { key: "ReporteIngresos", content: <ReporteIngresosCelular /> },
     {
       key: "informacion",
       content: (
@@ -106,6 +109,14 @@ export default function MainAdminCelular({ nombre }) {
 
               <button
                 className="button-accordion-body"
+                onClick={() => manejarClickBoton("ReporteIngresos")}
+              >
+                <LiaFileInvoiceDollarSolid  />
+                Reporte de ingresos
+              </button>
+              
+              <button
+                className="button-accordion-body button-accordion-body-admin-ingresos"
                 onClick={() => manejarClickBoton("informacion")}
               >
                 <AiOutlineInfoCircle />

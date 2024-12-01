@@ -15,10 +15,7 @@ export default function GestionCitasCelularBarbero() {
   return (
     <>
       <TituloGenericos titulo={"GESTION DE CITAS"} icono={FaImagePortrait} />
-
       <br />
-      <br />
-
       <div>
         {citas.length > 0 ? (
           citas.map((citasCliente) => (

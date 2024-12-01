@@ -1,7 +1,7 @@
 import React from 'react'
 import { TituloGenericos } from '../../../util/titulos/TituloGenericos'
 import { PiAddressBookBold } from 'react-icons/pi'
-import { obtenerEstilosBusqueda } from '../../../peticiones/EstilosPeticiones'
+import { obtenerEstilosByAdminId } from '../../../peticiones/EstilosPeticiones'
 import { PaginacionCortes } from '../../../util/paginacion/Paginacion'
 
 export default function ListaCortesAdminPc() {
@@ -17,7 +17,7 @@ export default function ListaCortesAdminPc() {
     <br />
 
     <PaginacionCortes
-      obtenerDatos={obtenerEstilosBusqueda} 
+      obtenerDatos={obtenerEstilosByAdminId} 
       elementosPorPagina={3}
     />
   </>

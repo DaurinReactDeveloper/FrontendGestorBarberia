@@ -15,7 +15,7 @@ export default function Comentario() {
   const [mensajeCita, setMensajeCita] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [cita, setCita] = useState(null);
-  const [loading, setLoading] = useState(false); // Estado para manejo de carga
+  const [cargando, setCargando] = useState(false); // Estado para manejo de carga
   //Variables ComentarioDto
   const [idCliente, setIdCliente] = useState(0);
   const [idCorte, setIdCorte] = useState(0);
@@ -64,7 +64,7 @@ export default function Comentario() {
   // Llamar a agregar comentario con manejo de estado de carga
   function llamarAgregarComentario(e) {
     e.preventDefault();
-    setLoading(true); // Iniciar carga
+    setCargando(true); // Iniciar carga
 
     anadirComentario(
       id,
@@ -80,7 +80,7 @@ export default function Comentario() {
       setMensajeId,
       setMensajeCitaId
     ).finally(() => {
-      setLoading(false); // Finalizar carga
+      setCargando(false); // Finalizar carga
       setCalificacion(1); 
       setComentario(""); 
     });
@@ -151,8 +151,8 @@ export default function Comentario() {
 
             {/* Botón Enviar */}
             <div className="div-button-comentario">
-              <button type="submit" className="button-comentario" disabled={loading}>
-                {loading ? "Cargando..." : "Enviar Comentario"}
+              <button type="submit" className="button-comentario" disabled={cargando}>
+                {cargando ? "cargando..." : "Enviar Comentario"}
               </button>
             </div>
 

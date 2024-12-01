@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { actualizarCitaBarbero, EliminarCita, obtenerCitasBarberoById } from "../../../peticiones/CitasPeticiones";
+import {
+  actualizarCitaBarbero,
+  EliminarCita,
+  obtenerCitasBarberoById,
+} from "../../../peticiones/CitasPeticiones";
 import { formatDate } from "../../../util/cartas/CartasCitas";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import { FiScissors } from "react-icons/fi";
@@ -9,10 +13,12 @@ export default function CitasAceptadasCelularBarbero() {
   const [citas, setCitas] = useState([]);
   const [mensaje, setMensaje] = useState("");
   const [cargando, setCargando] = useState(true); // Estado para controlar la carga
+  const [mostrarMensaje, setMostrarMensaje] = useState(false); // Estado para mostrar mensaje
 
   useEffect(() => {
     obtenerCitasBarberoById(setCitas, setMensaje).finally(() => {
-      setCargando(false); // Cambiar a false cuando se complete la carga
+      setCargando(false);
+      setMostrarMensaje(citas.length > 0);
     });
   }, []);
 
@@ -23,7 +29,7 @@ export default function CitasAceptadasCelularBarbero() {
       </section>
       <br />
       <section>
-        {cargando ? ( // Mostrar cargador si está cargando
+        {cargando ? (
           <p>Cargando...</p>
         ) : (
           <CitaTablaBarbero
@@ -33,12 +39,18 @@ export default function CitasAceptadasCelularBarbero() {
           />
         )}
       </section>
-      {mensaje && <p className="p-mensaje-table-barbero-pc">{mensaje}</p>}
+      {mostrarMensaje && mensaje && (
+        <p className="p-mensaje-table-barbero-pc">{mensaje}</p>
+      )}
     </>
   );
 }
-
-export function CitaTablaBarbero({ citas, estado, botonFinalizar = false, botonEliminar = false }) {
+export function CitaTablaBarbero({
+  citas,
+  estado,
+  botonFinalizar = false,
+  botonEliminar = false,
+}) {
   const citasAceptadas = citas.filter((cita) => cita.estado === estado);
   const [mensaje, setMensaje] = useState("");
   const [cargandoCitaId, setCargandoCitaId] = useState(null); // Estado para manejar carga por cita
@@ -48,12 +60,11 @@ export function CitaTablaBarbero({ citas, estado, botonFinalizar = false, botonE
   }
 
   async function actualizarCita(citaId) {
-    setCargandoCitaId(citaId); // Iniciar carga para esta cita
+    setCargandoCitaId(citaId);
     await actualizarCitaBarbero(setMensaje, citaId, "Realizada");
-    setCargandoCitaId(null); // Finalizar carga
+    setCargandoCitaId(null);
   }
 
-  // Determine if the table should be scrollable
   const isScrollable = citasAceptadas.length > 7;
 
   return (
@@ -94,14 +105,22 @@ export function CitaTablaBarbero({ citas, estado, botonFinalizar = false, botonE
                         onClick={() => actualizarCita(citaBarbero.citaId)}
                         disabled={cargandoCitaId === citaBarbero.citaId} // Deshabilitar si está cargando
                       >
-                        {cargandoCitaId === citaBarbero.citaId ? "Cargando..." : "Finalizar"}
+                        {cargandoCitaId === citaBarbero.citaId
+                          ? "Cargando..."
+                          : "Finalizar"}
                       </button>
                     )}
                     {botonEliminar && (
                       <button
                         type="button"
                         className="button-finalizar-aceptada"
-                        onClick={() => EliminarCita(setMensaje, citaBarbero.citaId, citaBarbero.estado)}
+                        onClick={() =>
+                          EliminarCita(
+                            setMensaje,
+                            citaBarbero.citaId,
+                            citaBarbero.estado
+                          )
+                        }
                       >
                         Eliminar
                       </button>

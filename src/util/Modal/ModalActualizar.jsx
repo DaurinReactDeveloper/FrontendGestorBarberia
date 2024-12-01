@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LiaCommentSolid } from "react-icons/lia";
-import "./../../css/modal.css";
 import { actualizarComentario } from "../../peticiones/ComentariosPeticiones";
+import "./../../css/modal.css";
 
 export function ModalActualizar({ id }) {
   const [calificacion, setCalificacion] = useState("");

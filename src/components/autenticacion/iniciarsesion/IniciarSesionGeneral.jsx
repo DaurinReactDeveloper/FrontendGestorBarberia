@@ -15,7 +15,7 @@ export default function IniciarSesionGeneral() {
   const [contrasena, setContrasena] = useState("");
   const [error, setError] = useState("");
   const [resultado, setResultado] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [cargando, setcargando] = useState(false);
   const [mensajeNombre, setMensajeNombre] = useState("");
   const [mensajeContrasena, setMensajeContrasena] = useState("");
 
@@ -37,9 +37,15 @@ export default function IniciarSesionGeneral() {
     case "administrador":
       titulo = "BIENVENIDO - ADMIN";
       imagen = "/imagenAdmin.webp";
-      url = `${urlAdm}/GetAdministrador/${nombre}/${contrasena}`;
+      url = `${urlAdm}/GetAdministradorBarberia/${nombre}/${contrasena}`;
       sesionId = "administradoresId";
       break;
+      case "Daurin":
+        titulo = "BIENVENIDO - DAURIN";
+        imagen = "/DaurinAdmin.webp";
+        url = `${urlAdm}/GetAdministradorApp/${nombre}/${contrasena}`;
+        sesionId = "administradoresId";
+        break;
     default:
       titulo = "INICIAR SESIÓN";
       imagen = null;
@@ -47,11 +53,13 @@ export default function IniciarSesionGeneral() {
   }
 
   function cambiarNombre(e) {
-    setNombre(e.target.value);
+    const nuevoNombre = e.target.value;
+    setNombre(nuevoNombre);
   }
 
   function cambiarContrasena(e) {
-    setContrasena(e.target.value);
+    const nuevaContrasena = e.target.value;
+    setContrasena(nuevaContrasena);
   }
 
   function manejarSubmit(e) {
@@ -66,7 +74,7 @@ export default function IniciarSesionGeneral() {
       setMensajeNombre,
       setMensajeContrasena,
       setError,
-      setLoading,
+      setcargando,
       setResultado
     );
   }
@@ -134,10 +142,10 @@ export default function IniciarSesionGeneral() {
              
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={cargando}
                   className="button-sesiones"
                 >
-                  {loading ? "Cargando..." : "INICIAR SESIÓN"}
+                  {cargando ? "cargando..." : "INICIAR SESIÓN"}
                 </button>
 
               </div>

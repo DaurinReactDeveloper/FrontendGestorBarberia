@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
+.section-listar-admin {
+  overflow-x: scroll;
+}
+
+.col-th-listarAdmin {
+    font-weight: unset;
+    font-family: "PoppinsBold";
+}
+
+.button-editar-admin,.button-eliminar-admin{
+  border: unset;
+  background-color: #1B1B1B;
+  color: white;
+  border-radius: 1vw;
+  margin: 0 auto;
+}
+
+.button-eliminar-admin{
+  background-color: #C44949;
+}
+
+.td-button-editar-admins,.td-button-eliminar-admins{
+  text-align: center;
+}
+
+.mensaje-admin-eliminar{
+  color: #1B1B1B;
+  text-align: center;
+}
+
+@media (min-width:1024px) {
+  .section-listar-admin {
+    overflow-x: unset;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    background-color: #D9D9D9;
+    border-radius: 0.5vw;
+    max-height: 32vw;
+    overflow-y: scroll;
+  }
+}
+
+
+@media (min-width:1444px) {
+  .section-listar-admin {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+}

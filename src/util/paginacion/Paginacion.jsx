@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { EliminarEstiloByBarberiaId } from "../../peticiones/EstilosPeticiones";
+import { eliminarCliente } from "../../peticiones/ClientePeticiones";
+import { TiUserDelete } from "react-icons/ti";
+import { MdDelete } from "react-icons/md";
+import { eliminarBarbero } from "../../peticiones/BarberosPeticiones";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
 import "../../css/paginacion.css";
 
 export function Paginacion({
@@ -117,6 +122,8 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
   const [respuesta, setRespuesta] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
   const [cargando, setCargando] = useState(false); // Estado de carga
+  const [mensajeBarbero, setMensajeBarbero] = useState("");
+  const [barberoEliminado, setBarberoEliminado] = useState(null);
 
   useEffect(() => {
     const cargarDatos = async () => {
@@ -141,6 +148,11 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
     return email.length > 24 ? email.slice(0, 10) + "***" : email;
   };
 
+  function llamarEliminarBarbero(idBarbero) {
+    eliminarBarbero(idBarbero, setMensajeBarbero);
+    setBarberoEliminado(idBarbero);
+  }
+
   return (
     <>
       {cargando ? (
@@ -158,6 +170,19 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
                 className="col-paginacion-barbero"
                 data-aos="zoom-in-down"
               >
+                <div className="div-delete-barbero-pc">
+                  <button
+                    type="button"
+                    className="button-delete-barbero-pc"
+                    onClick={() => llamarEliminarBarbero(item.barberoId)}
+                  >
+                    <MdDelete
+                      className="icon-delete-barbero-pc"
+                      title="Eliminar"
+                    />
+                  </button>
+                </div>
+
                 <img
                   src={item.imgbarbero}
                   className="card-img-top img-paginacion-barbero"
@@ -171,6 +196,10 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
                   <p className="card-text">Email: {truncarEmail(item.email)}</p>
                   <p className="card-text">Teléfono: {item.telefono}</p>
                 </div>
+
+                {barberoEliminado === item.barberoId && mensajeBarbero && (
+                  <p className="mensaje-cliente">{mensajeBarbero}</p>
+                )}
 
                 {/* Boton ver detalles - Barbero */}
                 <div className="div-detalles-paginacion">
@@ -242,15 +271,17 @@ export function PaginacionBarberos({ obtenerDatos, elementosPorPagina }) {
 
 export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
   const [clientes, setCliente] = useState([]);
-  const [respuesta, setRespuesta] = useState("");
+  const [mensaje, setMensaje] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
-  const [cargando, setCargando] = useState(false); // Estado de carga
+  const [cargando, setCargando] = useState(false);
+  const [mensajeCliente, setMensajeCliente] = useState("");
+  const [clienteEliminado, setClienteEliminado] = useState(null);
 
   useEffect(() => {
     const cargarDatos = async () => {
-      setCargando(true); // Iniciar carga
-      await obtenerDatos(setCliente, setRespuesta);
-      setCargando(false); // Finalizar carga
+      setCargando(true);
+      await obtenerDatos(setCliente, setMensaje);
+      setCargando(false);
     };
     cargarDatos();
     Aos.init();
@@ -269,14 +300,19 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
     return email.length > 24 ? email.slice(0, 10) + "***" : email;
   };
 
+  function llamarEliminarCliente(idCliente) {
+    eliminarCliente(idCliente, setMensajeCliente);
+    setClienteEliminado(idCliente);
+  }
+
   return (
     <>
       {cargando ? (
-        <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
+        <p className="p-mensaje-carga-paginacion">Cargando...</p>
       ) : clientes.length === 0 ? (
         <p className="p-mensaje-carga-paginacion">
-          {respuesta || "No hay Clientes disponibles"}
-        </p> // Mensaje si no hay clientes
+          {mensaje || "No hay Clientes disponibles"}
+        </p>
       ) : (
         <div>
           <section className="section-principal-paginacion-barbero">
@@ -286,6 +322,18 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
                 className="col-paginacion-barbero"
                 data-aos="zoom-in-down"
               >
+                <div className="div-delete-cliente-pc">
+                  <button
+                    type="button"
+                    className="button-delete-cliente-pc"
+                    onClick={() => llamarEliminarCliente(item.clienteId)}
+                  >
+                    <TiUserDelete
+                      className="icon-delete-cliente-pc"
+                      title="Eliminar"
+                    />
+                  </button>
+                </div>
                 <img
                   src={item.imgcliente}
                   className="card-img-top img-paginacion-barbero"
@@ -299,6 +347,10 @@ export function PaginacionClientes({ obtenerDatos, elementosPorPagina }) {
                   <p className="card-text">Email: {truncarEmail(item.email)}</p>
                   <p className="card-text">Teléfono: {item.telefono}</p>
                 </div>
+
+                {clienteEliminado === item.clienteId && mensajeCliente && (
+                  <p className="mensaje-cliente">{mensajeCliente}</p>
+                )}
 
                 {/* Boton ver detalles - Barbero */}
                 <div className="div-detalles-paginacion">
@@ -373,12 +425,14 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
   const [respuesta, setRespuesta] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
   const [cargando, setCargando] = useState(false); // Estado de carga
+  const [corteEliminado, setCorteEliminado] = useState(null);
+  const [mensajeBarbero, setMensajeBarbero] = useState(null);
 
   useEffect(() => {
     const cargarDatos = async () => {
-      setCargando(true); // Iniciar carga
+      setCargando(true);
       await obtenerDatos(setCortes, setRespuesta);
-      setCargando(false); // Finalizar carga
+      setCargando(false);
     };
     cargarDatos();
     Aos.init();
@@ -393,14 +447,19 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
     setPaginaActual(numeroPagina);
   };
 
+  function llamarEliminarEstilo(idEstilo) {
+    EliminarEstiloByBarberiaId(idEstilo, setMensajeBarbero);
+    setCorteEliminado(idEstilo);
+  }
+
   return (
     <>
       {cargando ? (
-        <p className="p-mensaje-carga-paginacion">Cargando...</p> // Mensaje de carga
+        <p className="p-mensaje-carga-paginacion">Cargando...</p>
       ) : cortes.length === 0 ? (
         <p className="p-mensaje-carga-paginacion">
           {respuesta || "No hay Cortes disponibles"}
-        </p> // Mensaje si no hay cortes
+        </p>
       ) : (
         <div>
           <section className="section-principal-paginacion-barbero">
@@ -415,6 +474,7 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
                   className="card-img-top img-paginacion-barbero"
                   alt="corte"
                 />
+
                 <div className="card-body card-body-paginacion-barbero">
                   <p className="card-text">
                     <strong>{item.nombre}</strong>
@@ -423,6 +483,19 @@ export function PaginacionCortes({ obtenerDatos, elementosPorPagina }) {
                   <p className="card-text">
                     Precio: <strong>${item.precio}</strong>
                   </p>
+
+                  {corteEliminado === item.estiloId && (
+                    <p className="mensaje-corte-pc">{mensajeBarbero}</p>
+                  )}
+                  <div className="div-button-eliminar-estilo">
+                    <button
+                      type="button"
+                      className="button-eliminar-estilo"
+                      onClick={() => llamarEliminarEstilo(item.estiloId)}
+                    >
+                      Eliminar Estilo
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

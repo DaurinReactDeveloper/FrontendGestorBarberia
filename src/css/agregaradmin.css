@@ -1,0 +1,134 @@
+/* CELULAR                               */
+
+.label-agregar-admin {
+  width: 100%;
+  padding-bottom: 1.5vw;
+}
+
+.form-agregar-admin {
+  margin-top: 5vw;
+}
+
+.p-label-agregar-admin {
+  text-decoration: underline;
+  margin-bottom: 0vw;
+}
+
+.input-agregar-admin {
+  background-color: #d9d9d9;
+  border: none;
+  border: 0.1vw solid #9e9999;
+  border-radius: 0.9vw;
+  padding: 0.8vw 1.5vw;
+  width: 100%;
+}
+
+.article-agregar-admin-button {
+  display: flex;
+  justify-content: center;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+}
+
+.button-agregar-admin {
+  background-color: #1b1b1b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5vw;
+  border: none;
+  padding: 1vw 2vw;
+  width: 40%;
+  border-radius: 5vw;
+}
+
+.p-mensaje-agregar-admin {
+  color: brown;
+  text-align: justify;
+  margin-bottom: 0.1vw;
+}
+
+.p-mensaje-agregar-admin-general {
+  color: black;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .article-agregar-admin-pc {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    padding-top: 1vw;
+  }
+
+  .article-img-admin-pc {
+    width: 35%;
+  }
+
+  .article-inputs-admin-pc {
+    width: 40%;
+  }
+
+  .img-agregar-admin-pc {
+    width: min-content;
+  }
+
+  .p-label-agregar-admin-pc {
+    color: white;
+    margin-bottom: 0vw;
+    padding-bottom: 0.1vw;
+    text-decoration: underline;
+    padding-top: 0.5vw;
+  }
+
+  .input-agregar-admin-pc {
+    width: 30vw;
+    padding: 0.5vw 0.5vw;
+    background-color: #d9d9d9;
+    border-radius: 0.2vw;
+    border: none;
+    border: 0.1vw solid #9e9999;
+  }
+
+  .article-boton-agrega-admin-pc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1.5vw;
+  }
+
+  .p-mensaje-agregar-admin-pc {
+    color: white;
+    width: max-content;
+    margin-bottom: 0vw;
+  }
+
+  .boton-agregar-admin-pc {
+    border: unset;
+    background-color: #d9d9d9;
+    border-radius: 5vw;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vw;
+    padding-top: 0.3vw;
+    padding-bottom: 0.3vw;
+  }
+
+  .boton-agregar-admin-pc:hover {
+    background-color: #045525;
+    transition: background-color 1s;
+    color: white;
+  }
+}
+
+@media (min-width: 1420px) {
+  .boton-agregar-admin-pc {
+    width: 30%;
+    gap: 0.1vw;
+  }
+}

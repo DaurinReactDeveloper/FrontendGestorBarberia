@@ -65,14 +65,15 @@ export default function Navbar() {
                   Barbero
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/administrador"}>
+                  Admin
+                </Link>
+              </li>
             </ul>
 
-            <Link
-              type="button"
-              className="buttonAdminNavbar"
-              to={"/administrador"}
-            >
-              <FaUserSecret /> Admin
+            <Link type="button" className="buttonAdminNavbar" to={"/Daurin"}>
+              <FaUserSecret /> DG
             </Link>
           </div>
         </div>

@@ -7,9 +7,8 @@ import { RiScissors2Fill } from "react-icons/ri";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import "./../../../css/agregarestiloadmincelular.css";
 
-// Componente funcional para agregar estilos de corte de cabello desde un dispositivo móvil
 export default function AgregarEstiloAdminCelular() {
-  // Definición de los estados para almacenar los valores de los campos del formulario
+  // Definición de los estados para los campos del formulario
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState("");
@@ -21,26 +20,26 @@ export default function AgregarEstiloAdminCelular() {
   const [mensajePrecio, setMensajePrecio] = useState("");
   const [mensajeImagen, setMensajeImagen] = useState("");
   const [mensaje, setMensaje] = useState("");
+  
+  // Estado para manejar el estado de carga del botón
+  const [cargando, setCargando] = useState(false);
 
-  // Función para manejar el cambio en el campo "Nombre"
+  // Función para manejar el cambio en los campos del formulario
   function extraerNombre(e) {
     const nuevoNombre = e.target.value;
     setNombre(nuevoNombre);
   }
 
-  // Función para manejar el cambio en el campo "Descripción"
   function extraerDescripcion(e) {
     const nuevaDescripcion = e.target.value;
     setDescripcion(nuevaDescripcion);
   }
 
-  // Función para manejar el cambio en el campo "Precio"
   function extraerPrecio(e) {
     const nuevoPrecio = e.target.value;
     setPrecio(nuevoPrecio);
   }
 
-  // Función para manejar el cambio en el campo "Imagen"
   function extraerImagen(e) {
     const imagenNueva = e.target.files[0];
     setImagen(imagenNueva);
@@ -50,27 +49,21 @@ export default function AgregarEstiloAdminCelular() {
   async function PeticionEstilos(e) {
     e.preventDefault();
 
-    // Autenticación del usuario usando FireBase
+    // Iniciar estado de carga
+    setCargando(true);
+
     const isAuthenticated = await loginUser(
       "dauringonzales7@gmail.com",
       "Daurin16"
     );
 
-    // Verifica si el usuario está autenticado
     if (isAuthenticated) {
-      // Verifica si todos los campos necesarios están completos
       if (imagen && nombre && precio && descripcion) {
         try {
-          // Referencia a la ubicación donde se almacenará la imagen en Firebase Storage
           const imageRef = ref(storage, `estilosdecorte/${nombre}.jpg`);
-          
-          // Sube la imagen a Firebase Storage
           await uploadBytes(imageRef, imagen);
-          
-          // Obtiene la URL de descarga de la imagen desde Firebase Storage
           const imageUrl = await getDownloadURL(imageRef);
 
-          // Llama al método para agregar el estilo usando los valores capturados
           agregarEstilos(
             nombre,
             descripcion,
@@ -89,14 +82,16 @@ export default function AgregarEstiloAdminCelular() {
     } else {
       console.log("No se pudo autenticar al usuario.");
     }
+
+    // Finalizar estado de carga
+    setCargando(false);
   }
 
-  // Renderiza el formulario y los elementos del UI
+  // Renderizar el formulario con el botón en estado de carga
   return (
     <>
       <section>
         <TituloGenericos titulo={"AGREGAR ESTILOS"} icono={RiScissors2Fill} />
-
         <br />
 
         <form onSubmit={PeticionEstilos}>
@@ -105,7 +100,6 @@ export default function AgregarEstiloAdminCelular() {
               <p className="p-label-celular">Nombre</p>
               <input
                 type="text"
-                accept="image/jpeg"
                 placeholder="Inserte el nombre del corte"
                 required
                 minLength={6}
@@ -158,14 +152,19 @@ export default function AgregarEstiloAdminCelular() {
             </label>
           </div>
 
+          {mensaje && <p className="mensaje-agregar-estilo">{mensaje}</p>}
+
           <div className="div-boton-submit-estilos-admin">
-            <button type="submit" className="boton-submit-estilos-admin">
-              Agregar Estilo
+            <button
+              type="submit"
+              className="boton-submit-estilos-admin"
+              disabled={cargando}
+            >
+              {cargando ? "Cargando..." : "Agregar Estilo"}
             </button>
           </div>
         </form>
 
-        {mensaje && <p>{mensaje}</p>}
       </section>
     </>
   );

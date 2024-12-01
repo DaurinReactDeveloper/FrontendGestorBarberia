@@ -159,6 +159,10 @@
     font-size: 10vw;
   }
 
+  .carta-mensaje{
+    text-align: center;
+  }
+  
 @media (min-width: 1024px) {
   .card-cita {
     width: 30%;

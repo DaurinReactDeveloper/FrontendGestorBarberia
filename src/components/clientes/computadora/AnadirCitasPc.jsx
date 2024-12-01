@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { CgAddR } from "react-icons/cg";
-import { anadirCita, obtenerFechaActual } from "../../../peticiones/CitasPeticiones";
-import { obtenerBarberos } from "../../../peticiones/BarberosPeticiones";
-import { obtenerEstilos } from "../../../peticiones/EstilosPeticiones";
+import {
+  anadirCita,
+  obtenerFechaActual,
+} from "../../../peticiones/CitasPeticiones";
+import { obtenerBarberosByBarberiaIdCliente } from "../../../peticiones/BarberosPeticiones";
+import { obtenerEstilosAddCita } from "../../../peticiones/EstilosPeticiones";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import { CartasEstiloCitas } from "../../../util/cartas/CartasEstilo";
 import "../../../css/agregarcitaspc.css";
@@ -36,8 +39,8 @@ export function AnadirCitasPc() {
   const [precioEstilo, setPrecioEstilo] = useState("");
 
   useEffect(() => {
-    obtenerEstilos(setEstilos);
-    obtenerBarberos(setBarberos);
+    obtenerEstilosAddCita(setEstilos);
+    obtenerBarberosByBarberiaIdCliente(setBarberos);
   }, []);
 
   // Funciones para obtener los datos de los inputs
@@ -114,7 +117,9 @@ export function AnadirCitasPc() {
               min={obtenerFechaActual()}
               required
             />
-            {mensajeFecha && <p className="mensaje-resultado-cita">{mensajeFecha}</p>}
+            {mensajeFecha && (
+              <p className="mensaje-resultado-cita">{mensajeFecha}</p>
+            )}
           </div>
           <div className="div-inputs-cita">
             <p>Hora</p>
@@ -126,7 +131,9 @@ export function AnadirCitasPc() {
               max="18:00"
               required
             />
-            {mensajeHora && <p className="mensaje-resultado-cita">{mensajeHora}</p>}
+            {mensajeHora && (
+              <p className="mensaje-resultado-cita">{mensajeHora}</p>
+            )}
           </div>
           <div className="div-inputs-cita">
             <p>Estilo</p>
@@ -143,7 +150,9 @@ export function AnadirCitasPc() {
                 </option>
               ))}
             </select>
-            {mensajeEstilo && <p className="mensaje-resultado-cita">{mensajeEstilo}</p>}
+            {mensajeEstilo && (
+              <p className="mensaje-resultado-cita">{mensajeEstilo}</p>
+            )}
           </div>
           <div className="div-inputs-cita">
             <p>Nombre del Barbero</p>
@@ -160,11 +169,13 @@ export function AnadirCitasPc() {
                 </option>
               ))}
             </select>
-            {mensajeBarbero && <p className="mensaje-resultado-cita">{mensajeBarbero}</p>}
+            {mensajeBarbero && (
+              <p className="mensaje-resultado-cita">{mensajeBarbero}</p>
+            )}
           </div>
 
           {mensaje && <p className="mensaje-resultado-cita">{mensaje}</p>}
-         
+
           <div className="div-agregar-cita">
             <button
               type="submit"

@@ -23,6 +23,9 @@ export default function AgregarBarberoAdminCelular() {
   const [mensajeContrasena, setMensajeContrasena] = useState("");
   const [mensaje, setMensaje] = useState("");
 
+  // Estado de carga
+  const [cargando, setCargando] = useState(false);
+
   // Funciones
   function extraerImagen(e) {
     const nuevaImagen = e.target.files[0];
@@ -52,6 +55,7 @@ export default function AgregarBarberoAdminCelular() {
   // Función Peticion Barbero
   async function PeticionBarbero(e) {
     e.preventDefault();
+    setCargando(true); // Inicia el estado de carga
 
     // Autenticación del usuario - FireBase
     const isAuthenticated = await loginUser(
@@ -83,6 +87,7 @@ export default function AgregarBarberoAdminCelular() {
           );
         } catch (error) {
           console.log("Ha ocurrido un error guardando el barbero: " + error);
+          setMensaje("Error al guardar el barbero.");
         }
       } else {
         setMensaje("Por favor complete todos los campos.");
@@ -91,6 +96,8 @@ export default function AgregarBarberoAdminCelular() {
       console.log("No se pudo autenticar al usuario.");
       setMensaje("Autenticación fallida.");
     }
+
+    setCargando(false); // Finaliza el estado de carga
   }
 
   return (
@@ -175,15 +182,20 @@ export default function AgregarBarberoAdminCelular() {
             </label>
           </div>
 
+          {mensaje && <p className="mensaje-agregar-barbero">{mensaje}</p>}
+
           {/* DIV - BUTTON */}
           <div className="div-boton-submit-agregar-admin">
-            <button type="submit" className="boton-submit-agregar-admin">
-              Agregar Barbero
+            <button
+              type="submit"
+              className="boton-submit-agregar-admin"
+              disabled={cargando} // Desactivar el botón mientras carga
+            >
+              {cargando ? "Agregando..." : "Agregar Barbero"}
             </button>
           </div>
         </form>
 
-        {mensaje && <p>{mensaje}</p>}
       </section>
     </>
   );

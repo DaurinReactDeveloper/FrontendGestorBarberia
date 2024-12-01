@@ -2,7 +2,7 @@ import React from "react";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import { PiAddressBookBold } from "react-icons/pi";
 import { PaginacionBarberos } from "../../../util/paginacion/Paginacion";
-import { obtenerBarberos } from "../../../peticiones/BarberosPeticiones";
+import { obtenerBarberosByAdminId } from "../../../peticiones/BarberosPeticiones";
 
 export default function ListaBarberosAdminPc() {
   return (
@@ -17,7 +17,7 @@ export default function ListaBarberosAdminPc() {
       <br />
 
       <PaginacionBarberos
-        obtenerDatos={obtenerBarberos} 
+        obtenerDatos={obtenerBarberosByAdminId} 
         elementosPorPagina={3}
       />
     </>

@@ -2,10 +2,18 @@
     .boton-informacion-admin-pc{
         padding-bottom: 24vw;
     }
+
+     .boton-informacion-admin-Daurin{
+        padding-bottom: 31vw;   
+    } 
 }
 
 @media (min-width:1420px) {
     .boton-informacion-admin-pc{
-        padding-bottom: 27vw;
+        padding-bottom: 26vw;
     }
+
+    .boton-informacion-admin-Daurin{
+        padding-bottom: 31vw;   
+    } 
 }

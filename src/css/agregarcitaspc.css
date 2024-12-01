@@ -45,6 +45,12 @@
   padding: 1.5vw 20vw;
 }
 
+.mensaje-agregar-cita{
+  text-align: center;
+  margin-top: 5vw;
+  margin-bottom: 0vw;
+}
+
 @media (min-width: 1024px) {
   .section-citas {
     display: flex;
@@ -101,7 +107,8 @@
 
   .mensaje-resultado-cita {
     color: white;
-    text-align: justify;
+    text-align: center;
     padding-top: 1vw;
   }
+
 }

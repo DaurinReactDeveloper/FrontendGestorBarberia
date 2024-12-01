@@ -1,6 +1,9 @@
 import axios from "axios";
 import { urlCita } from "../endpoints/Endpoints";
-import { ValidacionesAgregarCitas } from "../util/validaciones/ValidacionesRegistros";
+import {
+  ValidacionesAdminCitasReportes,
+  ValidacionesAgregarCitas,
+} from "../util/validaciones/ValidacionesRegistros";
 
 // Función para obtener el token y el id del localStorage
 export function obtenerCredenciales() {
@@ -43,7 +46,7 @@ export async function anadirCita(
   const { id, token } = obtenerCredenciales();
 
   if (!token || !id) {
-    setMensaje("Token o ID no disponible");
+    setMensaje("Debe estar registrado");
     return;
   }
 
@@ -55,6 +58,8 @@ export async function anadirCita(
     clienteId: id,
     estiloId: estilo,
     estado: "En Proceso",
+    changeDate: new Date(),
+    changeUser: id,
   };
 
   try {
@@ -64,17 +69,14 @@ export async function anadirCita(
 
     if (peticion.data.success) {
       setMensaje(peticion.data.message);
-
-      setTimeout(() => {
-        setMensaje("");
-      }, 1000);
+      setTimeout(() => setMensaje(""), 2000);
     } else {
       setMensaje("Error: " + peticion.data.message);
+      setTimeout(() => setMensaje(""), 2000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error al agregar la cita.";
-    setMensaje(mensajeError);
+    setMensaje("Ocurrió un error al agregar la cita" + error);
+    setTimeout(() => setMensaje(""), 2000);
   }
 }
 
@@ -83,7 +85,7 @@ export async function obtenerCitas(setCitas, setMensaje) {
   const { id, token } = obtenerCredenciales();
 
   if (!token || !id) {
-    setMensaje("Token o ID no disponible");
+    setMensaje("Debe registrarse.");
     return;
   }
 
@@ -96,20 +98,19 @@ export async function obtenerCitas(setCitas, setMensaje) {
       setCitas(peticion.data.data);
     } else {
       setMensaje(peticion.data.message);
+      setTimeout(() => setMensaje(""), 1000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error obteniendo las citas";
-    setMensaje(mensajeError);    
+    setMensaje("Ocurrió un error obteniendo las citas" + error);
   }
 }
 
 //Obtener Cita por el Id
-export async function obtenerCitaById(citaId,setCitas, setMensajeCitas) {
-  const {token } = obtenerCredenciales();
+export async function obtenerCitaById(citaId, setCitas, setMensajeCitas) {
+  const { token } = obtenerCredenciales();
 
   if (!token) {
-    setMensajeCitas("Debe Registrarse");
+    setMensajeCitas("Debe Registrarse.");
     return;
   }
 
@@ -122,17 +123,16 @@ export async function obtenerCitaById(citaId,setCitas, setMensajeCitas) {
       setCitas(peticion.data.data);
     } else {
       setMensajeCitas(peticion.data.message);
+      setTimeout(() => setMensaje(""), 1000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error obteniendo la cita";
-      setMensajeCitas(mensajeError);    
+    setMensajeCitas("Ocurrió un error obteniendo la cita" + error);
   }
 }
 
 //ObtenerCitasClientesById - Detalles
-export async function obtenerCitasById(id,setCita, setMensajeCita) {
-  const {token } = obtenerCredenciales();
+export async function obtenerCitasById(id, setCita, setMensajeCita) {
+  const { token } = obtenerCredenciales();
 
   if (!token) {
     setMensajeCita("Debe Registrarse.");
@@ -148,11 +148,10 @@ export async function obtenerCitasById(id,setCita, setMensajeCita) {
       setCita(peticion.data.data);
     } else {
       setMensajeCita(peticion.data.message);
+      setTimeout(() => setMensajeCita(""), 1000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error obteniendo las citas";
-      setMensajeCita(mensajeError);    
+    setMensajeCita("Ocurrió un error obteniendo las citas" + error);
   }
 }
 
@@ -161,29 +160,29 @@ export async function obtenerCitasBarberoById(setCitas, setMensaje) {
   const { id, token } = obtenerCredenciales();
 
   if (!token || !id) {
-    setMensaje("Token o ID no disponible");
+    setMensaje("Debe registrarse.");
     return;
   }
 
   try {
-    const { data } = await axios.get(`${urlCita}/GetCitasByBarbero/${id}`, {
+    const peticion = await axios.get(`${urlCita}/GetCitasByBarbero/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (data.success) {
-      if (data.data.length > 0) {
-        setCitas(data.data);
+    if (peticion.data.success) {
+      if (peticion.data.data.length > 0) {
+        setCitas(peticion.data.data);
       } else {
-        setMensaje("No Tiene Citas");
+        setMensaje(peticion.data.message);
+        setTimeout(() => setMensaje(""), 2000);
       }
     } else {
       setCitas([]);
-      setMensaje("No se pudieron obtener las citas");
+      setMensaje(peticion.data.message);
+      setTimeout(() => setMensaje(""), 2000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error obteniendo la citas del barbero";
-    setMensaje(mensajeError);  
+    setMensaje("Ocurrió un error obteniendo la citas del barbero." + error);
   }
 }
 
@@ -192,13 +191,17 @@ export async function actualizarCitaBarbero(setMensaje, id, estado) {
   const { token } = obtenerCredenciales();
 
   if (!token) {
-    setMensaje("Debe Registrarse");
+    setMensaje("Debe Registrarse.");
     return;
   }
+
+  const idUser = localStorage.getItem("id");
 
   const updateData = {
     citaId: id,
     estado: estado,
+    changeDate: new Date(),
+    changeUser: idUser,
   };
 
   try {
@@ -211,14 +214,11 @@ export async function actualizarCitaBarbero(setMensaje, id, estado) {
       window.location.reload();
     } else {
       setMensaje(peticion.data.message);
-      setTimeout(() => {
-        setMensaje("");
-      }, 1000);
+      setTimeout(() => setMensaje(""), 1000);
     }
   } catch (error) {
-    const mensajeError = error.response?.data.message || "Ocurrió un error actualizando la cita del barbero";
-    setMensaje(mensajeError);   
-   }
+    setMensaje("Ocurrió un error actualizando la cita del barbero." + error);
+  }
 }
 
 // Eliminar cita
@@ -226,9 +226,12 @@ export async function EliminarCita(setMensaje, id, estado = "") {
   const { token } = obtenerCredenciales();
 
   if (!token) {
-    setMensaje("Debe Registrarse");
+    setMensaje("Debe Registrarse.");
     return;
   }
+
+  const idUser = localStorage.getItem("id");
+  console.log();
 
   const DeleteData = {
     citaId: id,
@@ -238,6 +241,8 @@ export async function EliminarCita(setMensaje, id, estado = "") {
     clienteId: 0,
     estiloId: 0,
     estado: estado,
+    creationDate: "",
+    changeUser: idUser,
   };
 
   try {
@@ -251,14 +256,10 @@ export async function EliminarCita(setMensaje, id, estado = "") {
       window.location.reload();
     } else {
       setMensaje(peticion.data.message);
-      setTimeout(() => {
-        setMensaje("");
-      }, 1000);
+      setTimeout(() => setMensaje(""), 1000);
     }
   } catch (error) {
-    const mensajeError =
-      error.response?.data.message || "Ocurrió un error eliminando la citas del barbero";
-    setMensaje(mensajeError);    
+    setMensaje("Ocurrió un error eliminando la citas del barbero" + error);
   }
 }
 

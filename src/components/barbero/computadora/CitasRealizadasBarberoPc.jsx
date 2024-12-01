@@ -6,26 +6,26 @@ import { obtenerCitasBarberoById } from "../../../peticiones/CitasPeticiones";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 
 export default function CitasRealizadasBarberoPc() {
-
-  const renderCita = (citasCliente) =>(
+  const renderCita = (citasCliente) => (
     <CartasCitas
-    key={citasCliente.citaId}
-    estado={citasCliente.estado}
-    img={citasCliente.estilo.imgestilo}
-    alt="Citas"
-    fecha={citasCliente.fecha}
-    hora={citasCliente.hora}
-    nombre={citasCliente.estilo.nombre}
-    descripcion={citasCliente.estilo.descripcion}
-    precio={citasCliente.estilo.precio}
-    idCita={citasCliente.citaId}
-    mostrarSoloRealizadas={true}
-    esCliente={false}
-  />
+      key={citasCliente.citaId}
+      estado={citasCliente.estado}
+      img={citasCliente.estilo.imgestilo}
+      alt="Citas"
+      fecha={citasCliente.fecha}
+      hora={citasCliente.hora}
+      nombre={citasCliente.estilo.nombre}
+      descripcion={citasCliente.estilo.descripcion}
+      precio={citasCliente.estilo.precio}
+      idCita={citasCliente.citaId}
+      mostrarSoloRealizadas={true}
+      esCliente={false}
+    />
   );
-  
+
   return (
     <>
+      <br />
       <TituloGenericos
         titulo={"CITAS REALIZADAS"}
         icono={LuScissorsSquareDashedBottom}

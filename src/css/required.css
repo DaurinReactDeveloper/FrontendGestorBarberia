@@ -1,0 +1,99 @@
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
+.h2-required {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "PoppinsBold";
+  padding-top: 5vw;
+}
+
+.span-sesion-required {
+  color: #c44949;
+}
+
+.div-link-sesion-required {
+  align-items: center;
+}
+
+.article-link-required {
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+}
+
+.link-sesion-required,
+.link-register-required {
+  text-decoration: none;
+  padding: 1vw 5vw;
+  border-radius: 5vw;
+}
+
+.link-sesion-required {
+  background-color: #1b1b1b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.link-register-required {
+  background-color: #d9d9d9;
+  color: #1b1b1b;
+  font-family: "PoppinsBold";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+@media (min-width: 1024px) {
+  .h2-required {
+    padding-top: 2.5vw;
+  }
+
+  .article-link-required {
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+  }
+
+  .link-sesion-required,
+  .link-register-required {
+    padding: 0.4vw 2.5vw;
+  }
+
+  .link-sesion-required {
+    gap: 0.3vw;
+  }
+
+  .link-register-required {
+    gap: 0.3vw;
+  }
+
+  .div-img-requerid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-requerid {
+    width: 40%;
+    justify-content: center;
+  }
+
+  .link-sesion-required:hover {
+    background-color: #c44949;
+    transition: background-color 1s;
+  }
+
+  .link-register-required:hover {
+    background-color: #c44949;
+    color: white;
+    transition: background-color 1s;
+  }
+}

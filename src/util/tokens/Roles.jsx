@@ -2,7 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import { Navigate } from "react-router-dom";
 
 // Función para obtener el rol del usuario desde el token
-const getRoleFromToken = () => {
+export const getRoleFromToken = () => {
   const token = localStorage.getItem("token");
 
   if (token) {
@@ -38,14 +38,15 @@ const ProtectedRoute = ({ element, requiredRole, requiredRole2, requiredRole3, e
   const tokenExpired = isTokenExpired();
 
   if (tokenExpired) {
-    return <Navigate to="/iniciarsesion" />;
+    return <Navigate to={elementDefault} />;
   }
 
   if (role === requiredRole || role === requiredRole2 || role === requiredRole3) {
     return element;
+  } else{
+    return <Navigate to={elementDefault} />;
   }
 
-  return <Navigate to={elementDefault} />;
 };
 
 export default ProtectedRoute;

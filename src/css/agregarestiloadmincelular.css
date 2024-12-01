@@ -54,6 +54,22 @@
   border-radius: 1vw;
 }
 
+.mensaje-agregar-estilo{
+text-align: center;
+margin-bottom: 0vw;
+padding-top: 7vw;
+}
+
+
+@media (min-width:768px) {
+  
+  .boton-submit-estilos-admin {
+    width: 40%;
+
+  }
+  
+}
+
 @media (min-width: 1024px) {
   .article-inputs-estilos-pc {
     display: flex;
@@ -113,6 +129,13 @@
     background-color: #263238;
     color: white;
     border-radius: 0.1vw; 
+  }
+  
+  .mensaje-agregar-estilo-pc{
+    text-align: center;
+    color: white;
+    margin-bottom: 0vw;
+    margin-top: 2vw;
   }
 
 }

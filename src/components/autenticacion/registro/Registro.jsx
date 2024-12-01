@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../../util/navbar/Navbar";
 import Footer from "../../../util/footer/Footer";
 import { FaUserCircle } from "react-icons/fa";
-import { ValidacionesRegistro } from "../../../util/validaciones/ValidacionesRegistros";
-import { urlCliente } from "../../../endpoints/Endpoints";
 import { storage } from "../../../util/firebase/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { loginUser } from "../../../util/firebase/userFireBase";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
+import { obtenerBarberias } from "../../../peticiones/BarberiasPeticiones";
+import { anadirCliente } from "../../../peticiones/RegistroPeticiones";
 import Aos from "aos";
 import axios from "axios";
 import "aos/dist/aos.css";
 import "./../../../css/registro.css";
+
 
 export default function Registro() {
   const [img, setImg] = useState(null);
@@ -27,9 +28,13 @@ export default function Registro() {
   const [registroMensaje, setRegistroMensaje] = useState(null);
   const [registroErrorMensaje, setRegistroErrorMensaje] = useState(null);
   const [authError, setAuthError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [cargando, setCargando] = useState(false);
+  const [barberias, setBarberias] = useState([]);
+  const [barberiaID, setBarberiaId] = useState("");
+  const [mensajeBarberia, setMensajeBarberia] = useState("");
 
   useEffect(() => {
+    obtenerBarberias(setBarberias, setMensajeBarberia);
     Aos.init();
   }, []);
 
@@ -41,28 +46,36 @@ export default function Registro() {
   };
 
   function extraerNombre(e) {
-    setNombre(e.target.value);
+    const NuevoNombre = e.target.value;
+    setNombre(NuevoNombre);
   }
 
   function extraerTelefono(e) {
-    setTelefono(e.target.value);
+    const NuevoTelefono = e.target.value;
+    setTelefono(NuevoTelefono);
   }
 
   function extraerEmail(e) {
-    setEmail(e.target.value);
+    const NuevoEmail = e.target.value;
+    setEmail(NuevoEmail);
   }
 
   function extraerContrasena(e) {
-    setContrasena(e.target.value);
+    const NuevoContrasena = e.target.value;
+    setContrasena(NuevoContrasena);
   }
+
+  const manejarCambioBarberia = (e) => {
+    const NuevaBarberia = e.target.value;
+    setBarberiaId(NuevaBarberia);
+  };
 
   async function enviarDatos(e) {
     e.preventDefault();
-
-    // Validaciones
-    const esValido = ValidacionesRegistro(
+    anadirCliente(
       img,
       nombre,
+      barberiaID,
       telefono,
       email,
       contrasena,
@@ -70,66 +83,12 @@ export default function Registro() {
       setNombreMensaje,
       setTelefonoMensaje,
       setEmailMensaje,
-      setContrasenaMensaje
+      setContrasenaMensaje,
+      setRegistroMensaje,
+      setRegistroErrorMensaje,
+      setCargando,
+      setAuthError
     );
-
-    if (esValido) {
-      setIsLoading(true);
-
-      // Autenticación del usuario - FireBase
-      const isAuthenticated = await loginUser(
-        "dauringonzales7@gmail.com",
-        "Daurin16"
-      );
-
-      if (isAuthenticated) {
-        if (img && nombre && telefono && email && contrasena) {
-          try {
-            const imageRef = ref(storage, `clientes/${nombre}.jpg`);
-            await uploadBytes(imageRef, img);
-            const imageUrl = await getDownloadURL(imageRef);
-
-            const clienteData = {
-              //ClienteDto
-              Imgcliente: imageUrl,
-              Nombre: nombre,
-              Telefono: telefono,
-              Email: email,
-              Password: contrasena,
-            };
-
-            const peticion = await axios.post(
-              `${urlCliente}/save`,
-              clienteData
-            );
-
-            if (peticion.data.success) {
-              setTimeout(() => {
-                setRegistroMensaje("Cliente registrado exitosamente");
-                window.location.href = "/iniciarsesion";
-              }, 1000);
-            } else {
-              setRegistroErrorMensaje(peticion.data.message);
-
-              setTimeout(() => {
-                setRegistroErrorMensaje(null);
-              }, 2000);
-            }
-          } catch (error) {
-            console.error(
-              "Error subiendo la imagen o enviando los datos",
-              error.message
-            );
-          }
-        }
-      } else {
-        setAuthError("No se pudo autenticar al usuario.");
-      }
-
-      setIsLoading(false);
-    } else {
-      setRegistroErrorMensaje("Por favor complete todos los campos.");
-    }
   }
 
   return (
@@ -178,7 +137,7 @@ export default function Registro() {
                   <input
                     type="text"
                     className="registro-input"
-                    placeholder="Ingrese su numero sin guiones"
+                    placeholder="Ingrese su numero de telefono sin guiones"
                     value={telefono}
                     onChange={extraerTelefono}
                     minLength={6}
@@ -243,6 +202,32 @@ export default function Registro() {
                 </div>
               </div>
 
+              {/* div 3: Barberia */}
+              <div className="registro-articulo">
+                <div className="div_articulo">
+                  <p>Barberia</p>
+                  <select
+                    value={barberiaID}
+                    onChange={manejarCambioBarberia}
+                    className="registro-select-barberias"
+                    required
+                  >
+                    <option>Selecciona su barberia</option>
+
+                    {barberias.map((barberia,index) => (
+                      <option
+                        key={index}
+                        value={barberia.barberiasId}
+                      >
+                        {barberia.nombreBarberia}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {mensajeBarberia && <p>{mensajeBarberia}</p>}
+
               {registroMensaje && (
                 <p className="mensajeRegistroEnvio">{registroMensaje}</p>
               )}
@@ -259,9 +244,9 @@ export default function Registro() {
                 <button
                   type="submit"
                   className="registro-boton"
-                  disabled={isLoading}
+                  disabled={cargando}
                 >
-                  {isLoading ? "Cargando..." : "Registrarme"}
+                  {cargando ? "Cargando..." : "Registrarme"}
                 </button>
               </div>
             </form>

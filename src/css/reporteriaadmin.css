@@ -1,0 +1,229 @@
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
+.p-fecha-reporteria {
+  font-family: "PoppinsBold";
+  text-align: center;
+  padding-top: 2vw;
+}
+
+.input-date-reporteria {
+  width: 36.6vw;
+}
+
+.article-fecha-tabla-reporteria {
+  padding-bottom: 5vw;
+}
+
+.div-button-enviar-fecha-reporteria {
+  display: flex;
+  justify-content: center;
+  padding-top: 5vw;
+}
+
+.button-enviar-fecha-reporteria {
+  border: none;
+  width: 30%;
+  border-radius: 5vw;
+  background-color: #2c2c2c;
+  color: white;
+}
+
+/* CUADROS */
+.arcticle-cuadro-reporteria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5vw;
+  padding-bottom: 5vw;
+}
+
+.div-cuadro-reporteria {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  justify-content: center;
+  padding-top: 1vw;
+}
+
+.p-div-cuadro-reporteria {
+  margin-bottom: 0vw;
+}
+
+.p-cantidad-div-cuadro-reporteria {
+  font-family: "PoppinsBold";
+  text-align: center;
+  color: white;
+  padding-top: 9.8vw;
+}
+
+.div-padre-cuadro-reporteria {
+  background-color: #d9d9d9;
+  width: 60%;
+  border-radius: 0.5vw;
+}
+
+.div-cantidad-cuadro-reporteria {
+  background-color: #2c2c2c;
+  border-radius: 0.5vw;
+  margin: 1.5vw;
+  height: 25vw;
+}
+
+.tabla-citas-reporteria {
+  overflow-x: scroll;
+  text-align: center;
+}
+
+.th-tabla-reporteria {
+  white-space: nowrap;
+}
+
+
+.div-inputs-fechas-reporteria{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+@media (min-width:768px) {
+  
+  .button-enviar-fecha-reporteria {
+    width: 20%;
+  }
+  
+  .div-padre-cuadro-reporteria {
+    width: 45%;
+  }
+
+  .tabla-citas-reporteria{
+    padding: 2vw;
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+.section-row-ingresos-pc{
+  justify-content: center;
+}
+
+  .div-principal-buscador-ingreso-pc {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+  }
+
+  .div-ingresos-fechas-pc {
+    display: flex;
+    background-color: #d9d9d9;
+    border-radius: 0.3vw;
+    width: fit-content;
+    padding: 1vw;
+    align-items: center;
+    gap: 1vw;
+  }
+
+  .p-fecha-ingreso-pc {
+    color: white;
+    margin-bottom: 0vw;
+  }
+
+  .span-de-ingreso-pc,
+  .span-hasta-ingreso-pc {
+    color: black;
+  }
+
+  .button-ingreso-pc {
+    border: none;
+    background-color: #2c2c2c;
+    color: white;
+    border-radius: 1vw;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+  }
+
+  .input-date-ingreso-pc {
+    background-color: #2c2c2c;
+    border: none;
+    border: 0.1vw solid #2c2c2c;
+    border-radius: 0.1vw;
+    color: white;
+    text-align: center;
+  }
+
+  .input-date-ingreso-pc::-webkit-calendar-picker-indicator {
+    filter: brightness(0) invert(1); /* Ajusta para que se adapte a fondos oscuros */
+    cursor: pointer;
+  }
+
+  /* TABLA */
+  .tabla-container {
+    max-width: 100%;
+    max-height: 40vw;
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid #d9d9d9;
+    background-color: #d9d9d9;
+  }
+
+  .table-pc {
+    width: 100%;
+    border-collapse: collapse;
+    
+  }
+
+  .table-pc tbody tr:nth-child(even) {
+    background-color: #2c2c2c2f;
+  }
+
+  .th-tabla-reporteria-pc,
+  .td-tabla-reporteria-pc {
+    white-space: nowrap;
+    text-align: center;
+    padding: 0.7vw;
+  }
+
+  .th-tabla-reporteria-pc {
+    background-color: #2c2c2c;
+    color: white;
+    font-weight: 100;
+  }
+
+  .mensaje-error {
+    color: white;
+    text-align: center;
+    
+  }
+
+  /* CUADROS DEL LADO */
+  .article-cuadros-registros-pc {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+  }
+
+  .div-cuadro-reporteria {
+    padding-top: 0.5vw;
+    gap: 0.3vw;
+  }
+
+  .p-cantidad-div-cuadro-reporteria {
+    padding-top: 2vw;
+  }
+
+  .div-padre-cuadro-reporteria {
+    width: 100%;
+    border-radius: 0.1vw;
+  }
+
+  .div-cantidad-cuadro-reporteria {
+    border-radius: 0.2vw;
+    margin: 0vw;
+    margin: 0.5vw;
+    height: 6vw;
+  }
+}

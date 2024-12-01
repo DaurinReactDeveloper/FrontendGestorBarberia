@@ -14,7 +14,7 @@ export async function obtenerUsuario(
   setMensajeNombre,
   setMensajeContrasena,
   setError,
-  setLoading,
+  setCargando,
   setResultado
 ) {
   e.preventDefault();
@@ -35,32 +35,34 @@ export async function obtenerUsuario(
     return;
   }
 
-  setLoading(true);
+  setCargando(true);
   setError("");
   setResultado("");
 
   localStorage.removeItem("token");
   localStorage.removeItem("id");
   localStorage.removeItem("nombre");
+  localStorage.removeItem("token_expiry");
+  localStorage.removeItem("barberiaId");
 
   try {
     const peticion = await axios.get(url);
 
     if (peticion.data.data.success) {
-      
       const tokenData = peticion.data.token;
       const idData = peticion.data.data.data[sessionId];
       const nombreData = peticion.data.data.data.nombre;
+      const idBarberia = peticion.data.data.data.barberiaId;
 
       localStorage.setItem("id", idData);
+      localStorage.setItem("barberiaId", idBarberia);
       localStorage.setItem("token", tokenData);
       localStorage.setItem("nombre", nombreData);
 
       const decodedToken = jwtDecode(tokenData);
       const now = Date.now();
-      const expiryDate = now + 30 * 60 * 1000; 
+      const expiryDate = now + 30 * 60 * 1000;
       localStorage.setItem("token_expiry", expiryDate.toString());
-
       setResultado("Inicio de sesión exitoso.");
       navigate(`/${tipo}`);
     } else {
@@ -69,7 +71,7 @@ export async function obtenerUsuario(
   } catch (error) {
     setError(error.response?.data?.message || "Error en la solicitud.");
   } finally {
-    setLoading(false);
+    setCargando(false);
   }
 }
 
@@ -79,5 +81,6 @@ export function CerrarSesion(navigate) {
   localStorage.removeItem("id");
   localStorage.removeItem("nombre");
   localStorage.removeItem("token_expiry");
+  localStorage.removeItem("barberiaId");
   navigate("/");
 }

@@ -34,6 +34,15 @@
   text-align: justify; /* Alineación del texto justificada */
 }
 
+
+@media (min-width:768px) {
+  .card-estilo {
+    box-shadow: 0vw 1vw 0.6vw rgba(0, 0, 0, 0.215); /* Sombra de la tarjeta ajustada */
+  }
+
+}
+
+
 /* Ajustes responsivos para pantallas más grandes */
 @media (min-width: 1024px) {
   /* Estilos para la sección de tarjetas en pantallas grandes */
@@ -51,7 +60,7 @@
     margin-bottom: 1vw;
     min-height: 10vw;
     border-radius: 0.5vw;
-    box-shadow: 0 0.2vw 0.2vw rgba(0, 0, 0, 0.215); /* Sombra de la tarjeta ajustada */
+    box-shadow: 0vw 0.2vw 0.2vw rgba(0, 0, 0, 0.215); /* Sombra de la tarjeta ajustada */
   }
 
   /* Estilos para la imagen en pantallas grandes */

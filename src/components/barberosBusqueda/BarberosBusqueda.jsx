@@ -13,7 +13,7 @@ export default function BarberoBusqueda() {
 
         <br />
 
-        <CartasBarbero />
+        <CartasBarbero busqueda={false} claseBusqueda={"imagenBarberoBusqueda"}/>
       </main>
       <Footer />
     </>

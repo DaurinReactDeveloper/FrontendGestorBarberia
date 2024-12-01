@@ -1,3 +1,4 @@
+// Registro
 export function ValidacionesRegistro(
   img,
   nombre,
@@ -58,6 +59,7 @@ export function ValidacionesRegistro(
   return esValido;
 }
 
+//Iniciar Sesion
 export function ValidacionesIniciarSesion(
   nombre,
   contrasena,
@@ -91,6 +93,7 @@ export function ValidacionesIniciarSesion(
   return esValido;
 }
 
+// Citas
 export function ValidacionesAgregarCitas(
   fecha,
   hora,
@@ -115,7 +118,6 @@ export function ValidacionesAgregarCitas(
     const fechaSeleccionada = new Date(fecha);
     const fechaActual = new Date();
 
-    // Ajustar las horas a 00:00 para comparar solo la fecha
     fechaActual.setHours(0, 0, 0, 0);
     fechaSeleccionada.setHours(0, 0, 0, 0);
 
@@ -175,6 +177,7 @@ export function ValidacionesAgregarCitas(
   return esValido;
 }
 
+//Estilos
 export function ValidacionesRegistroEstilos(
   nombre,
   descripcion,
@@ -211,6 +214,20 @@ export function ValidacionesRegistroEstilos(
     setMensajeDescripcion("");
   }
 
+  // Validación de la Descripcion
+  if (descripcion.length < 40) {
+    setMensajeDescripcion(
+      "Debe completar este campo con al menos 40 caracteres."
+    );
+    esValido = false;
+
+    setTimeout(() => {
+      setMensajeDescripcion("");
+    }, 1000);
+  } else {
+    setMensajeDescripcion("");
+  }
+
   // Validación del barbero
   if (precio === "") {
     setMensajePrecio("Debe completar este campo.");
@@ -236,6 +253,7 @@ export function ValidacionesRegistroEstilos(
   return esValido;
 }
 
+//Barbero
 export function ValidacionesRegistroBarbero(
   nombre,
   telefono,
@@ -324,18 +342,19 @@ export function ValidacionesAddComentario(
 ) {
   let esValido = true;
 
+  //Validación del id
+  if (idCliente != id) {
+    setMensajeId(
+      "El servicio que intenta comentar no corresponde a su historial."
+    );
+    esValido = false;
 
-//Validación del id
-if (idCliente != id) {
-  setMensajeId("El servicio que intenta comentar no corresponde a su historial.");
-  esValido = false;
-
-  setTimeout(() => {
+    setTimeout(() => {
+      setMensajeId("");
+    }, 1000);
+  } else {
     setMensajeId("");
-  }, 1000);
-} else {
-  setMensajeId("");
-}
+  }
 
   // Validación de la Calificación (debe estar entre 1 y 5)
   if (calificacion < 1 || calificacion > 5) {
@@ -349,18 +368,17 @@ if (idCliente != id) {
     setMensajeCalificacion("");
   }
 
-    // Validación idCita
-    if (idCita <= 0) {
-      setMensajeCitaId("No se pudo obtener el id de la cita.");
-      esValido = false;
-  
-      setTimeout(() => {
-        setMensajeCitaId("");
-      }, 1000);
-    } else {
+  // Validación idCita
+  if (idCita <= 0) {
+    setMensajeCitaId("No se pudo obtener el id de la cita.");
+    esValido = false;
+
+    setTimeout(() => {
       setMensajeCitaId("");
-    }
-  
+    }, 1000);
+  } else {
+    setMensajeCitaId("");
+  }
 
   // Validación del Comentario
   if (!comentario || comentario.trim().length === 0) {
@@ -395,9 +413,8 @@ export function ValidacionesUpdateComentario(
   calificacion,
   comentario,
   setMensajeCalificacion,
-  setMensajeComentario,
+  setMensajeComentario
 ) {
-
   let esValido = true;
 
   // Validación de la Calificación (debe estar entre 1 y 5)
@@ -436,6 +453,104 @@ export function ValidacionesUpdateComentario(
     }, 1000);
   } else {
     setMensajeComentario("");
+  }
+
+  return esValido;
+}
+
+//Admin
+export function ValidacionesAdmin(
+  nombre,
+  email,
+  telefono,
+  password,
+  setNombreMensaje,
+  setEmailMensaje,
+  setTelefonoMensaje,
+  setPasswordMensaje
+) {
+  
+  let esValido = true;
+
+  // Validar nombre
+  if (nombre.trim() === "") {
+    esValido = false;
+    setNombreMensaje("Debe completar este campo.");
+    setTimeout(() => {
+      setNombreMensaje("");
+    }, 1500);
+  } else {
+    setNombreMensaje(null);
+  }
+
+  // Validar email
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular simple para validar emails
+  if (!regexEmail.test(email)) {
+    esValido = false;
+    setEmailMensaje("Debe ingresar un email válido.");
+    setTimeout(() => {
+      setEmailMensaje("");
+    }, 1500);
+  } else {
+    setEmailMensaje(null);
+  }
+
+  // Validar teléfono
+  const regexTelefono = /^\d+$/; // Asumiendo un formato de teléfono de 10 dígitos -
+  if (!regexTelefono.test(telefono)) {
+    esValido = false;
+    setTelefonoMensaje("Debe ingresar un número de teléfono válido.");
+    setTimeout(() => {
+      setTelefonoMensaje("");
+    }, 1500);
+  } else {
+    setTelefonoMensaje(null);
+  }
+
+  // Validar contraseña
+  if (password.length <= 5) {
+    esValido = false;
+    setPasswordMensaje("La contraseña debe tener al menos 6 caracteres.");
+    setTimeout(() => {
+      setPasswordMensaje("");
+    }, 1500);
+  } else {
+    setPasswordMensaje(null);
+  }
+
+  return esValido;
+}
+
+//Admin Obtener Reporte
+export function ValidacionesAdminCitasReportes(
+  fechaInicio,
+  fechaFin,
+  setFechaInicioMensaje,
+  setFechaFinMensaje,
+) {
+  
+  let esValido = true;
+
+  // Validar fechaInicio
+  if (fechaInicio === "") {
+    esValido = false;
+    setFechaInicioMensaje("Debe completar este campo.");
+    setTimeout(() => {
+      setFechaInicioMensaje("");
+    }, 1500);
+  } else {
+    setFechaInicioMensaje(null);
+  }
+
+  // Validar fechaFin
+  if (fechaFin === "") {
+    esValido = false;
+    setFechaFinMensaje("Debe completar este campo.");
+    setTimeout(() => {
+      setFechaFinMensaje("");
+    }, 1500);
+  } else {
+    setFechaFinMensaje(null);
   }
 
   return esValido;

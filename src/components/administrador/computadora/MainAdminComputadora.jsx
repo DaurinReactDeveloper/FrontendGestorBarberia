@@ -18,6 +18,7 @@ import ListaCortesAdminPc from "./ListaCortesAdminPc";
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import "../../../css/mainadmincomputadora.css";
+import ReporteIngresosPc from "./ReporteIngresosPc";
 
 export default function MainAdminComputadora({nombre}) {
   const [opcionSeleccionada, setOpcionSeleccionada] = useState(null);
@@ -33,6 +34,7 @@ export default function MainAdminComputadora({nombre}) {
 
   const opciones = [
     { key: "AgregarEstilo", content: <AgregarEstiloAdminPc /> },
+    { key: "Reportes", content: <ReporteIngresosPc /> },
     { key: "AgregarBarbero", content: <AgregarBarberoAdminPc /> },
     { key: "ListaBarberos", content: <ListaBarberosAdminPc /> },
     { key: "ListaCliente", content: <ListaClienteAdminPc /> },
@@ -108,6 +110,14 @@ export default function MainAdminComputadora({nombre}) {
           >
             <PiAddressBookBold className="icon-botones-opciones-cliente-pc" />
             Lista de Cortes
+          </button>
+
+          <button
+            className="boton-opciones-cliente-pc"
+            onClick={() => manejarClickBoton("Reportes")}
+          >
+            <PiAddressBookBold className="icon-botones-opciones-cliente-pc" />
+            Reporte de Ingresos
           </button>
 
           <button

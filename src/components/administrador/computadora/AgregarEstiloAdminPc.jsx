@@ -12,12 +12,16 @@ export default function AgregarEstiloAdminPc() {
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState("");
   const [imagen, setImagen] = useState([]);
-  //mensajes
+  
+  // Mensajes
   const [mensajeNombre, setMensajeNombre] = useState("");
   const [mensajeDescripcion, setMensajeDescripcion] = useState("");
   const [mensajePrecio, setMensajePrecio] = useState("");
   const [mensajeImagen, setMensajeImagen] = useState("");
   const [mensaje, setMensaje] = useState("");
+
+  // Estado para controlar el botón de "Cargando"
+  const [cargando, setCargando] = useState(false);
 
   function extraerNombre(e) {
     const nuevoNombre = e.target.value;
@@ -39,26 +43,26 @@ export default function AgregarEstiloAdminPc() {
     setImagen(imagenNueva);
   }
 
-  //función agregar estilos
+  // Función para agregar estilos
   async function PeticionEstilos(e) {
     e.preventDefault();
 
-    // Autenticación del usuario - FireBase
+    // Activa el estado "cargando"
+    setCargando(true);
+
     const isAuthenticated = await loginUser(
       "dauringonzales7@gmail.com",
       "Daurin16"
     );
-    1;
 
     if (isAuthenticated) {
-      //si el usuario esta bien...
       if (imagen && nombre && precio && descripcion) {
         try {
           const imageRef = ref(storage, `estilosdecorte/${nombre}.jpg`);
           await uploadBytes(imageRef, imagen);
           const imageUrl = await getDownloadURL(imageRef);
 
-          //Llamar el método para agregar la función
+          // Llamar el método para agregar el estilo
           agregarEstilos(
             nombre,
             descripcion,
@@ -71,12 +75,15 @@ export default function AgregarEstiloAdminPc() {
             setMensajeImagen
           );
         } catch (error) {
-          console.log("Ha ocurrido un error guardando la cita " + error);
+          console.log("Ha ocurrido un error guardando el estilo " + error);
         }
       }
     } else {
       console.log("No se pudo autenticar al usuario.");
     }
+
+    // Desactiva el estado "cargando" después de completar la solicitud
+    setCargando(false);
   }
 
   return (
@@ -92,15 +99,12 @@ export default function AgregarEstiloAdminPc() {
         <br />
 
         <form onSubmit={PeticionEstilos}>
-         
           <article className="article-inputs-estilos-pc">
-            
             <div className="div-labels-nombre-descripcion-pc">
               <label className="label-nombre-pc">
                 <p className="p-label-estilos-pc">Nombre</p>
                 <input
                   type="text"
-                  accept="image/png, image/jpeg"
                   placeholder="Inserte el nombre del corte"
                   required
                   minLength={6}
@@ -112,11 +116,11 @@ export default function AgregarEstiloAdminPc() {
               </label>
 
               <label className="label-descripcion-pc">
-                <p className="p-label-estilos-pc">Descripcion</p>
+                <p className="p-label-estilos-pc">Descripción</p>
                 <textarea
                   required
                   onChange={extraerDescripcion}
-                  placeholder="¿De que trata el corte?"
+                  placeholder="¿De qué trata el corte?"
                   minLength={6}
                   maxLength={53}
                   className="input-agregar-estilos-admin-pc text-area-agregar-estilos-pc"
@@ -146,6 +150,7 @@ export default function AgregarEstiloAdminPc() {
                   type="file"
                   required
                   className="input-agregar-estilos-admin-pc img-input-agregar-estilos-admin-pc"
+                  accept="image/png, image/jpeg"
                   onChange={extraerImagen}
                 />
                 {mensajeImagen && <p>{mensajeImagen}</p>}
@@ -153,14 +158,18 @@ export default function AgregarEstiloAdminPc() {
             </div>
           </article>
 
+          {mensaje && <p className="mensaje-agregar-estilo-pc">{mensaje}</p>}
+
           <div className="div-boton-submit-estilos-admin-pc">
-            <button type="submit" className="boton-submit-estilos-admin-pc">
-              Agregar Estilo
+            <button
+              type="submit"
+              className="boton-submit-estilos-admin-pc"
+              disabled={cargando}
+            >
+              {cargando ? "Cargando..." : "Agregar Estilo"}
             </button>
           </div>
         </form>
-
-        {mensaje && <p>{mensaje}</p>}
       </section>
     </>
   );

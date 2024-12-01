@@ -39,6 +39,10 @@
   text-align: center;
 }
 
+.mensaje-corte-pc{
+  text-align: center;
+}
+
 @media (min-width: 1024px) {
   /* Paginacion Card - Barberos */
   .section-principal-paginacion-barbero {
@@ -54,11 +58,11 @@
     padding: 0.4vw;
     border-radius: 0.2vw;
     width: 25%;
-    height: 29vw;
+    height: 32.2vw;
   }
 
   .img-paginacion-barbero {
-    height: 17vw;
+    height: 18vw;
     border-radius: 0.2vw;
   }
 
@@ -79,20 +83,99 @@
 
   .div-detalles-paginacion {
     text-align: center;
-    padding-top: 0.5vw;
+    padding-top: 0.7vw;
   }
 
   .button-detalles-paginacion {
-    padding-top: 0.2vw;
-    padding-bottom: 0.2vw;
-    width: 60%;
+    padding-top: 0.1vw;
+    padding-bottom: 0.1vw;
+    width: 50%;
     background-color: #263238;
     color: white;
     text-decoration: none;
     border-radius: 5vw;
+    font-size: 0.9vw;
+  }
+
+  .button-detalles-paginacion:hover{
+    background-color: #1B1B1B;
+    transition: background-color 1s;
   }
 
   .col-paginacion-cortes {
-    height: 26vw;
+    height: 30vw;
+  }
+
+  .div-button-eliminar-estilo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1vw;
+  }
+
+  .button-eliminar-estilo {
+    border: unset;
+    background-color: #c44949;
+    color: white;
+    width: 55%;
+    border-radius: 5vw;
+  }
+
+  .button-eliminar-estilo:hover {
+    background-color: #1B1B1B;
+    transition: background-color 1s;
+  }
+
+  .div-delete-cliente-pc,.div-delete-barbero-pc{
+    display: flex;
+    justify-content: right;
+    padding-bottom: 0.3vw;
+  }
+
+  .button-delete-cliente-pc,.button-delete-barbero-pc{
+    background-color: unset;
+    border: unset;
+  }
+
+  .icon-delete-cliente-pc,.icon-delete-barbero-pc{
+    color: #c44949;
+    font-size: 1.5vw;
+  }
+
+  .icon-delete-cliente-pc:hover,.icon-delete-barbero-pc:hover{
+    color: #1B1B1B;
+    transition: color 1s;
+    
+  }
+
+  .col-paginacion-barbero {
+    min-height: fit-content;
+  }
+
+  .mensaje-cliente{
+    text-align: center;
+    font-size: 1vw;
+  }
+
+  .p-mensaje-carga-paginacion {
+   margin-bottom: 0vw;
+   margin-top: 0vw;
+  }
+}
+
+@media (min-width:1420px) {
+
+  .section-principal-paginacion-barbero {
+    padding-bottom: 1vw;
+  }
+
+
+  .col-paginacion-barbero {
+    height: 31.8vw;
+    min-height: fit-content;
+  }
+
+  .col-paginacion-cortes {
+    height: 30vw;
   }
 }
