@@ -195,7 +195,7 @@ export default function Registro() {
                     type="file"
                     className="registro-input img-input"
                     onChange={extraerImg}
-                    accept="image/png, image/jpeg"
+                    accept="image/png, image/jpeg, image/webp"
                     required
                   />
                   {imgMensaje && <p className="mensaje-error">{imgMensaje}</p>}

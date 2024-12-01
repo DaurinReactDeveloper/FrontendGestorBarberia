@@ -121,7 +121,7 @@ export default function AgregarBarberoAdminPc() {
                   
                   <input
                     type="file"
-                    accept="image/png, image/jpeg"
+                    accept="image/png, image/jpeg, image/webp"
                     onChange={extraerImagen}
                     className="input-agregar-barbero-admin-pc img-input-agregar-barbero-admin-pc"
                     required

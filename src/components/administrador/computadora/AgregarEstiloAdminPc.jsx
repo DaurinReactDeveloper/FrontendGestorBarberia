@@ -150,7 +150,7 @@ export default function AgregarEstiloAdminPc() {
                   type="file"
                   required
                   className="input-agregar-estilos-admin-pc img-input-agregar-estilos-admin-pc"
-                  accept="image/png, image/jpeg"
+                  accept="image/png, image/jpeg, image/webp"
                   onChange={extraerImagen}
                 />
                 {mensajeImagen && <p>{mensajeImagen}</p>}

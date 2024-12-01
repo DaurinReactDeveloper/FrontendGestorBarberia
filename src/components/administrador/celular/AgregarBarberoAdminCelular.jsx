@@ -115,7 +115,7 @@ export default function AgregarBarberoAdminCelular() {
               <p className="p-label-agregar-barbero-admin">Imagen Barbero</p>
               <input
                 type="file"
-                accept="image/png, image/jpeg"
+                accept="image/png, image/jpeg, image/webp"
                 required
                 className="input-agregar-barbero-admin img-input-agregar-barbero-admin"
                 onChange={extraerImagen}
