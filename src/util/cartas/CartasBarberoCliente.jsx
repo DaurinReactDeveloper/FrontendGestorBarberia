@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  eliminarBarbero,
-  obtenerBarberosByBarberiaId,
+  eliminarBarbero,obtenerBarberosByClienteBarberiaId
 } from "../../peticiones/BarberosPeticiones";
 import {
   eliminarCliente,
@@ -21,7 +20,7 @@ export function CartasBarbero({busqueda = true,claseBusqueda}) {
   const [mensajeBarbero, setMensajeBarbero] = useState(""); // Estado de carga
 
   useEffect(() => {
-    obtenerBarberosByBarberiaId(setBarberos, setRespuesta).finally(() => {
+    obtenerBarberosByClienteBarberiaId(setBarberos, setRespuesta).finally(() => {
       setCargando(false); // Cambiar a false cuando se complete la carga
     });
     Aos.init();

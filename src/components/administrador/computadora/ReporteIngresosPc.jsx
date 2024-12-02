@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
-import { FaFileInvoiceDollar } from "react-icons/fa";
 import {
   obtenerReportes,
   obtenerTotalClientes,

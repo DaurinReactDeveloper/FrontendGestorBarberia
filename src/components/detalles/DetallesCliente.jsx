@@ -108,6 +108,7 @@ export default function DetallesCliente() {
             </article>
           </section>
 
+          <br />
           <section>
             {/* TEMA */}
             {cantidadRealizada > 0 ||
@@ -170,4 +171,3 @@ export default function DetallesCliente() {
     </>
   );
 }
-

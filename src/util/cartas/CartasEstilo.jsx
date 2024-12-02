@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { obtenerEstilosByBarberiaId } from "../../peticiones/EstilosPeticiones";
+import {  obtenerEstilosByClienteBarberiaId} from "../../peticiones/EstilosPeticiones";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./../../css/estiloscorte.css";
@@ -10,7 +10,7 @@ export function CartasEstilo() {
     const [cargando, setCargando] = useState(true); // Estado para controlar la carga
   
     useEffect(() => {
-      obtenerEstilosByBarberiaId(setData, setRespuesta).finally(() => {
+      obtenerEstilosByClienteBarberiaId(setData, setRespuesta).finally(() => {
         setCargando(false); // Cambiar a false cuando se complete la carga
       });
       AOS.init();

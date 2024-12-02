@@ -59,11 +59,9 @@ export async function obtenerClientesId(id, setCliente, setMensaje) {
 
 //Admin Normal
 export async function obtenerClientesByAdminId(setCliente, setMensaje) {
-  const { token } = obtenerCredenciales();
+  const { id, token } = obtenerCredenciales();
 
   //IDADMIN
-  const id = localStorage.getItem("id");
-
   if (!token) {
     setMensaje("Debe Registrarse.");
     return;

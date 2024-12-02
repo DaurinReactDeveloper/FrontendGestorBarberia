@@ -14,9 +14,11 @@ export async function obtenerReportes(
 ) {
   const { id, token } = obtenerCredenciales();
 
+console.log(id);
+
   if (!token || !id) {
     setMensaje("Debe registrarse.");
-    setCitas([]); // Limpia las citas si no hay credenciales
+    setCitas([]); 
     return;
   }
 
@@ -28,7 +30,7 @@ export async function obtenerReportes(
       setFechaFinMensaje
     )
   ) {
-    setCitas([]); // Limpia las citas si las validaciones fallan
+    setCitas([]); 
     return;
   }
 
@@ -40,19 +42,20 @@ export async function obtenerReportes(
       }
     );
 
+console.log(peticion.data)
+
     if (peticion.data.success) {
-      setCitas(peticion.data.data); // Establece las citas si hay datos exitosos
+      setCitas(peticion.data.data); 
     } else {
       setMensaje(peticion.data.message);
-      setCitas([]); // Limpia las citas si la respuesta no es exitosa
+      setCitas([]); 
       setTimeout(() => setMensaje(""), 1000);
     }
   } catch (error) {
     setMensaje("Ocurrió un error obteniendo las citas: " + error.message);
-    setCitas([]); // Limpia las citas si ocurre un error en la solicitud
+    setCitas([]); 
   }
 }
-
 
 export async function obtenerTotalClientes(setTotalClientes, setMensaje) {
   // Obtener credenciales

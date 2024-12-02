@@ -16,7 +16,7 @@ export async function obtenerBarberosByBarberiaIdCliente(setBarberos) {
 
   try {
     const peticion = await axios.get(
-      `${urlBarbero}/BarberosByBarberiaId/${id}`,
+      `${urlBarbero}/BarberosByClienteBarberiaId/${id}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -30,11 +30,38 @@ export async function obtenerBarberosByBarberiaIdCliente(setBarberos) {
   }
 }
 
-//Obtener Barberos de su Barberia - Admin
-export async function obtenerBarberosByBarberiaId(setBarberos, setRespuesta) {
+//Obtener Barbero por el ClienteBarberiaId
+export async function obtenerBarberosByClienteBarberiaId(setBarberos, setRespuesta) {
   const { token } = obtenerCredenciales();
 
   const id = localStorage.getItem("barberiaId");
+
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  try {
+    const peticion = await axios.get(
+      `${urlBarbero}/BarberosByClienteBarberiaId/${id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    if (peticion.data.success) {
+      setBarberos(peticion.data.data);
+    } else {
+      setRespuesta(peticion.data.message);
+    }
+  } catch (error) {
+    console.error("Ha ocurrido un error: " + error);
+  }
+}
+
+//Obtener Barberos de su Barberia - Admin
+export async function obtenerBarberosByBarberiaId(setBarberos, setRespuesta) {
+  const { id, token } = obtenerCredenciales();
 
   if (!token) {
     setMensaje("Debe estar Registrado.");

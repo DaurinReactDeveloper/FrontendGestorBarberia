@@ -121,7 +121,7 @@ export default function AgregarEstiloAdminPc() {
                   required
                   onChange={extraerDescripcion}
                   placeholder="¿De qué trata el corte?"
-                  minLength={6}
+                  minLength={45}
                   maxLength={53}
                   className="input-agregar-estilos-admin-pc text-area-agregar-estilos-pc"
                 ></textarea>

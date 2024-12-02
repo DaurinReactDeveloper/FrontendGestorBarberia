@@ -87,7 +87,6 @@ export default function AgregarEstiloAdminCelular() {
     setCargando(false);
   }
 
-  // Renderizar el formulario con el botón en estado de carga
   return (
     <>
       <section>

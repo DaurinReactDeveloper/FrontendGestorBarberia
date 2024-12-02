@@ -21,8 +21,12 @@ export async function agregarEstilos(
     setMensaje("Debe Registrarse.");
     return;
   }
+ 
 
-    const idbarberia = localStorage.getItem("id"); 
+    const idUser = localStorage.getItem("id");
+    
+
+    //Llamar a la funcion que busque 
 
   //Validaciones
   if (
@@ -40,11 +44,11 @@ export async function agregarEstilos(
     return;
   }
 
-  const idUser = localStorage.getItem("id");
+
 
   const EstiloDto = {
     estiloId: 0,
-    barberiaId: idbarberia,
+    barberiaId: id,
     nombre: nombre,
     descripcion: descripcion,
     precio: precio,
@@ -70,6 +74,7 @@ export async function agregarEstilos(
     }
   } catch (error) {
     setMensaje("Ha ocurrido un error agregando el estilo: " + error);
+    console.log(error);
     setTimeout(() => setMensaje(""), 1000);
   }
 }
@@ -102,7 +107,6 @@ export async function obtenerEstilosByAdminId(setData, setRespuesta) {
   }
 }
 
-// Obtener estilos - Busqueda NAVBAR
 export async function obtenerEstilosByBarberiaId(setData, setRespuesta) {
   const { token } = obtenerCredenciales();
 
@@ -115,6 +119,34 @@ export async function obtenerEstilosByBarberiaId(setData, setRespuesta) {
 
   try {
     const peticion = await axios.get(`${urlEstilos}/EstilosByBarberiaId/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (peticion.data.success) {
+      setData(peticion.data.data);
+    } else {
+      setRespuesta(peticion.data.message);
+      setTimeout(() => setRespuesta(""), 1000);
+    }
+  } catch (error) {
+    setRespuesta("Ha ocurrido un error obteniendo el estilo: " + error);
+    setTimeout(() => setRespuesta(""), 1000);
+  }
+}
+
+// Obtener estilos - Busqueda NAVBAR
+export async function obtenerEstilosByClienteBarberiaId(setData, setRespuesta) {
+  const { token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensaje("Debe Registrarse.");
+    return;
+  }
+
+  const id = localStorage.getItem("barberiaId");
+
+  try {
+    const peticion = await axios.get(`${urlEstilos}/EstilosByClienteBarberiaId/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -143,7 +175,7 @@ export async function obtenerEstilosAddCita(setEstilos) {
 
   try {
    
-    const peticion = await axios.get(`${urlEstilos}/EstilosByBarberiaId/${id}`,{ 
+    const peticion = await axios.get(`${urlEstilos}/EstilosByClienteBarberiaId/${id}`,{ 
       headers: {Authorization: `Bearer ${token}`}
     });
 

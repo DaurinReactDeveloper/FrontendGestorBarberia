@@ -71,7 +71,7 @@ export const routes = createBrowserRouter([
       <ProtectedRoute
         element={<DetallesCliente />}
         requiredRole="cliente"
-        requiredRole2="adminDaurin"
+        requiredRole2="barbero"
         requiredRole3="admin"
         elementDefault={"/iniciarsesiongeneral/cliente"}
       />),

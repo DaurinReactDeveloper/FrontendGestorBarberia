@@ -50,10 +50,13 @@ export async function anadirCita(
     return;
   }
 
+  const idbarberia = localStorage.getItem("barberiaId") 
+
   const citaDto = {
     citaId: 0,
     fecha: fecha,
     hora: `${hora}:00`,
+    barberiaId: idbarberia,
     barberoId: barbero,
     clienteId: id,
     estiloId: estilo,
@@ -61,6 +64,7 @@ export async function anadirCita(
     changeDate: new Date(),
     changeUser: id,
   };
+
 
   try {
     const peticion = await axios.post(`${urlCita}/save`, citaDto, {
