@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg bg-dark fixed-top"
+        className="navbar navbar-expand-lg bg-dark"
         data-bs-theme="dark"
         data-aos="fade-right"
       >
