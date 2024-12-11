@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  eliminarBarbero,obtenerBarberosByClienteBarberiaId
+  eliminarBarbero,obtenerBarberosByAdminId,obtenerBarberosByClienteBarberiaId
 } from "../../peticiones/BarberosPeticiones";
 import {
   eliminarCliente,
@@ -16,12 +16,106 @@ import "./../../css/cartabarberobusqueda.css";
 export function CartasBarbero({busqueda = true,claseBusqueda}) {
   const [barberos, setBarberos] = useState([]);
   const [respuesta, setRespuesta] = useState(null);
-  const [cargando, setCargando] = useState(true); // Estado para controlar la carga
-  const [mensajeBarbero, setMensajeBarbero] = useState(""); // Estado de carga
+  const [cargando, setCargando] = useState(true); 
+  const [mensajeBarbero, setMensajeBarbero] = useState(""); 
 
   useEffect(() => {
     obtenerBarberosByClienteBarberiaId(setBarberos, setRespuesta).finally(() => {
-      setCargando(false); // Cambiar a false cuando se complete la carga
+      setCargando(false); 
+    });
+    Aos.init();
+  }, []);
+
+  const truncarEmail = (email) => {
+    return email.length >= 21 ? email.slice(0, 10) + "***" : email;
+  };
+
+  function llamarEliminarBarbero(idBarbero) {
+    eliminarBarbero(idBarbero, setMensajeBarbero);
+  }
+
+  return (
+    <>
+      <section className="row section-carta-barbero">
+        {cargando ? ( // Mostrar cargador si está cargando
+          <p className="p-mensaje-carga-cartas">Cargando...</p>
+        ) : (
+          <>
+            {respuesta && <p>{respuesta}</p>}
+            {barberos.length === 0 && (
+              <p className="p-mensaje-baberos">No hay barberos disponibles.</p>
+            )}
+
+            {barberos.map((item) => (
+              <div
+                key={item.barberoId}
+                className="col-auto card card-estilo-barbero"
+                data-aos="zoom-in-down"
+              >
+                {busqueda &&  
+                <div className="div-delete-barbero">
+                  <button
+                    type="button"
+                    className="button-delete-barbero"
+                    onClick={() => llamarEliminarBarbero(item.barberoId)}
+                  >
+                    <MdDelete
+                      className="icon-delete-barbero"
+                      title="Eliminar"
+                    />
+                  </button>
+                </div>}
+               
+                <img
+                  src={item.imgbarbero}
+                  className={`card-img-top img-card-barbero ${claseBusqueda}`}
+                  alt="barbero"
+                />
+                <div className="card-body card-body-barbero">
+                  <p className="card-text card-datos-barbero datos-personales-card">
+                    DATOS PERSONALES
+                  </p>
+                  <p className="card-text card-nombre-barbero">
+                    Nombre: {item.nombre}
+                  </p>
+                  <p className="card-text card-nombre-barbero">
+                    Email: {truncarEmail(item.email)}
+                  </p>
+                  <p className="card-text card-telefono-barbero">
+                    Teléfono: {item.telefono}
+                  </p>
+                </div>
+                
+                {mensajeBarbero && <p className="carta-mensaje">{mensajeBarbero}</p>}
+
+                {/* Boton ver detalles */}
+                <div className="div-button-cartas-busqueda-barbero">
+                  <Link
+                    type="button"
+                    className="button-cartas-busqueda-barbero"
+                    to={`/DetallesBarbero/${item.barberoId}`}
+                  >
+                    VER DETALLES
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
+      </section>
+    </>
+  );
+}
+
+export function CartasBarberoAdmin({busqueda = true,claseBusqueda}) {
+  const [barberos, setBarberos] = useState([]);
+  const [respuesta, setRespuesta] = useState(null);
+  const [cargando, setCargando] = useState(true); 
+  const [mensajeBarbero, setMensajeBarbero] = useState(""); 
+
+  useEffect(() => {
+    obtenerBarberosByAdminId(setBarberos, setRespuesta).finally(() => {
+      setCargando(false); 
     });
     Aos.init();
   }, []);
