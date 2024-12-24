@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
+.h1-actualizar-admin {
+  font-family: "PoppinsBold";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  padding-top: 8vw;
+}
+
+.input-actualizar-admin {
+  width: 100%;
+  background-color: #263238;
+  border-radius: 0.3vw;
+  border: 0.1vw solid black;
+  color: white;
+  padding: 1vw;
+}
+
+.form-actualizar-admin {
+  padding: 3vw;
+}
+
+.p-actualizar-admin {
+  margin-bottom: 0vw;
+}
+
+.div-button-actualizar-admin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5vw;
+  padding-bottom: 3vw;
+}
+
+.button-actualizar-admin {
+  border: unset;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  background-color: #263238;
+  color: white;
+  padding: 1vw 4vw;
+  border-radius: 5vw;
+}
+
+.mensaje-actualizar-admin {
+  padding-top: 5vw;
+  margin-bottom: 0vw;
+  text-align: center;
+}
+
+.mensaje-error-actualizar-admin{
+  color: #C44949;
+}
+
+@media (min-width: 1024px) {
+  .h1-actualizar-admin {
+    gap: 0.5vw;
+    padding-top: 4vw;
+  }
+
+  .section-actualizar-admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5vw;
+  }
+
+  .form-actualizar-admin {
+    width: 30%;
+    padding: 0vw;
+  }
+
+  .article-actualizar-admin {
+    width: 50%;
+  }
+
+  .input-actualizar-admin {
+    border-radius: 0.2vw;
+    padding: 0.5vw;
+  }
+
+
+  .div-button-actualizar-admin {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+  }
+
+  .button-actualizar-admin {
+    gap: 0.2vw;
+    padding: 0.4vw 1.5vw;
+  }
+
+  .button-actualizar-admin:hover{
+    background-color: #1B1B1B;
+    transition:background-color 1s ;
+  }
+
+  .mensaje-actualizar-admin {
+    padding-top: 1vw;
+  }
+
+}

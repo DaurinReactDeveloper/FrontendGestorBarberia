@@ -1,0 +1,153 @@
+.p-label-agregar-barberia {
+  margin-bottom: 0vw;
+}
+
+.label-agregar-barberia-celular {
+  width: 100%;
+}
+
+.input-agregar-barberia-celular {
+  width: 100%;
+  padding: 1vw;
+}
+
+.select-agregar-barberia-celular {
+  width: 100%;
+  padding: 1vw;
+}
+
+.div-agregar-barberia-input-celular,
+.div-agregar-barberia-select-celular {
+  padding-bottom: 3vw;
+}
+
+.div-agregar-barberia-select-celular {
+  padding-bottom: 7vw;
+}
+
+.div-agregar-barberia-celular {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-agregar-barberia-celular {
+  width: 50%;
+  border: unset;
+  border-radius: 5vw;
+  background-color: #212529;
+  color: white;
+  padding: 1vw;
+}
+
+.mensaje-exito-agregar-barberia-celular {
+  text-align: center;
+  padding-top: 0vw;
+}
+
+@media (min-width: 320px) {
+  .button-agregar-barberia-celular {
+    width: 70%;
+  }
+}
+
+@media (min-width: 768px) {
+  .article-img-agreagar-barberia-celular {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-agregar-barberia-celular {
+    width: 100%;
+  }
+
+  .div-agregar-barberia-celular{
+    padding-top: 0vw;
+  }
+
+  .div-agregar-barberia-select-celular {
+    padding-bottom: 3vw;
+  }
+
+  .button-agregar-barberia-celular {
+    width: 30%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-agregar-barberia-pc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .article-agregar-barberia-pc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .p-agregar-barberia-pc {
+    color: white;
+    margin-bottom: 0vw;
+  }
+
+  .label-agregar-barberia-pc {
+    width: 100%;
+  }
+
+  .input-agregar-barberia-pc,
+  .select-agregar-barberia-pc {
+    width: 100%;
+    padding: 0.4vw;
+    border-radius: 0.1vw;
+    background-color: #e7e7e7;
+  }
+
+  .img-agregar-barberia-pc {
+    width: 80%;
+  }
+
+  .select-agregar-barberia-pc {
+    width: 100%;
+  }
+
+  .div-button-agregar-barberia-pc {
+    padding-top: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .div-input-agregar-barberia-pc {
+    padding-bottom: 1vw;
+  }
+
+  .button-agregar-barberia-pc {
+    border: unset;
+    border-radius: 5vw;
+    width: 68%;
+    padding: 0.4vw;
+  }
+
+  .button-agregar-barberia-pc:hover {
+    background-color: #045525;
+    transition: background-color 1s;
+    color: #e7e7e7;
+  }
+
+  .p-mensaje-agregar-admin-pc {
+    padding-top: 1vw;
+    text-align: center;
+    color: white;
+  }
+}
+
+
+@media (min-width: 1420px) {
+  .button-agregar-barberia-pc {
+    width: 40%;
+  }
+
+}

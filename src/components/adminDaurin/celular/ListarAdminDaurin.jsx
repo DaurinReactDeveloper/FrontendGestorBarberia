@@ -9,25 +9,20 @@ import {
 } from "../../../peticiones/AdminPeticiones";
 import { FaUserEdit } from "react-icons/fa";
 import { TiUserDelete } from "react-icons/ti";
-import { ModalActualizarAdmin } from "../../../util/Modal/ModalActualizarAdmin";
+import { Link } from "react-router-dom";
 import "./../../../css/listaradmin.css";
 
 export default function ListarAdminDaurin() {
   const [admins, setAdmins] = useState([]);
   const [mensaje, setMensaje] = useState("");
   const [mensajeAdmin, setMensajeAdmin] = useState("");
-  const [adminIdEditar, setAdminIdEditar] = useState(null);
 
   useEffect(() => {
     obtenerAdmins(setAdmins, setMensaje);
   }, []);
 
-  const llamarEliminar = (adminId) => {
-    eliminarAdmin(adminId, setMensajeAdmin);
-  };
-
-  const llamarEditar = (adminId) => {
-    setAdminIdEditar(adminId);
+  const llamarEliminar = (id) => {
+    eliminarAdmin(id, setMensajeAdmin);
   };
 
   return (
@@ -72,12 +67,13 @@ export default function ListarAdminDaurin() {
                 <td>{admin.email}</td>
                 <td>{admin.tipo}</td>
                 <td className="td-button-editar-admins">
-                  <button
-                    type="button"
+                  <Link
+                    to={
+                      admin.tipo !== "PropietarioApp"
+                        ? `/ActualizarAdmin/${admin.administradoresId}`
+                        : "#"
+                    }
                     className="button-editar-admin"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                    onClick={() => llamarEditar(admin.administradoresId)}
                     disabled={admin.tipo === "PropietarioApp"}
                   >
                     {admin.tipo === "PropietarioApp" ? (
@@ -85,7 +81,7 @@ export default function ListarAdminDaurin() {
                     ) : (
                       <FaUserEdit />
                     )}
-                  </button>
+                  </Link>
                 </td>
                 <td className="td-button-eliminar-admins">
                   <button
@@ -105,9 +101,6 @@ export default function ListarAdminDaurin() {
             ))}
           </tbody>
         </table>
-
-        <ModalActualizarAdmin idAdmin={adminIdEditar} />
-        
       </section>
 
       <br />

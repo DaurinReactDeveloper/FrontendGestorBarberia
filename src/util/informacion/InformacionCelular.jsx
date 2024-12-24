@@ -11,6 +11,8 @@ export function InformacionCelular({ children }) {
       <br />
 
       <div>{children}</div>
+
+      <br />
     </>
   );
 }

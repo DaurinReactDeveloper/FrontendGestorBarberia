@@ -15,12 +15,15 @@ import Required from "../components/Messages/Required.jsx";
 import NotFound from "../components/Messages/NotFound.jsx";
 import AdminDaurin from "../components/adminDaurin/AdminDaurin.jsx";
 import DetallesCliente from "../components/detalles/DetallesCliente.jsx";
+import ActualizarAdmin from "../components/actualizaciones/ActualizarAdmin.jsx";
+import ActualizarBarberia from "../components/actualizaciones/ActualizarBarberia.jsx";
+import ActualizarComentario from "../components/actualizaciones/ActualizarComentario.jsx";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Inicio />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/estilos",
@@ -32,7 +35,7 @@ export const routes = createBrowserRouter([
         elementDefault={"/required"}
       />
     ),
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/barberos",
@@ -43,27 +46,27 @@ export const routes = createBrowserRouter([
         elementDefault={"/required"}
       />
     ),
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/registro",
     element: <Registro />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/iniciarsesion",
     element: <IniciarSesion />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/iniciarsesiongeneral/:tipo",
     element: <IniciarSesionGeneral />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/DetallesBarbero/:id",
-    element: <DetallesBarbero/> ,
-    errorElement: <NotFound/>,
+    element: <DetallesBarbero />,
+    errorElement: <NotFound />,
   },
   {
     path: "/DetallesCliente/:id",
@@ -74,9 +77,10 @@ export const routes = createBrowserRouter([
         requiredRole2="barbero"
         requiredRole3="admin"
         elementDefault={"/iniciarsesiongeneral/cliente"}
-      />),
-      errorElement: <NotFound/>,
-    },
+      />
+    ),
+    errorElement: <NotFound />,
+  },
   {
     path: "/cliente",
     element: (
@@ -86,7 +90,7 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/cliente"}
       />
     ),
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/barbero",
@@ -97,7 +101,7 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/barbero"}
       />
     ),
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/administrador",
@@ -108,7 +112,7 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/administrador"}
       />
     ),
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   {
     path: "/Daurin",
@@ -119,7 +123,40 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/Daurin"}
       />
     ),
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/ActualizarAdmin/:id",
+    element: (
+      <ProtectedRoute
+        element={<ActualizarAdmin />}
+        requiredRole="adminDaurin"
+        elementDefault={"/iniciarsesiongeneral/Daurin"}
+      />
+    ),
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/ActualizarBarberia/:id",
+    element: (
+      <ProtectedRoute
+        element={<ActualizarBarberia />}
+        requiredRole="adminDaurin"
+        elementDefault={"/iniciarsesiongeneral/Daurin"}
+      />
+    ),
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/ActualizarComentario/:id",
+    element: (
+      <ProtectedRoute
+        element={<ActualizarComentario />}
+        requiredRole="cliente"
+        elementDefault={"/iniciarsesiongeneral/cliente"}
+      />
+    ),
+    errorElement: <NotFound />,
   },
   {
     path: "/comentario/:citaId",
@@ -130,12 +167,12 @@ export const routes = createBrowserRouter([
         elementDefault={"/iniciarsesiongeneral/cliente"}
       />
     ),
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
   },
   // RUTAS ATERNOS PARA ERRORES
   {
     path: "/required",
-    element:<Required rol={"un Cliente"}/>,
-    errorElement: <NotFound/>,
-  }
+    element: <Required rol={"un Cliente"} />,
+    errorElement: <NotFound />,
+  },
 ]);

@@ -149,7 +149,7 @@ function llamarAddAdmin(e) {
               <article className="article-boton-agrega-admin-pc">
                 <button type="submit" className="boton-agregar-admin-pc" disabled={cargando}>
                   <CgAdd />
-                  {cargando ? "Cargando..." : "Agregar"}
+                  {cargando ? "Guardando..." : "Agregar"}
                 </button>
               </article>
             </article>

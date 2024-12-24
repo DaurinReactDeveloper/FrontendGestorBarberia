@@ -81,35 +81,31 @@
   white-space: nowrap;
 }
 
-
-.div-inputs-fechas-reporteria{
+.div-inputs-fechas-reporteria {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1vw;
 }
 
-@media (min-width:768px) {
-  
+@media (min-width: 768px) {
   .button-enviar-fecha-reporteria {
     width: 20%;
   }
-  
+
   .div-padre-cuadro-reporteria {
     width: 45%;
   }
 
-  .tabla-citas-reporteria{
+  .tabla-citas-reporteria {
     padding: 2vw;
   }
-
 }
 
 @media (min-width: 1024px) {
-
-.section-row-ingresos-pc{
-  justify-content: center;
-}
+  .section-row-ingresos-pc {
+    justify-content: center;
+  }
 
   .div-principal-buscador-ingreso-pc {
     display: flex;
@@ -173,7 +169,6 @@
   .table-pc {
     width: 100%;
     border-collapse: collapse;
-    
   }
 
   .table-pc tbody tr:nth-child(even) {
@@ -196,7 +191,6 @@
   .mensaje-error {
     color: white;
     text-align: center;
-    
   }
 
   /* CUADROS DEL LADO */

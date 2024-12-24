@@ -151,7 +151,8 @@ export async function actualizarComentario(
   comentario,
   setMensaje,
   setMensajeCalificacion,
-  setMensajeComentario
+  setMensajeComentario,
+  navigate
 ) {
   if (
     !ValidacionesUpdateComentario(
@@ -170,7 +171,7 @@ export async function actualizarComentario(
     setMensaje("Debe Registrarse.");
     return;
   }
-  
+
   const idUser = localStorage.getItem("id");
 
   const comentarioDto = {
@@ -199,9 +200,8 @@ export async function actualizarComentario(
 
       setTimeout(() => {
         setMensaje("");
+        navigate("/cliente");
       }, 2000);
-
-      window.location.reload();
     } else {
       setMensaje(peticion.data.message);
       setTimeout(() => setMensaje(""), 2000);

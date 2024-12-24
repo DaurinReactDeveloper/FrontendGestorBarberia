@@ -5,6 +5,7 @@ import { agregarEstilos } from "../../../peticiones/EstilosPeticiones";
 import { storage } from "../../../util/firebase/firebaseConfig";
 import { RiScissors2Fill } from "react-icons/ri";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
+import { IoMdAddCircleOutline } from "react-icons/io";
 import "./../../../css/agregarestiloadmincelular.css";
 
 export default function AgregarEstiloAdminPc() {
@@ -166,7 +167,8 @@ export default function AgregarEstiloAdminPc() {
               className="boton-submit-estilos-admin-pc"
               disabled={cargando}
             >
-              {cargando ? "Cargando..." : "Agregar Estilo"}
+              <IoMdAddCircleOutline />
+              {cargando ? "Guardando..." : "Agregar Estilo"}
             </button>
           </div>
         </form>

@@ -115,7 +115,7 @@ export default function Registro() {
               {/* div 1: Nombre y Teléfono */}
               <div className="registro-articulo">
                 <div className="div_articulo">
-                  <p>Nombre</p>
+                  <p>Nombre de Usuario</p>
 
                   <input
                     type="text"
@@ -246,7 +246,7 @@ export default function Registro() {
                   className="registro-boton"
                   disabled={cargando}
                 >
-                  {cargando ? "Cargando..." : "Registrarme"}
+                  {cargando ? "Guardando..." : "Registrarme"}
                 </button>
               </div>
             </form>

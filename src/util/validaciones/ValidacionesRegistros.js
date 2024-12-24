@@ -555,3 +555,74 @@ export function ValidacionesAdminCitasReportes(
 
   return esValido;
 }
+
+//Agregar Barberia
+export function ValidacionesAgregarbarberia(
+  nombreBarberia,
+  adminId,
+  setMensajeNombre,
+  setMensajeAdmin
+) {
+  
+  let esValido = true;
+
+  // Validar fechaInicio
+  if (nombreBarberia === "") {
+    esValido = false;
+    setMensajeNombre("Debe completar este campo.");
+    setTimeout(() => {
+      setMensajeNombre("");
+    }, 1500);
+  } else {
+    setMensajeNombre(null);
+  }
+
+  // Validar fechaFin
+  if (adminId === "") {
+    esValido = false;
+    setMensajeAdmin("Debe completar este campo.");
+    setTimeout(() => {
+      setMensajeAdmin("");
+    }, 1500);
+  } else {
+    setMensajeAdmin(null);
+  }
+
+  return esValido;
+}
+
+//Actualizar Barberia
+export function ValidacionesActualizarbarberia(
+  nombreBarberia,
+  adminId,
+  setMensajeNombre,
+  setMensajeAdmin
+) {
+  
+  let esValido = true;
+
+  // Validar fechaInicio
+  if (nombreBarberia === "") {
+    esValido = false;
+    setMensajeNombre("Debe completar este campo.");
+    setTimeout(() => {
+      setMensajeNombre("");
+    }, 1500);
+  } else {
+    setMensajeNombre(null);
+  }
+
+  // Validar fechaFin
+  if (adminId === "") {
+    esValido = false;
+    setMensajeAdmin("Debe completar este campo.");
+    setTimeout(() => {
+      setMensajeAdmin("");
+    }, 1500);
+  } else {
+    setMensajeAdmin(null);
+  }
+
+  return esValido;
+}
+

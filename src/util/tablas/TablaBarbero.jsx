@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { obtenerCredenciales } from "../../peticiones/CitasPeticiones";
-import { ModalActualizar } from "../Modal/ModalActualizar";
 import { BiCommentEdit } from "react-icons/bi";
 import { BiCommentX } from "react-icons/bi";
 import { EliminarComentario } from "../../peticiones/ComentariosPeticiones";
 import { isTokenExpired } from "../tokens/Roles";
 import "../../css/tablas.css";
+import { Link } from "react-router-dom";
 
 export default function TablaBarbero({ comentarios }) {
   const { id } = obtenerCredenciales();
   const [mensaje, setMensaje] = useState("");
-  const [comentarioId, setComentarioId] = useState(null); // Estado para almacenar el id del comentario seleccionado
-  
   const tokenNoExpirado = !isTokenExpired();
 
   return (
@@ -38,24 +36,21 @@ export default function TablaBarbero({ comentarios }) {
                 <td>{comentario.idCorteNavigation.nombre}</td>
                 <td>{generadorEstrellas(comentario.calificacion)}</td>
                 <td>{comentario.comentario}</td>
-               
+
                 {tokenNoExpirado && (
                   <td>
                     {esClientePropietario(id, comentario.idCliente) && (
-                      <button
-                        type="button"
+                      <Link
+                        to={`/ActualizarComentario/${comentario.idComentarios}`}
                         title="Editar"
                         className="botonAbrirModal-Barbero"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                        onClick={() => setComentarioId(comentario.idComentarios)} // Actualizamos el estado con el ID del comentario
                       >
                         <BiCommentEdit />
-                      </button>
+                      </Link>
                     )}
                   </td>
                 )}
-                
+
                 {tokenNoExpirado && (
                   <td>
                     {esClientePropietario(id, comentario.idCliente) && (
@@ -83,10 +78,9 @@ export default function TablaBarbero({ comentarios }) {
         </table>
       </section>
 
-      {mensaje && <p className="p-mensaje-eliminar-comentario-barberos">{mensaje}</p>}
-
-      {/* Pasamos el comentarioId como propiedad al Modal */}
-      <ModalActualizar id={comentarioId} />
+      {mensaje && (
+        <p className="p-mensaje-eliminar-comentario-barberos">{mensaje}</p>
+      )}
     </>
   );
 }
@@ -103,6 +97,6 @@ function esClientePropietario(id, comentarioIdCliente) {
   return id == comentarioIdCliente;
 }
 
-function llamarEliminarComentario(ClienteId,id,idCita,setMensaje) {
-  EliminarComentario(ClienteId,id,idCita,setMensaje);
+function llamarEliminarComentario(ClienteId, id, idCita, setMensaje) {
+  EliminarComentario(ClienteId, id, idCita, setMensaje);
 }

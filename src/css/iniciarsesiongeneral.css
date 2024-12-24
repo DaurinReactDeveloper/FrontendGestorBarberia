@@ -45,18 +45,18 @@
 /* Estilo para el boton de sesiones */
 .button-sesiones {
   all: unset;
-  background-color: #3F3F3F;
+  background-color: #3f3f3f;
   color: white;
   padding: 1.5vw 8vw;
   border-radius: 5vw;
   transition: background-color 1s;
 }
 
-.error-message{
+.error-message {
   padding-top: 4vw;
 }
 
-.success-message{
+.success-message {
   padding-top: 4vw;
 }
 
@@ -77,13 +77,13 @@
     width: 45%;
   }
 
-.col-imagen-sesiones{
+  .col-imagen-sesiones {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 35%;
     padding: 0vw;
-}
+  }
 
   .form-sesiones {
     width: 89%;
@@ -94,9 +94,9 @@
     border-radius: 0.2vw;
   }
 
-.div-inputs-iniciarsesiongeneral{
+  .div-inputs-iniciarsesiongeneral {
     margin-bottom: 1.5vw;
-}
+  }
 
   .div-button-sesiones {
     padding-top: 0vw;
@@ -111,11 +111,17 @@
     background-color: #263238;
   }
 
-  .error-message{
+  .error-message {
     padding-top: 1vw;
   }
 
-  .success-message{
+  .success-message {
     padding-top: 1vw;
+  }
+}
+
+@media (min-width: 1420px) {
+  .button-sesiones {
+    padding: 0.5vw 4vw;
   }
 }

@@ -58,7 +58,7 @@ export function CartasCortes() {
                   className="boton-eliminar-corte"
                   onClick={() => PeticionEliminarCorte(item.estiloId)}
                 >
-                {cargando ? "Cargando..." : "Eliminar Estilo"}
+                {cargando ? "Eliminando..." : "Eliminar Estilo"}
                 </button>
               </div>
             </div>

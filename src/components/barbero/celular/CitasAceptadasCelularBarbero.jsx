@@ -45,6 +45,8 @@ export default function CitasAceptadasCelularBarbero() {
     </>
   );
 }
+
+
 export function CitaTablaBarbero({
   citas,
   estado,
@@ -103,7 +105,7 @@ export function CitaTablaBarbero({
                         type="button"
                         className="button-finalizar-aceptada"
                         onClick={() => actualizarCita(citaBarbero.citaId)}
-                        disabled={cargandoCitaId === citaBarbero.citaId} // Deshabilitar si está cargando
+                        disabled={cargandoCitaId === citaBarbero.citaId} 
                       >
                         {cargandoCitaId === citaBarbero.citaId
                           ? "Cargando..."

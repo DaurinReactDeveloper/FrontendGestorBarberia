@@ -151,7 +151,7 @@ export default function AgregarAdminDaurin() {
               disabled={cargando}
             >
               <CgAdd />
-              {cargando ? "Cargando..." : "Agregar"}
+              {cargando ? "Guardando..." : "Agregar"}
             </button>
           </article>
         </form>

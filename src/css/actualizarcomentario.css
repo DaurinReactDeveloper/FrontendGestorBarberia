@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
+.h1-actualizar-comentario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 6vw;
+}
+
+.p-actualizar-comentario {
+  margin-bottom: 0vw;
+}
+
+.input-number-actualizar-comentario,
+.input-textarea-actualizar-comentario {
+  border: unset;
+  border: 0.1vw solid #263238;
+  border-radius: 0.5vw;
+  padding: 1vw;
+  width: 100%;
+  background-color: #263238;
+  color: white;
+}
+
+.input-textarea-actualizar-comentario {
+  resize: none;
+  height: 40vw;
+}
+
+.div-button-actualizar-comentario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5vw;
+}
+
+.form-actualizar-comentario {
+  padding: 1vw;
+}
+
+.button-actualizar-comentario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  border: unset;
+  padding: 1vw;
+  width: 50%;
+  background-color: #263238;
+  color: white;
+  border-radius: 5vw;
+}
+
+.p-mensaje-actualizar-comentario {
+  text-align: justify;
+  color: #c44949;
+}
+
+.p-mensaje-actualizar-comentario-general {
+  text-align: center;
+  padding-top: 5vw;
+}
+
+@media (min-width: 320px) and (max-width: 765px) {
+  .h1-actualizar-comentario {
+    font-size: 7vw;
+  }
+  .button-actualizar-comentario {
+    width: 65%;
+  }
+}
+
+@media (min-width: 768px) {
+  .h1-actualizar-comentario {
+    font-family: "PoppinsBold";
+  }
+
+  .button-actualizar-comentario {
+    width: 35%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .h1-actualizar-comentario {
+    padding-top: 2vw;
+  }
+
+  .section-actualizar-comentario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .article-actualizar-comentario {
+    width: 45%;
+  }
+
+  .form-actualizar-comentario {
+    width: 45%;
+  }
+
+  .input-textarea-actualizar-comentario {
+    height: 20vw;
+  }
+
+  .button-actualizar-comentario {
+    gap: 0.2vw;
+    padding: 0.6vw;
+    width: 50%;
+  }
+
+  .div-button-actualizar-comentario {
+    padding-top: 1vw;
+  }
+
+  .input-number-actualizar-comentario,
+  .input-textarea-actualizar-comentario {
+    border: unset;
+    border: 0.1vw solid #263238;
+    border-radius: 0.2vw;
+    padding: 0.7vw;
+  }
+
+  .p-mensaje-actualizar-comentario-general {
+    padding-top: 1vw;
+  }
+}
+
+@media (min-width: 1440px) {
+  .button-actualizar-comentario {
+    gap: 0.1vw;
+    padding: 0.5vw;
+    width: 35%;
+  }
+}

@@ -13,6 +13,10 @@ import { GiExitDoor } from "react-icons/gi";
 import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
 import { BienvenidoCelular } from "../../../util/bienvenido/BienvenidoCelular";
 import { PiAddressBookBold } from "react-icons/pi";
+import AgregarBarberiaDaurin from "./AgregarBarberiaDaurin";
+import { BsShop } from "react-icons/bs";
+import ListarBarberiasDaurin from "./ListarBarberiasDaurin";
+import { FaShop } from "react-icons/fa6";
 
 export default function MainAdminCelularDaurin({ nombre }) {
   const [opcionSeleccionada, setOpcionSeleccionada] = useState(null);
@@ -25,7 +29,9 @@ export default function MainAdminCelularDaurin({ nombre }) {
 
   const opciones = [
     { key: "ListarAdminDaurin", content: <ListarAdminDaurin /> },
+    { key: "ListarBarberiaDaurin", content: <ListarBarberiasDaurin /> },
     { key: "AgregarAdminDaurin", content: <AgregarAdminDaurin /> },
+    { key: "AgregarBarberiaDaurin", content: <AgregarBarberiaDaurin /> },
     {
       key: "informacion",
       content: (
@@ -65,10 +71,26 @@ export default function MainAdminCelularDaurin({ nombre }) {
 
               <button
                 className="button-accordion-body"
+                onClick={() => manejarClickBoton("ListarBarberiaDaurin")}
+              >
+                <FaShop />
+                Listar Barberias
+              </button>
+
+              <button
+                className="button-accordion-body"
                 onClick={() => manejarClickBoton("AgregarAdminDaurin")}
               >
                 <FaUserSecret />
                 Agregar Administrador
+              </button>
+
+              <button
+                className="button-accordion-body"
+                onClick={() => manejarClickBoton("AgregarBarberiaDaurin")}
+              >
+                <BsShop />
+                Agregar Barberia
               </button>
 
               <button

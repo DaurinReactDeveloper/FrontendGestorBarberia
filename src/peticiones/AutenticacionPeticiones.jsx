@@ -66,10 +66,14 @@ export async function obtenerUsuario(
       setResultado("Inicio de sesión exitoso.");
       navigate(`/${tipo}`);
     } else {
-      setError(peticion.data.message);
+      setTimeout(() => {
+        setError(peticion.data.message);
+      }, 2000);
     }
   } catch (error) {
-    setError(error.response?.data?.message || "Error en la solicitud.");
+    setTimeout(() => {
+      setError(error.response?.data?.message || "Error en la solicitud.");
+    }, 2000);
   } finally {
     setCargando(false);
   }

@@ -46,11 +46,11 @@ export async function anadirAdmin(
 
   const adminDto = {
     administradoresId: 0,
-    nombre:nombre,
-    email:email,
-    telefono:telefono,
+    nombre: nombre,
+    email: email,
+    telefono: telefono,
     tipo: "PropietarioBarberia",
-    password:password,
+    password: password,
     changeDate: new Date(),
     changeUser: id,
   };
@@ -101,12 +101,43 @@ export async function obtenerAdmins(setAdmins, setMensaje) {
   }
 }
 
+//Conseguir Admin by Id
+export async function obtenerAdminsById(adminId, setAdmins, setMensajeAdmin) {
+  const { token } = obtenerCredenciales();
+
+  if (!token) {
+    setMensajeAdmin("Debe Registrarse.");
+    return;
+  }
+
+  try {
+    const peticion = await axios.get(
+      `${urlAdm}/GetAdministradorById/${adminId}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    if (peticion.data.success) {
+      setAdmins(peticion.data.data);
+    } else {
+      setMensajeAdmin(peticion.data.message);
+      setTimeout(() => setMensajeAdmin(""), 1000);
+    }
+  } catch (error) {
+    setMensajeAdmin(
+      "Ha ocurrido un error obteniendo el administrador " + error
+    );
+    setTimeout(() => setMensajeAdmin(""), 1000);
+  }
+}
+
 //Eliminar Admins
 export async function eliminarAdmin(idAdmin, setMensajeAdmin) {
   const { id, token } = obtenerCredenciales();
 
   if (!token) {
-    setMensajeBarbero("Debe Registrarse.");
+    setMensajeAdmin("Debe Registrarse.");
     return;
   }
 
@@ -155,11 +186,8 @@ export async function actualizarAdmin(
   setTelefonoMensaje,
   setPasswordMensaje,
   setMensaje,
-  setCargando
+  navigate
 ) {
-  // Iniciar cargando
-  setCargando(true);
-
   // Validación de los campos
   const validacionExitosa = ValidacionesAdmin(
     nombre,
@@ -173,15 +201,13 @@ export async function actualizarAdmin(
   );
 
   if (!validacionExitosa) {
-    setCargando(false);
     return;
   }
 
   const { id, token } = obtenerCredenciales();
-  
+
   if (!token) {
     setMensaje("Debe Registrarse.");
-    setCargando(false);
     return;
   }
 
@@ -205,8 +231,8 @@ export async function actualizarAdmin(
       setMensaje(peticion.data.message);
       setTimeout(() => {
         setMensaje("");
-        window.location.reload();
-      }, 1300);
+        navigate("/Daurin");
+      }, 1000);
     } else {
       setMensaje(peticion.data.message);
       setTimeout(() => setMensaje(""), 1000);
@@ -214,7 +240,5 @@ export async function actualizarAdmin(
   } catch (error) {
     setMensaje("Ocurrió un error al actualizar el administrador." + error);
     setTimeout(() => setMensaje(""), 1000);
-  } finally {
-    setCargando(false);
   }
 }

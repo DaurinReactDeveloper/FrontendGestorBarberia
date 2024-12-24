@@ -8,6 +8,7 @@ import { obtenerBarberosByBarberiaIdCliente } from "../../../peticiones/Barberos
 import { obtenerEstilosAddCita } from "../../../peticiones/EstilosPeticiones";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
 import { CartasEstiloCitas } from "../../../util/cartas/CartasEstilo";
+import { IoMdAddCircleOutline } from "react-icons/io";
 import "../../../css/agregarcitaspc.css";
 
 export function AnadirCitasPc() {
@@ -182,7 +183,8 @@ export function AnadirCitasPc() {
               className="btn-agregar-cita"
               disabled={cargando}
             >
-              {cargando ? "Cargando..." : "Agregar"}
+              <IoMdAddCircleOutline/>
+              {cargando ? "Cargando..." : "Agregar Cita"}
             </button>
           </div>
         </form>

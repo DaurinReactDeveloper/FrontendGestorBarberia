@@ -8,49 +8,87 @@
 }
 
 .col-th-listarAdmin {
-    font-weight: unset;
-    font-family: "PoppinsBold";
+  font-weight: unset;
+  font-family: "PoppinsBold";
 }
 
-.button-editar-admin,.button-eliminar-admin{
+.button-editar-admin,
+.button-eliminar-admin {
   border: unset;
-  background-color: #1B1B1B;
+  background-color: #1b1b1b;
   color: white;
   border-radius: 1vw;
   margin: 0 auto;
 }
 
-.button-eliminar-admin{
-  background-color: #C44949;
+.button-eliminar-admin {
+  background-color: #c44949;
 }
 
-.td-button-editar-admins,.td-button-eliminar-admins{
+.button-editar-admin {
+  padding: 0.5vw 1.7vw;
+  border-radius: 1vw;
+}
+
+.td-button-editar-admins,
+.td-button-eliminar-admins {
   text-align: center;
 }
 
-.mensaje-admin-eliminar{
-  color: #1B1B1B;
+.mensaje-admin-eliminar {
+  color: #1b1b1b;
   text-align: center;
 }
 
-@media (min-width:1024px) {
+@media (min-width: 728px) {
+  .button-editar-admin {
+    padding: 0.5vw 0.9vw;
+    border-radius: 0.9vw;
+  }
+}
+
+@media (min-width: 1024px) {
   .section-listar-admin {
     overflow-x: unset;
     padding-left: 1.5vw;
     padding-right: 1.5vw;
     margin-left: 2vw;
     margin-right: 2vw;
-    background-color: #D9D9D9;
-    border-radius: 0.5vw;
-    max-height: 32vw;
+    background-color: #d9d9d9;
+    border-radius: 0.2vw;
+    max-height: 30vw;
     overflow-y: scroll;
+  }
+
+  .button-editar-admin {
+    padding: 0.3vw 0.6vw;
+    border-radius: 2vw;
+  }
+
+  .button-editar-admin:hover {
+    background-color: #045525;
+    transition: background-color 1s;
+  }
+
+  .button-eliminar-admin:hover {
+    background-color: #1b1b1b;
+    transition: background-color 1s;
+  }
+
+  .mensaje-admin-eliminar {
+    padding-top: 2vw;
+    color: white;
   }
 }
 
-
-@media (min-width:1444px) {
+@media (min-width: 1444px) {
   .section-listar-admin {
     padding-left: 1vw;
     padding-right: 1vw;
+  }
+
+  .button-editar-admin {
+    padding: 0.1vw 0.3vw;
+    border-radius: 2vw;
   }
 }

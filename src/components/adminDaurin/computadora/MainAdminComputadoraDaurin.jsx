@@ -4,12 +4,15 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { ContentSwitcher } from "../../../util/mainreutilizable/MainReutilizable";
 import { GiExitDoor } from "react-icons/gi";
 import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
-import { FaUserSecret } from "react-icons/fa6";
+import { FaShop, FaUserSecret } from "react-icons/fa6";
 import BienvenidoClientePc from "../../../util/bienvenido/BienvenidoPc";
 import InformacionPc from "../../../util/informacion/InformacionPc";
 import AgregarAdminDaurinPc from "./AgregarAdminDaurinPc";
 import ListarAdminDaurinPc from "./ListarAdminDaurinPc";
 import { PiAddressBookBold } from "react-icons/pi";
+import { BsShop } from "react-icons/bs";
+import ListarBarberiasDaurinPc from "./ListarBarberiasDaurinPc";
+import AgregarBarberiaDaurinPc from "./AgregarBarberiaDaurinPc";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "../../../css/mainadmincomputadora.css";
@@ -28,7 +31,9 @@ export default function MainAdminComputadoraDaurin({ nombre }) {
 
   const opciones = [
     { key: "ListarAdminDaurinPc", content: <ListarAdminDaurinPc /> },
+    { key: "ListarBarberiasDaurinPc", content: <ListarBarberiasDaurinPc /> },
     { key: "AgregarAdminDaurinPc", content: <AgregarAdminDaurinPc /> },
+    { key: "AgregarBarberiaDaurinPc", content: <AgregarBarberiaDaurinPc /> },
     {
       key: "informacion",
       content: (
@@ -71,10 +76,27 @@ export default function MainAdminComputadoraDaurin({ nombre }) {
 
           <button
             className="boton-opciones-cliente-pc"
+            onClick={() => manejarClickBoton("ListarBarberiasDaurinPc")}
+          >
+            <FaShop className="icon-botones-opciones-cliente-pc" />
+            Listar Barberias
+          </button>
+
+
+          <button
+            className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("AgregarAdminDaurinPc")}
           >
             <FaUserSecret className="icon-botones-opciones-cliente-pc" />
             Agregar Admin
+          </button>
+
+          <button
+            className="boton-opciones-cliente-pc"
+            onClick={() => manejarClickBoton("AgregarBarberiaDaurinPc")}
+          >
+            <BsShop className="icon-botones-opciones-cliente-pc" />
+            Agregar Barberia
           </button>
 
           <button

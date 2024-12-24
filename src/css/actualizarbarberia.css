@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
+.h1-actualizar-barberia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  padding-top: 7vw;
+  font-family: "PoppinsBold";
+}
+
+.form-actualizar-barberia {
+  padding: 2vw;
+}
+
+.p-form-actualizar-barberia {
+  margin-bottom: 0vw;
+}
+
+.input-form-actualizar-barberia,
+.select-form-actualizar-barberia {
+  width: 100%;
+  padding: 1vw;
+  background-color: #263238;
+  color: white;
+  border-radius: 0.5vw;
+  border: 1vw solid #263238;
+}
+
+.input-form-actualizar-barberia::placeholder {
+  color: white;
+}
+
+.div-select-actualizar-barberia {
+  padding-top: 3vw;
+}
+
+.div-button-actualizar-barberia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5vw;
+  padding-top: 5vw;
+}
+
+.button-actualizar-barberia {
+  border: none;
+  border-radius: 5vw;
+  background-color: #263238;
+  padding: 1vw;
+  width: 50%;
+  color: white;
+}
+
+.span-actualizar-barberia {
+  color: #c44949;
+}
+
+.p-mensaje-actualizar-barberia {
+  text-align: center;
+  margin-bottom: 0vw;
+  padding-top: 3vw;
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+  .h1-actualizar-barberia {
+    gap: 0.1vw;
+    padding-top: 7vw;
+    font-family: "poppins";
+  }
+
+  .button-actualizar-barberia {
+    width: 65%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-actualizar-barberia-pc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .article-actualizar-barberia-pc {
+    width: 45%;
+  }
+
+  .form-actualizar-barberia {
+    width: 40%;
+  }
+
+  .input-form-actualizar-barberia,
+  .select-form-actualizar-barberia {
+    padding: 0.1vw;
+    border-radius: 0.2vw;
+    border: 0.6vw solid #263238;
+  }
+
+  .div-select-actualizar-barberia {
+    padding-top: 1vw;
+  }
+
+  .div-button-actualizar-barberia {
+    padding-bottom: 1vw;
+    padding-top: 1vw;
+  }
+
+  .button-actualizar-barberia {
+    border-radius: 5vw;
+    padding: 0.5vw;
+    width: 55%;
+  }
+
+  .p-mensaje-actualizar-barberia {
+    text-align: center;
+    padding-bottom: 0vw;
+  }
+
+  .button-actualizar-barberia:hover {
+    background-color: #045525;
+    transition: background-color 1s;
+  }
+}
+
+@media (min-width: 1444px) {
+  .button-actualizar-barberia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2vw;
+    width: 33%;
+    padding: 0.4vw;
+  }
+}

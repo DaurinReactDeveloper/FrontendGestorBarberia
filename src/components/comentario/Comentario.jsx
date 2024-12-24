@@ -152,7 +152,7 @@ export default function Comentario() {
             {/* Botón Enviar */}
             <div className="div-button-comentario">
               <button type="submit" className="button-comentario" disabled={cargando}>
-                {cargando ? "cargando..." : "Enviar Comentario"}
+                {cargando ? "Guardando..." : "Enviar Comentario"}
               </button>
             </div>
 

@@ -43,6 +43,13 @@
   padding-top: 8vw;
 }
 
+.boton-submit-agregar-admin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
 @media (min-width:768px) {
   .boton-submit-agregar-admin {
     width: 40%;
@@ -98,14 +105,18 @@
   }
 
   .button-agregar-barbero-pc {
+    display: flex;
+    align-items: center;
+    gap: 0.2vw;
     border: none;
     border-radius: 2vw;
     padding: 0.4vw 5vw;
   }
 
   .button-agregar-barbero-pc:hover {
-    transform: scale(1.1);
-    transition: transform 1s;
+   background-color: #045525;
+    transition: background-color 1s;
+    color: white;
   }
 
   .img-input-agregar-barbero-admin-pc::-webkit-file-upload-button {
@@ -114,5 +125,12 @@
     border: none;
     padding: 0.2vw 1vw;
     border-radius: 0.1vw;
+  }
+}
+
+
+@media (min-width: 1420px) {
+  .button-agregar-barbero-pc {
+    padding: 0.4vw 2vw;
   }
 }

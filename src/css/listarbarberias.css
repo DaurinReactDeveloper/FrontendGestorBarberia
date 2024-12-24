@@ -1,0 +1,97 @@
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/font/PoppinsBold.ttf");
+}
+
+.col-th-listarBarberias {
+  font-weight: unset;
+  font-family: "PoppinsBold";
+  white-space: nowrap;
+}
+
+.section-listar-barberias {
+  overflow-x: scroll;
+}
+
+.td-listar-barberias-celular {
+  text-align: center;
+}
+
+.button-editar-listar-barberias-celular,
+.button-eliminar-listar-barberias-celular {
+  border: none;
+  color: white;
+  padding: 0.5vw 5vw;
+  border-radius: 5vw;
+}
+
+.button-editar-listar-barberias-celular {
+  background-color: #045525;
+}
+
+.button-eliminar-listar-barberias-celular {
+  background-color: #c44949;
+}
+
+.p-mensaje-listar-barberias {
+  text-align: center;
+  margin-bottom: 0vw;
+}
+
+
+
+@media (min-width: 1024px) {
+  .section-listar-barberias-pc {
+    background-color: #d9d9d9;
+    padding: 1vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    border-radius: 0.2vw;
+    overflow-x: scroll;
+    max-height: 30vw;
+  }
+
+  .td-listar-barberias-pc {
+    text-align: center;
+  }
+
+  .th-listar-barberias-pc {
+    text-align: center;
+  }
+
+  .link-actualizar-barberia-pc {
+    background-color: #045525;
+    color: white;
+    padding: 0.2vw 0.6vw;
+    border-radius: 0.4vw;
+  }
+
+  .link-actualizar-barberia-pc:hover {
+    background-color: #263238;
+    transition: background-color 1s;
+  }
+
+  .button-eliminar-barberia-pc {
+    border: unset;
+    background-color: #c44949;
+    color: white;
+    border-radius: 0.4vw;
+  }
+
+  .button-eliminar-barberia-pc:hover {
+    background-color: #1b1b1b;
+    transition: background-color 1s;
+  }
+
+  .p-mensaje-listar-barberias-pc {
+    text-align: center;
+    color: white;
+    padding-top: 2vw;
+  }
+}
+
+@media (min-width: 1044px) {
+  .link-actualizar-barberia-pc {
+    padding: 0.1vw 0.4vw;
+  }
+}

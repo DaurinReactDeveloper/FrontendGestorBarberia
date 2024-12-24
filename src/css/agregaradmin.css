@@ -54,6 +54,12 @@
   text-align: center;
 }
 
+@media (min-width: 768px) {
+  .article-agregar-admin-button{
+    padding-top: 1vw;
+  }
+}
+
 @media (min-width: 1024px) {
   .article-agregar-admin-pc {
     display: flex;

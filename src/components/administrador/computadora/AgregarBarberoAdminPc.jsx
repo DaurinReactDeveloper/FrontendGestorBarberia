@@ -5,6 +5,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../util/firebase/firebaseConfig";
 import { BsPersonAdd } from "react-icons/bs";
 import { TituloGenericos } from "../../../util/titulos/TituloGenericos";
+import { IoPersonAddSharp } from "react-icons/io5";
 import "./../../../css/agregarbarberoadmincelular.css";
 
 export default function AgregarBarberoAdminPc() {
@@ -218,6 +219,7 @@ export default function AgregarBarberoAdminPc() {
 
             <div className="div-button-agregar-barbero-pc">
               <button type="submit" className="button-agregar-barbero-pc" disabled={cargando}>
+              <IoPersonAddSharp />
                 {cargando ? "Agregando..." : "Agregar Barbero"}
               </button>
             </div>

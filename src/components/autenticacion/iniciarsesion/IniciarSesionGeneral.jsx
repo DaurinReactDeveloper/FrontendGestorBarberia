@@ -101,7 +101,7 @@ export default function IniciarSesionGeneral() {
           <article className="col-lg-8 col-inputs-sesiones">
             <form onSubmit={manejarSubmit} className="form-sesiones">
               <div className="div-inputs-iniciarsesiongeneral">
-                <p className="p-inputs-iniciarsesiongeneral">Nombre</p>
+                <p className="p-inputs-iniciarsesiongeneral">Nombre de Usuario</p>
 
                 <input
                   type="text"
@@ -145,7 +145,7 @@ export default function IniciarSesionGeneral() {
                   disabled={cargando}
                   className="button-sesiones"
                 >
-                  {cargando ? "cargando..." : "INICIAR SESIÓN"}
+                  {cargando ? "Cargando..." : "INICIAR SESIÓN"}
                 </button>
 
               </div>

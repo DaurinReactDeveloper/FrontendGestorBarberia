@@ -9,14 +9,13 @@ import {
 } from "../../../peticiones/AdminPeticiones";
 import { FaUserEdit } from "react-icons/fa";
 import { TiUserDelete } from "react-icons/ti";
-import { ModalActualizarAdmin } from "../../../util/Modal/ModalActualizarAdmin";
+import { Link } from "react-router-dom";
 import "./../../../css/listaradmin.css";
 
 export default function ListarAdminDaurinPc() {
   const [admins, setAdmins] = useState([]);
   const [mensaje, setMensaje] = useState("");
   const [mensajeAdmin, setMensajeAdmin] = useState("");
-  const [adminIdEditar, setAdminIdEditar] = useState(null);
 
   useEffect(() => {
     obtenerAdmins(setAdmins, setMensaje);
@@ -26,13 +25,9 @@ export default function ListarAdminDaurinPc() {
     eliminarAdmin(adminId, setMensajeAdmin);
   };
 
-  const llamarEditar = (adminId) => {
-    setAdminIdEditar(adminId);
-  };
-
   return (
     <>
-    <br />
+      <br />
       <TituloGenericos
         titulo={"LISTAR ADMINS"}
         icono={FaAddressBook}
@@ -44,7 +39,7 @@ export default function ListarAdminDaurinPc() {
       <br />
       <section className="section-listar-admin">
         {mensaje && <p className="mensaje-error">{mensaje}</p>}
-        
+
         <table className="table">
           <thead>
             <tr>
@@ -80,11 +75,13 @@ export default function ListarAdminDaurinPc() {
                 <td>{admin.email}</td>
                 <td>{admin.tipo}</td>
                 <td className="td-button-editar-admins">
-                  <button
-                    type="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                    onClick={() => llamarEditar(admin.administradoresId)}
+                  <Link
+                    to={
+                      admin.tipo !== "PropietarioApp"
+                        ? `/ActualizarAdmin/${admin.administradoresId}`
+                        : "#"
+                    }
+                    title="Editar administrador"
                     className="button-editar-admin"
                     disabled={admin.tipo === "PropietarioApp"}
                   >
@@ -93,11 +90,12 @@ export default function ListarAdminDaurinPc() {
                     ) : (
                       <FaUserEdit />
                     )}
-                  </button>
+                  </Link>
                 </td>
                 <td className="td-button-eliminar-admins">
                   <button
                     type="button"
+                    title="Eliminar administrador"
                     className="button-eliminar-admin"
                     onClick={() => llamarEliminar(admin.administradoresId)}
                     disabled={admin.tipo === "PropietarioApp"}
@@ -113,9 +111,6 @@ export default function ListarAdminDaurinPc() {
             ))}
           </tbody>
         </table>
-
-        <ModalActualizarAdmin idAdmin={adminIdEditar} />
-        
       </section>
 
       <br />
