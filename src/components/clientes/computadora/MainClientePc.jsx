@@ -87,6 +87,7 @@ export function MainClientePc({ nombre }) {
             </Link>
 
             <button
+              type="button"
               className="boton-opciones-cliente-pc"
               onClick={() => manejarClickBoton("agregarCita")}
             >
@@ -95,6 +96,7 @@ export function MainClientePc({ nombre }) {
             </button>
 
             <button
+              type="button"
               className="boton-opciones-cliente-pc"
               onClick={() => manejarClickBoton("misCitas")}
             >
@@ -103,6 +105,7 @@ export function MainClientePc({ nombre }) {
             </button>
 
             <button
+              type="button"
               className="boton-opciones-cliente-pc"
               onClick={() => manejarClickBoton("serviciosOfrecidos")}
             >
@@ -111,6 +114,7 @@ export function MainClientePc({ nombre }) {
             </button>
 
             <button
+              type="button"
               className="boton-opciones-cliente-pc boton-informacion-cliente-pc"
               onClick={() => manejarClickBoton("informacion")}
             >
@@ -122,6 +126,7 @@ export function MainClientePc({ nombre }) {
 
             <div className="div-button-cerrar-sesion">
               <button
+                type="button"
                 className="boton-opciones-cliente-pc boton-cerrar-sesion-opciones-cliente-pc"
                 onClick={() => CerrarSesion(navigate)}
                 title="Cerrar Sesion"

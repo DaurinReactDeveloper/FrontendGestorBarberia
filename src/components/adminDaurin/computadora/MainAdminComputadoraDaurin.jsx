@@ -67,6 +67,7 @@ export default function MainAdminComputadoraDaurin({ nombre }) {
 
         <div className="div-opciones-cliente-pc">
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("ListarAdminDaurinPc")}
           >
@@ -75,6 +76,7 @@ export default function MainAdminComputadoraDaurin({ nombre }) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("ListarBarberiasDaurinPc")}
           >
@@ -84,6 +86,7 @@ export default function MainAdminComputadoraDaurin({ nombre }) {
 
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("AgregarAdminDaurinPc")}
           >
@@ -92,6 +95,7 @@ export default function MainAdminComputadoraDaurin({ nombre }) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("AgregarBarberiaDaurinPc")}
           >
@@ -100,6 +104,7 @@ export default function MainAdminComputadoraDaurin({ nombre }) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc boton-informacion-cliente-pc boton-informacion-admin-pc boton-informacion-admin-Daurin"
             onClick={() => manejarClickBoton("informacion")}
           >
@@ -111,6 +116,7 @@ export default function MainAdminComputadoraDaurin({ nombre }) {
 
           <div className="div-button-cerrar-sesion">
             <button
+              type="button"
               className="boton-opciones-cliente-pc boton-cerrar-sesion-opciones-cliente-pc"
               onClick={() => CerrarSesion(navigate)}
               title="Cerrar Sesion"

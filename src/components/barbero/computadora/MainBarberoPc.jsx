@@ -75,6 +75,7 @@ export function MainBarberoPc({ nombre }) {
 
           <div className="div-opciones-cliente-pc">
             <button
+              type="button"
               className="boton-opciones-cliente-pc"
               onClick={() => manejarClickBoton("gestionarCitas")}
             >
@@ -83,6 +84,7 @@ export function MainBarberoPc({ nombre }) {
             </button>
 
             <button
+              type="button"
               className="boton-opciones-cliente-pc"
               onClick={() => manejarClickBoton("citasaceptadas")}
             >
@@ -91,6 +93,7 @@ export function MainBarberoPc({ nombre }) {
             </button>
 
             <button
+              type="button"
               className="boton-opciones-cliente-pc"
               onClick={() => manejarClickBoton("citasRealizadas")}
             >
@@ -99,6 +102,7 @@ export function MainBarberoPc({ nombre }) {
             </button>
 
             <button
+              type="button"
               className="boton-opciones-cliente-pc boton-informacion-cliente-pc"
               onClick={() => manejarClickBoton("informacion")}
             >
@@ -110,6 +114,7 @@ export function MainBarberoPc({ nombre }) {
 
             <div className="div-button-cerrar-sesion">
               <button
+                type="button"
                 className="boton-opciones-cliente-pc boton-cerrar-sesion-opciones-cliente-pc"
                 onClick={() => CerrarSesion(navigate)}
                 title="Cerrar Sesion"

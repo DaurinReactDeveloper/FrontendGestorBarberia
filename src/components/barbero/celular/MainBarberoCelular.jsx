@@ -61,6 +61,7 @@ import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
                 icon={FaUserCircle}
               >
                 <button
+                  type="button"
                   className="button-accordion-body"
                   onClick={() => manejarClickBoton("gestionarCitas")}
                 >
@@ -70,6 +71,7 @@ import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
   
   
                 <button
+                  type="button"
                   className="button-accordion-body"
                   onClick={() => manejarClickBoton("citasaceptadas")}
                 >
@@ -79,6 +81,7 @@ import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
   
   
                 <button
+                  type="button"
                   className="button-accordion-body"
                   onClick={() => manejarClickBoton("citasRealizadas")}
                 >
@@ -87,6 +90,7 @@ import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
                 </button>
   
                 <button
+                  type="button"
                   className="button-accordion-body"
                   onClick={() => manejarClickBoton("informacion")}
                 >
@@ -97,6 +101,7 @@ import { CerrarSesion } from "../../../peticiones/AutenticacionPeticiones";
                 <hr />
                 <div className="div-button-cerrar-sesion">
                   <button
+                    type="button"
                     className="button-accordion-body button-cerrar-sesion"
                     onClick={() => CerrarSesion(navigate)}
                   >

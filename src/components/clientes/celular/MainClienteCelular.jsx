@@ -78,6 +78,7 @@ export function MainClienteCelular({ nombre }) {
               </Link>
 
               <button
+              type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("agregarCita")}
               >
@@ -86,6 +87,7 @@ export function MainClienteCelular({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("misCitas")}
               >
@@ -94,6 +96,7 @@ export function MainClienteCelular({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("serviciosOfrecidos")}
               >
@@ -102,6 +105,7 @@ export function MainClienteCelular({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("informacion")}
               >
@@ -112,6 +116,7 @@ export function MainClienteCelular({ nombre }) {
               <hr />
               <div className="div-button-cerrar-sesion">
                 <button
+                  type="button"
                   className="button-accordion-body button-cerrar-sesion"
                   onClick={() => CerrarSesion(navigate)}
                 >

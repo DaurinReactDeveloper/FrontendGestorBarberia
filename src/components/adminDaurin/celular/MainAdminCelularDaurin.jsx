@@ -62,6 +62,7 @@ export default function MainAdminCelularDaurin({ nombre }) {
               icon={FaUserSecret}
             >
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("ListarAdminDaurin")}
               >
@@ -70,6 +71,7 @@ export default function MainAdminCelularDaurin({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("ListarBarberiaDaurin")}
               >
@@ -78,6 +80,7 @@ export default function MainAdminCelularDaurin({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("AgregarAdminDaurin")}
               >
@@ -86,6 +89,7 @@ export default function MainAdminCelularDaurin({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("AgregarBarberiaDaurin")}
               >
@@ -94,6 +98,7 @@ export default function MainAdminCelularDaurin({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("informacion")}
               >
@@ -104,6 +109,7 @@ export default function MainAdminCelularDaurin({ nombre }) {
               <hr />
               <div className="div-button-cerrar-sesion">
                 <button
+                  type="button"
                   className="button-accordion-body button-cerrar-sesion"
                   onClick={() => CerrarSesion(navigate)}
                 >

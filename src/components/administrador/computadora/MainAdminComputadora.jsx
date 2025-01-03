@@ -73,6 +73,7 @@ export default function MainAdminComputadora({nombre}) {
 
         <div className="div-opciones-cliente-pc">
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("AgregarEstilo")}
           >
@@ -81,6 +82,7 @@ export default function MainAdminComputadora({nombre}) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("AgregarBarbero")}
           >
@@ -89,6 +91,7 @@ export default function MainAdminComputadora({nombre}) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("ListaBarberos")}
           >
@@ -97,6 +100,7 @@ export default function MainAdminComputadora({nombre}) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("ListaCliente")}
           >
@@ -105,6 +109,7 @@ export default function MainAdminComputadora({nombre}) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("ListaEstilo")}
           >
@@ -113,6 +118,7 @@ export default function MainAdminComputadora({nombre}) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc"
             onClick={() => manejarClickBoton("Reportes")}
           >
@@ -121,6 +127,7 @@ export default function MainAdminComputadora({nombre}) {
           </button>
 
           <button
+            type="button"
             className="boton-opciones-cliente-pc boton-informacion-cliente-pc boton-informacion-admin-pc"
             onClick={() => manejarClickBoton("informacion")}
           >
@@ -132,6 +139,7 @@ export default function MainAdminComputadora({nombre}) {
 
           <div className="div-button-cerrar-sesion">
             <button
+              type="button"
               className="boton-opciones-cliente-pc boton-cerrar-sesion-opciones-cliente-pc"
               onClick={() => CerrarSesion(navigate)}
               title="Cerrar Sesion"

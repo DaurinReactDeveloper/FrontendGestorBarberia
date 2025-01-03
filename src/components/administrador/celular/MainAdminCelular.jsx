@@ -68,6 +68,7 @@ export default function MainAdminCelular({ nombre }) {
               icon={FaUserCircle}
             >
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("AgregarEstilo")}
               >
@@ -76,6 +77,7 @@ export default function MainAdminCelular({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("AgregarBarbero")}
               >
@@ -84,6 +86,7 @@ export default function MainAdminCelular({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("ListaBarberos")}
               >
@@ -92,6 +95,7 @@ export default function MainAdminCelular({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("ListaCliente")}
               >
@@ -100,6 +104,7 @@ export default function MainAdminCelular({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("ListaEstilo")}
               >
@@ -108,6 +113,7 @@ export default function MainAdminCelular({ nombre }) {
               </button>
 
               <button
+                type="button"
                 className="button-accordion-body"
                 onClick={() => manejarClickBoton("ReporteIngresos")}
               >
@@ -116,6 +122,7 @@ export default function MainAdminCelular({ nombre }) {
               </button>
               
               <button
+                type="button"
                 className="button-accordion-body button-accordion-body-admin-ingresos"
                 onClick={() => manejarClickBoton("informacion")}
               >
@@ -126,6 +133,7 @@ export default function MainAdminCelular({ nombre }) {
               <hr />
               <div className="div-button-cerrar-sesion">
                 <button
+                  type="button"
                   className="button-accordion-body button-cerrar-sesion"
                   onClick={() => CerrarSesion(navigate)}
                 >
