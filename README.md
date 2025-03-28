@@ -1,18 +1,32 @@
-<img src='https://i.imgur.com/30uMsG9.png'></img>
+        <img src="https://i.imgur.com/30uMsG9.png" alt="Gestor de Barbería - DaurinBarbershop">
 
-<h1>🌐 Gestor de Barbería - DaurinBarbershop</h1>
+        <h1>💈 Gestor de Barbería - DaurinBarbershop</h1>
 
-<h2>🔧 Descripción del Proyecto (Frontend)</h2>
+        <h2>🔧 Descripción del Proyecto (Frontend)</h2>
+        <p>
+            <strong>Gestor de Barbería - DaurinBarbershop</strong> es una plataforma desarrollada con <strong>React.js</strong> que optimiza la 
+            gestión de citas, clientes y servicios en una barbería. Gracias a su <strong>diseño moderno y responsivo</strong>, permite una 
+            experiencia de usuario intuitiva y eficiente. La autenticación se maneja con <strong>JSON Web Tokens (JWT)</strong>, asegurando 
+            un acceso seguro y personalizado para cada usuario.
+        </p>
 
-<p>Construido con React.js utilizando Vite y Axios, Gestor de Barbería ofrece una experiencia de navegación fluida y moderna. Explora diversas funcionalidades del sistema con un diseño responsivo y peticiones eficientes. La autenticación se gestiona con <strong>jwt-decode</strong> para asegurar un acceso seguro y personalizado.</p>
+        <h2>🚀 Características Destacadas</h2>
+        
+        <ul>
+            <li>📅 <strong>Gestión de citas</strong>: Reserva y administración de citas con clientes.</li>
+            <li>👤 <strong>Panel de clientes</strong>: Registro y consulta de clientes.</li>
+            <li>💳 <strong>Control de pagos</strong>: Registro y seguimiento de pagos realizados.</li>
+            <li>📊 <strong>Dashboard interactivo</strong>: Visualización de estadísticas clave del negocio.</li>
+        </ul>
 
-<h2>✨ Tecnologías Utilizadas</h2>
-<ul>
-    <li>⚛️ React.js para la construcción de la interfaz de usuario dinámica.</li>
-    <li>📱 Bootstrap para el diseño responsivo y moderno de la interfaz.</li>
-    <li>🌐 Axios para realizar peticiones HTTP eficientes al backend.</li>
-    <li>🔑 jwt-decode para gestionar la autenticación y decodificar los tokens JWT.</li>
-</ul>
+        <h2>✨ Tecnologías Utilizadas</h2>
+        <ul>
+            <li>⚛️ <strong>React.js</strong> para la construcción de una interfaz moderna y dinámica.</li>
+            <li>📱 <strong>Bootstrap</strong> para garantizar un diseño responsivo y atractivo.</li>
+            <li>🌐 <strong>Axios</strong> para manejar peticiones HTTP de manera eficiente.</li>
+            <li>🔑 <strong>jwt-decode</strong> para gestionar la autenticación de usuarios mediante JWT.</li>
+        </ul>
 
-<h2>🚀 Alojamiento de la página</h2>
-<p><a href="https://daurinbarbershop.netlify.app" target="_blank">🌍 Ir a DaurinBarbershop</a></p>
+        <h2>🌍 Alojamiento de la Página</h2>
+        <p>Accede a la plataforma y explora sus funcionalidades:</p>
+        <p><a href="https://daurinbarbershop.netlify.app" target="_blank">🚀 Ir a DaurinBarbershop</a></p>
